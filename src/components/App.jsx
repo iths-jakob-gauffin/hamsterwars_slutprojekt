@@ -19,9 +19,10 @@ const App = () => {
 					}
 				}
 				background-color: blue;
-			`}>
+			`}
+		>
 			<h1 className="logo-font">HAMSTER WARS</h1>
-			<h1>start</h1>
+			<h1>hej</h1>
 		</div>
 	);
 };
