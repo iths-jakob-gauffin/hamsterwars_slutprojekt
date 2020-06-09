@@ -10,15 +10,28 @@ import './../styles/base.css';
 
 import { colors } from '../styles/colors';
 
-const HamburgerButton = ({ showMenu, setShowMenu }) => {
+const HamburgerButton = ({
+	showMenu,
+	setShowMenu,
+	initializeMenu,
+	setInitializeMenu
+}) => {
 	const [ openMenu, setOpenMenu ] = useState(false);
+	// console.log('OUTPUT ÄR: HamburgerButton -> openMenu', openMenu);
+	console.log('OUTPUT ÄR: HamburgerButton -> showMenu', showMenu);
 
-	useEffect(
-		() => {
-			setShowMenu(!showMenu);
-		},
-		[ openMenu ]
-	);
+	// useEffect(
+	// 	() => {
+	// 		initializeMenu && !showMenu && setShowMenu(!showMenu);
+	// 	},
+	// 	[ openMenu ]
+	// );
+
+	const handleClick = () => {
+		!initializeMenu && setInitializeMenu(true);
+		setOpenMenu(!openMenu);
+		setShowMenu(!showMenu);
+	};
 
 	const {
 		opacity,
@@ -40,7 +53,8 @@ const HamburgerButton = ({ showMenu, setShowMenu }) => {
 	return (
 		<Fragment>
 			<button
-				onClick={() => setOpenMenu(!openMenu)}
+				className="hamburger-button"
+				onClick={handleClick}
 				css={css`
 					margin: .3rem;
 					width: 48px;
@@ -52,6 +66,7 @@ const HamburgerButton = ({ showMenu, setShowMenu }) => {
 					justify-content: space-between;
 					align-items: center;
 					position: relative;
+					z-index: 2;
 				`}>
 				<StyledBar
 					style={{ opacity, top: goDown }}
@@ -89,7 +104,7 @@ const StyledBar = styled(animated.span)`
 	width: 100%;
 	border-radius: 17%;
 	position: absolute;
-	z-index: 2;
+	z-index: 10;
 `;
 
 export default HamburgerButton;

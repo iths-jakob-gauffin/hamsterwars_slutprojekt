@@ -1,4 +1,4 @@
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 
 // Styling
 import { css } from '@emotion/core';
@@ -13,17 +13,91 @@ import { colors } from './../styles/colors';
 import HamburgerButton from './HamburgerButton';
 
 const Footer = () => {
-	const [ showMenu, setShowMenu ] = useState(true);
+	const [ showMenu, setShowMenu ] = useState(false);
+	const [ initializeMenu, setInitializeMenu ] = useState(false);
+
+	const [ delay, setDelay ] = useState(false);
+
+	let villkor = false;
+	if (showMenu) {
+		setTimeout(() => {
+			villkor = true;
+		}, 2000);
+	}
+
+	useEffect(
+		() => {
+			if (!showMenu && initializeMenu) {
+				setTimeout(() => {
+					setDelay(!delay);
+				}, 100);
+			}
+		},
+		[ showMenu ]
+	);
+
+	const transition = useTransition(showMenu, null, {
+		// from: { opacity: 0 },
+		// enter: { opacity: 1 },
+		// leave: { opacity: 0 },
+		from: {
+			position: 'absolute',
+			zIndex: 1,
+			top: '90%',
+			left: '70%',
+			borderRadius: '50%'
+		},
+		enter: {
+			top: '-10%',
+			left: '-20%',
+			borderRadius: '0%',
+			width: '200%',
+			height: '200%'
+		},
+		leave: {
+			top: '100%',
+			left: '70%',
+			borderRadius: '50%'
+		},
+		config: config.gentle
+	});
 
 	return (
 		<Fragment>
 			<Mobile>
-				<StyledFooterContainer>
+				<StyledFooterContainer className="footer-before-burger">
 					<HamburgerButton
 						showMenu={showMenu}
 						setShowMenu={setShowMenu}
+						initializeMenu={initializeMenu}
+						setInitializeMenu={setInitializeMenu}
 					/>
-					{showMenu && <MobileMenu />}
+					<div
+						className="menu-container"
+						css={css`
+							width: ${showMenu ? '100%' : '0%'};
+							height: ${showMenu ? '87%' : '100%'};
+							background-color: none;
+							/* opacity: 0; */
+							top: 13%;
+							left: 0;
+							position: ${showMenu
+								? 'absolute'
+								: 'relative'};
+							overflow: hidden;
+						`}>
+						{transition.map(
+							({ item, key, props }) =>
+								item && (
+									<MobileMenu
+										key={key}
+										style={props}
+										onClick={() =>
+											setShowMenu(!showMenu)}
+									/>
+								)
+						)}
+					</div>
 				</StyledFooterContainer>
 			</Mobile>
 			<Desktop>Desktop or laptop</Desktop>
@@ -39,13 +113,15 @@ const Footer = () => {
 };
 
 const MobileMenu = styled(animated.main)`
-background-color: ${colors.yellow3};
-top:0;
+background-color: ${colors.yellow2};
+top: 0;
 left:0;
 width: 100%;
-height: 100%;
+height: 100%; 
+border-radius: 50%;
 z-index: 1;
 position: absolute;
+overflow:hidden;
 `;
 
 const StyledFooterContainer = styled.footer`
@@ -58,6 +134,9 @@ const StyledFooterContainer = styled.footer`
 	display: flex;
   justify-content: flex-end;
   align-items: center;
+	overflow: hidden;
+	/* position:relative; */
+	/* right: -75%; */
   
 `;
 
