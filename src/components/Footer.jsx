@@ -59,7 +59,14 @@ const Footer = () => {
 			left: '70%',
 			borderRadius: '50%'
 		},
-		config: config.gentle
+		config: config.default
+	});
+
+	const menuContainterTransition = useTransition(showMenu, null, {
+		from: { position: 'absolute', width: '0%' },
+		enter: { width: '100%' },
+		leave: { width: '0%' },
+		config: config.stiff
 	});
 
 	return (
@@ -72,32 +79,38 @@ const Footer = () => {
 						initializeMenu={initializeMenu}
 						setInitializeMenu={setInitializeMenu}
 					/>
-					<div
-						className="menu-container"
-						css={css`
-							width: ${showMenu ? '100%' : '0%'};
-							height: ${showMenu ? '87%' : '100%'};
-							background-color: none;
-							/* opacity: 0; */
-							top: 13%;
-							left: 0;
-							position: ${showMenu
-								? 'absolute'
-								: 'relative'};
-							overflow: hidden;
-						`}>
-						{transition.map(
-							({ item, key, props }) =>
-								item && (
-									<MobileMenu
-										key={key}
-										style={props}
-										onClick={() =>
-											setShowMenu(!showMenu)}
-									/>
-								)
-						)}
-					</div>
+					{menuContainterTransition.map(
+						({ item, keyContainer, propsContainer }) =>
+							item && (
+								<div
+									key={keyContainer}
+									className="menu-container"
+									style={propsContainer}
+									css={css`
+										width: 100%;
+										height: 87%;
+										background-color: none;
+										top: 13%;
+										left: 0;
+										position: absolute;
+										overflow: hidden;
+									`}>
+									{transition.map(
+										({ item, key, props }) =>
+											item && (
+												<MobileMenu
+													key={key}
+													style={props}
+													onClick={() =>
+														setShowMenu(
+															!showMenu
+														)}
+												/>
+											)
+									)}
+								</div>
+							)
+					)}
 				</StyledFooterContainer>
 			</Mobile>
 			<Desktop>Desktop or laptop</Desktop>

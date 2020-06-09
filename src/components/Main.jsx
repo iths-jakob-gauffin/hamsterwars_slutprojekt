@@ -40,6 +40,7 @@ const Main = () => {
 					{/* <ComicHamster /> */}
 					{/* <Hamster /> */}
 					<Bilden />
+					<input />
 				</StyledMainContainer>
 			</Mobile>
 			<Desktop>Desktop or laptop</Desktop>
