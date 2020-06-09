@@ -7,39 +7,17 @@ import './../styles/typography.css';
 import './../styles/base.css';
 import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 import { useTransition, animated, config } from 'react-spring';
-
 import { colors } from './../styles/colors';
 
+// Components
 import HamburgerButton from './HamburgerButton';
+import MobileMenu2 from './MobileMenu';
 
 const Footer = () => {
 	const [ showMenu, setShowMenu ] = useState(false);
 	const [ initializeMenu, setInitializeMenu ] = useState(false);
 
-	const [ delay, setDelay ] = useState(false);
-
-	let villkor = false;
-	if (showMenu) {
-		setTimeout(() => {
-			villkor = true;
-		}, 2000);
-	}
-
-	useEffect(
-		() => {
-			if (!showMenu && initializeMenu) {
-				setTimeout(() => {
-					setDelay(!delay);
-				}, 100);
-			}
-		},
-		[ showMenu ]
-	);
-
 	const transition = useTransition(showMenu, null, {
-		// from: { opacity: 0 },
-		// enter: { opacity: 1 },
-		// leave: { opacity: 0 },
 		from: {
 			position: 'absolute',
 			zIndex: 1,
@@ -49,26 +27,27 @@ const Footer = () => {
 		},
 		enter: {
 			top: '-10%',
-			left: '-20%',
+			left: '-10%',
 			borderRadius: '0%',
-			width: '200%',
-			height: '200%'
+			width: '120%',
+			height: '120%'
 		},
 		leave: {
 			top: '100%',
 			left: '70%',
 			borderRadius: '50%'
 		},
-		config: config.default
+		config: config.stiff
 	});
 
-	const menuContainterTransition = useTransition(showMenu, null, {
+	const menuContainerTransition = useTransition(showMenu, null, {
 		from: { position: 'absolute', width: '0%' },
 		enter: { width: '100%' },
 		leave: { width: '0%' },
 		config: config.stiff
 	});
 
+	// TODO: förmodligen värt att baka in allting i en enda transition. keysen verkar ställa till det så två element får samma keys.
 	return (
 		<Fragment>
 			<Mobile>
@@ -79,11 +58,11 @@ const Footer = () => {
 						initializeMenu={initializeMenu}
 						setInitializeMenu={setInitializeMenu}
 					/>
-					{menuContainterTransition.map(
+					{menuContainerTransition.map(
 						({ item, keyContainer, propsContainer }) =>
 							item && (
 								<div
-									key={keyContainer}
+									key={'menu-container'}
 									className="menu-container"
 									style={propsContainer}
 									css={css`
@@ -98,13 +77,13 @@ const Footer = () => {
 									{transition.map(
 										({ item, key, props }) =>
 											item && (
-												<MobileMenu
+												<MobileMenu2
 													key={key}
 													style={props}
-													onClick={() =>
-														setShowMenu(
-															!showMenu
-														)}
+													// onClick={() =>
+													// 	setShowMenu(
+													// 		!showMenu
+													// 	)}
 												/>
 											)
 									)}
@@ -125,17 +104,17 @@ const Footer = () => {
 	);
 };
 
-const MobileMenu = styled(animated.main)`
-background-color: ${colors.yellow2};
-top: 0;
-left:0;
-width: 100%;
-height: 100%; 
-border-radius: 50%;
-z-index: 1;
-position: absolute;
-overflow:hidden;
-`;
+// const MobileMenu = styled(animated.main)`
+// background-color: ${colors.yellow2};
+// top: 0;
+// left:0;
+// width: 100%;
+// height: 100%;
+// border-radius: 50%;
+// z-index: 1;
+// position: absolute;
+// overflow:hidden;
+// `;
 
 const StyledFooterContainer = styled.footer`
   /* background-color: ${colors.purple3}; */

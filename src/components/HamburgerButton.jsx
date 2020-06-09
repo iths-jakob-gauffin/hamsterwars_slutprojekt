@@ -39,7 +39,8 @@ const HamburgerButton = ({
 		goDown,
 		goUp,
 		rotateDown,
-		rotateUp
+		rotateUp,
+		bgColor
 	} = useSpring({
 		opacity: openMenu ? 0 : 1,
 		opacityInverted: openMenu ? 1 : 0,
@@ -47,7 +48,8 @@ const HamburgerButton = ({
 		rotateDown: openMenu ? 'rotate(45deg)' : 'rotate(0deg)',
 		rotateUp: openMenu ? 'rotate(-45deg)' : 'rotate(0deg)',
 		goDown: openMenu ? '20px' : '2px',
-		goUp: openMenu ? '0px' : '38px'
+		goUp: openMenu ? '0px' : '38px',
+		bgColor: openMenu ? colors.purple3 : colors.yellow3
 	});
 
 	return (
@@ -69,11 +71,18 @@ const HamburgerButton = ({
 					z-index: 2;
 				`}>
 				<StyledBar
-					style={{ opacity, top: goDown }}
+					style={{
+						opacity,
+						top: goDown,
+						backgroundColor: bgColor
+					}}
 					css={css`background-color: ${colors.purple1};`}
 				/>
 				<StyledBar
-					style={{ transform: rotateDown }}
+					style={{
+						transform: rotateDown,
+						backgroundColor: bgColor
+					}}
 					css={css`
 						background-color: ${colors.purple3};
 						top: 20px;
@@ -82,7 +91,8 @@ const HamburgerButton = ({
 				<StyledBar
 					style={{
 						transform: rotateUp,
-						opacity: opacityInverted
+						opacity: opacityInverted,
+						backgroundColor: bgColor
 					}}
 					css={css`
 						background-color: ${colors.purple3};
@@ -90,7 +100,11 @@ const HamburgerButton = ({
 					`}
 				/>
 				<StyledBar
-					style={{ opacity, top: goUp }}
+					style={{
+						opacity,
+						top: goUp,
+						backgroundColor: bgColor
+					}}
 					css={css`background-color: ${colors.purple1};`}
 				/>
 			</button>

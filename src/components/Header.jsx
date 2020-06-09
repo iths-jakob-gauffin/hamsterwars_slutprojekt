@@ -35,7 +35,7 @@ const StyledHeaderContainer = styled.header`
   /* background-color: ${colors.purple3}; */
   background: linear-gradient(145deg, ${colors.yellow2} 5%, ${colors.yellow3} 15%, ${colors.purple3} 75%);
 	padding: 1rem .5rem;
-	border-bottom: 2px solid ${colors.blue1};
+	/* border-bottom: 2px solid ${colors.blue1}; */
 	width: 100%;
 	height: 100%;
 	display: flex;

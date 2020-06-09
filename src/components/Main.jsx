@@ -41,6 +41,12 @@ const Main = () => {
 					{/* <Hamster /> */}
 					<Bilden />
 					<input />
+					<span style={{ fontSize: '4rem' }}>🐹</span>
+					<span style={{ fontSize: '4rem' }}>+</span>
+					<span style={{ fontSize: '4rem' }}>⚔️</span>
+					<br />
+					<span style={{ fontSize: '4rem' }}>=</span>
+					<span style={{ fontSize: '4rem' }}>Hell yeah!</span>
 				</StyledMainContainer>
 			</Mobile>
 			<Desktop>Desktop or laptop</Desktop>
