@@ -1,19 +1,39 @@
 import React, { Fragment, useState } from 'react';
 
+import { NavLink, Link } from 'react-router-dom';
+
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
 import { colors } from './../styles/colors';
 import { animated } from 'react-spring';
 
-const MobileNavButton = ({ children }) => {
+const MobileNavButton = ({
+	children,
+	navLinkUrl,
+	setShowMenu,
+	showMenu
+}) => {
+	// console.log('OUTPUT ÄR: setShowMenu', setShowMenu);
+	// const handleClick = () => {
+	// 	if (setShowMenu) {
+	// 		setShowMenu(!showMenu);
+	// 	}
+	// };
+
 	return (
 		<Fragment>
-			<button
+			<NavLink
+				onClick={() => setShowMenu(!showMenu)}
+				exact
+				to={navLinkUrl}
 				css={css`
-					width: 70%;
+					width: 80%;
 					position: relative;
 					z-index: 5;
 					padding: 1em 1em;
+					display: flex;
+					justify-content: center;
+					align-items: center;
 					background: linear-gradient(
 						155deg,
 						${colors.purple3} 60%,
@@ -25,21 +45,40 @@ const MobileNavButton = ({ children }) => {
 					border: 5px solid ${colors.white1};
 					border-top-left-radius: 20px;
 					border-bottom-right-radius: 5px;
+					transition: border .1s linear;
+					&:focus,
+					&:hover,
+					&:visited,
+					&:link,
+					&:active {
+						text-decoration: none;
+					}
 
 					&:active {
-						background-color: blue;
+						background: linear-gradient(
+							155deg,
+							${colors.blue1} 60%,
+							${colors.purple1} 95%
+						);
+						color: ${colors.blue2};
+						border: 5px solid ${colors.blue2};
 					}
-				`}
-				onClick={() => console.log('hej')}>
+				`}>
+				{/* <button */}
+
 				<h6
 					className="logo-font-button"
 					css={css`
 						transform: skewX(20deg);
-						text-shadow: 1px 2px ${colors.gray3};
+						text-shadow: 1px 1px ${colors.gray3};
+						&:active {
+							text-shadow: 1px 1px ${colors.purple1};
+						}
 					`}>
 					{children}
 				</h6>
-			</button>
+				{/* </button> */}
+			</NavLink>
 		</Fragment>
 	);
 };

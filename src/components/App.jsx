@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Components
 import Header from './Header';
@@ -13,27 +14,35 @@ import './../styles/base.css';
 import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 
 import { colors } from './../styles/colors';
-console.log('OUTPUT ÄR: colors', colors);
+// console.log('OUTPUT ÄR: colors', colors);
 
 const App = () => {
 	return (
-		<div
-			css={css`
-				width: 100vw;
-				height: 100vh;
-				display: flex;
-				flex-direction: column;
-			`}>
-			<div className="header-container" css={css`flex: 0 0 13%;`}>
-				<Header />
+		<Router>
+			<div
+				css={css`
+					width: 100vw;
+					height: 100vh;
+					display: flex;
+					flex-direction: column;
+				`}>
+				<div
+					className="header-container"
+					css={css`flex: 0 0 13%;`}>
+					<Route path="/" component={Header} />
+				</div>
+				<div className="main-container" css={css`flex: 1;`}>
+					<Route path="/" component={Main} />
+					{/* <Main /> */}
+				</div>
+				<div
+					className="footer-container"
+					css={css`flex: 0 0 11%;`}>
+					<Route path="/" component={Footer} />
+					{/* <Footer /> */}
+				</div>
 			</div>
-			<div className="main-container" css={css`flex: 1;`}>
-				<Main />
-			</div>
-			<div className="footer-container" css={css`flex: 0 0 11%;`}>
-				<Footer />
-			</div>
-		</div>
+		</Router>
 	);
 };
 // const App = () => {

@@ -16,9 +16,9 @@ const HamburgerButton = ({
 	initializeMenu,
 	setInitializeMenu
 }) => {
-	const [ openMenu, setOpenMenu ] = useState(false);
-	// console.log('OUTPUT ÄR: HamburgerButton -> openMenu', openMenu);
-	console.log('OUTPUT ÄR: HamburgerButton -> showMenu', showMenu);
+	// const [ openMenu, setOpenMenu ] = useState(false);
+	// console.log('OUTPUT ÄR: openMenu', openMenu);
+	// console.log('OUTPUT ÄR: showMenu', showMenu);
 
 	// useEffect(
 	// 	() => {
@@ -28,8 +28,8 @@ const HamburgerButton = ({
 	// );
 
 	const handleClick = () => {
-		!initializeMenu && setInitializeMenu(true);
-		setOpenMenu(!openMenu);
+		// !initializeMenu && setInitializeMenu(true);
+
 		setShowMenu(!showMenu);
 	};
 
@@ -42,14 +42,14 @@ const HamburgerButton = ({
 		rotateUp,
 		bgColor
 	} = useSpring({
-		opacity: openMenu ? 0 : 1,
-		opacityInverted: openMenu ? 1 : 0,
+		opacity: showMenu ? 0 : 1,
+		opacityInverted: showMenu ? 1 : 0,
 		config: config.wobbly,
-		rotateDown: openMenu ? 'rotate(45deg)' : 'rotate(0deg)',
-		rotateUp: openMenu ? 'rotate(-45deg)' : 'rotate(0deg)',
-		goDown: openMenu ? '20px' : '2px',
-		goUp: openMenu ? '0px' : '38px',
-		bgColor: openMenu ? colors.purple3 : colors.yellow3
+		rotateDown: showMenu ? 'rotate(45deg)' : 'rotate(0deg)',
+		rotateUp: showMenu ? 'rotate(-45deg)' : 'rotate(0deg)',
+		goDown: showMenu ? '20px' : '2px',
+		goUp: showMenu ? '0px' : '38px',
+		bgColor: showMenu ? colors.purple3 : colors.yellow3
 	});
 
 	return (
@@ -62,6 +62,7 @@ const HamburgerButton = ({
 					width: 48px;
 					height: 48px;
 					background: none;
+					outline: none;
 					border: none;
 					display: flex;
 					flex-direction: column;

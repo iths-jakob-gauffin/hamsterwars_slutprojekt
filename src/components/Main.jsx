@@ -1,4 +1,10 @@
 import React, { Fragment } from 'react';
+import {
+	BrowserRouter as Router,
+	Route,
+	Switch,
+	NavLink
+} from 'react-router-dom';
 
 // Styling
 import { css } from '@emotion/core';
@@ -8,6 +14,8 @@ import './../styles/base.css';
 import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 
 import { colors } from './../styles/colors';
+
+import StartPage from './pages/StartPage/StartPage';
 
 // import ComicHamster from './comic_hamster.svg';
 // import Hamster from './hamster.svg';
@@ -19,7 +27,7 @@ const Bilden = () => {
 		<div>
 			<img
 				src="./hamster.svg"
-				alt="testbilden"
+				alt="hamsterwars icon"
 				css={css`
 					width: 200px;
 					stroke: ${colors.purple3};
@@ -32,21 +40,21 @@ const Bilden = () => {
 const Main = () => {
 	return (
 		<Fragment>
+			{/* <Router> */}
 			<Mobile>
 				<StyledMainContainer>
-					<p css={css`color: ${colors.black3};`}>
-						Text som förklarar vad det här är för sida
-					</p>
-					{/* <ComicHamster /> */}
-					{/* <Hamster /> */}
-					<Bilden />
-					<input />
-					<span style={{ fontSize: '4rem' }}>🐹</span>
-					<span style={{ fontSize: '4rem' }}>+</span>
-					<span style={{ fontSize: '4rem' }}>⚔️</span>
-					<br />
-					<span style={{ fontSize: '4rem' }}>=</span>
-					<span style={{ fontSize: '4rem' }}>Hell yeah!</span>
+					<Switch>
+						<Route exact path="/">
+							<StartPage />
+						</Route>
+						<Route path="/test">
+							<p css={css`color: ${colors.black3};`}>test</p>
+							<NavLink to="/start">
+								<button>Klicka</button>
+							</NavLink>
+						</Route>
+						<Route path="/igen" render={() => <h2>Igen</h2>} />
+					</Switch>
 				</StyledMainContainer>
 			</Mobile>
 			<Desktop>Desktop or laptop</Desktop>
@@ -57,6 +65,7 @@ const Main = () => {
 					<h3>Not mobile (desktop or laptop or tablet)</h3>
 				</StyledMainContainer>
 			</Default>
+			{/* </Router> */}
 		</Fragment>
 	);
 };
@@ -66,6 +75,7 @@ const StyledMainContainer = styled.main`
 	padding: 1rem .5rem;
 
 	height: 100%;
+	overflow: scroll;
 	/* align-self: stretch; */
 `;
 

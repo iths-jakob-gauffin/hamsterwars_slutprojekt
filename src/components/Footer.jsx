@@ -11,11 +11,11 @@ import { colors } from './../styles/colors';
 
 // Components
 import HamburgerButton from './HamburgerButton';
-import MobileMenu2 from './MobileMenu';
+import MobileMenu from './MobileMenu';
 
 const Footer = () => {
 	const [ showMenu, setShowMenu ] = useState(false);
-	const [ initializeMenu, setInitializeMenu ] = useState(false);
+	// const [ initializeMenu, setInitializeMenu ] = useState(false);
 
 	const transition = useTransition(showMenu, null, {
 		from: {
@@ -55,8 +55,6 @@ const Footer = () => {
 					<HamburgerButton
 						showMenu={showMenu}
 						setShowMenu={setShowMenu}
-						initializeMenu={initializeMenu}
-						setInitializeMenu={setInitializeMenu}
 					/>
 					{menuContainerTransition.map(
 						({ item, keyContainer, propsContainer }) =>
@@ -77,9 +75,13 @@ const Footer = () => {
 									{transition.map(
 										({ item, key, props }) =>
 											item && (
-												<MobileMenu2
+												<MobileMenu
 													key={key}
 													style={props}
+													showMenu={showMenu}
+													setShowMenu={
+														setShowMenu
+													}
 													// onClick={() =>
 													// 	setShowMenu(
 													// 		!showMenu

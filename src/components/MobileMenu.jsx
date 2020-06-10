@@ -1,4 +1,5 @@
 import React, { Fragment } from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
 import { css } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -7,8 +8,11 @@ import { animated } from 'react-spring';
 
 //Components
 import MobileNavButton from './MobileNavButton';
+import { links } from './../utilities/links';
 
-const MobileMenu2 = ({ style }) => {
+const MobileMenu = ({ style, ...props }) => {
+	//TODO: knapparna renderas tre gånger varje de visas...
+	// TODO: lås scrollen
 	return (
 		<Fragment>
 			<StyledMobileMenu style={style}>
@@ -25,20 +29,42 @@ const MobileMenu2 = ({ style }) => {
 						justify-content: space-between;
 						align-items: center;
 					`}>
-					<MobileNavButton key={'start'}>START</MobileNavButton>
-					<MobileNavButton key={'slumpad_battle'}>
+					<MobileNavButton
+						navLinkUrl={links.start}
+						key={'start'}
+						{...props}>
+						START
+					</MobileNavButton>
+
+					<MobileNavButton
+						navLinkUrl={links.battle}
+						key={'slumpad_battle'}
+						{...props}>
 						SLUMPAD BATTLE
 					</MobileNavButton>
-					<MobileNavButton key={'specifik_battle'}>
+
+					<MobileNavButton
+						navLinkUrl={links.specificBattle}
+						key={'specifik_battle'}
+						{...props}>
 						SPECIFIK BATTLE
 					</MobileNavButton>
-					<MobileNavButton key={'resultat'}>
+					<MobileNavButton
+						navLinkUrl={links.matchupResult}
+						key={'resultat'}
+						{...props}>
 						RESULTAT
 					</MobileNavButton>
-					<MobileNavButton key={'statistik'}>
+					<MobileNavButton
+						navLinkUrl={links.stats}
+						key={'statistik'}
+						{...props}>
 						STATISTIK
 					</MobileNavButton>
-					<MobileNavButton key={'upload'}>
+					<MobileNavButton
+						navLinkUrl={links.upload}
+						key={'upload'}
+						{...props}>
 						LÄGG TILL HAMSTER
 					</MobileNavButton>
 				</div>
@@ -47,7 +73,7 @@ const MobileMenu2 = ({ style }) => {
 	);
 };
 
-export default MobileMenu2;
+export default MobileMenu;
 
 const StyledMobileMenu = styled(animated.main)`
 background-color: ${colors.yellow2};
@@ -61,5 +87,4 @@ position: relative;
 display: flex;
 justify-content: center;
 align-items: center;
-/* overflow:hidden; */
 `;

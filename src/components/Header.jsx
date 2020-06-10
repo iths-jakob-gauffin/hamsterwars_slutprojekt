@@ -1,4 +1,6 @@
 import React, { Fragment } from 'react';
+import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 // Styling
 import { css } from '@emotion/core';
@@ -14,9 +16,21 @@ const Header = () => {
 		<Fragment>
 			<Mobile>
 				<StyledHeaderContainer>
-					<StyledLogo className="logo-font">
-						HAMSTER WARS
-					</StyledLogo>
+					<NavLink
+						to="/start"
+						css={css`
+							&:focus,
+							&:hover,
+							&:visited,
+							&:link,
+							&:active {
+								text-decoration: none;
+							}
+						`}>
+						<StyledLogo className="logo-font">
+							HAMSTER WARS
+						</StyledLogo>
+					</NavLink>
 				</StyledHeaderContainer>
 			</Mobile>
 			<Desktop>Desktop or laptop</Desktop>
