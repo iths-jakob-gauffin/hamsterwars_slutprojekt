@@ -1,5 +1,5 @@
 {
-	"numberOfHamsterObjects": 41,
+	"numberOfHamsterObjects": 40,
 	"hamsterObjects": [
 		{
 			"age": 1,
@@ -439,17 +439,6 @@
 			"imgName": "hamster-40.jpg",
 			"loves": "Running that wheeeeeeeeeeeeeeeel!",
 			"name": "Dart",
-			"wins": 0
-		},
-		{
-			"age": 0,
-			"defeats": 0,
-			"favFood": "FAVORITMAT",
-			"games": 0,
-			"id": 41,
-			"imgName": "hamster-41.jpg",
-			"loves": "ÄLSKAR ATT",
-			"name": "NAMN",
 			"wins": 0
 		}
 	]

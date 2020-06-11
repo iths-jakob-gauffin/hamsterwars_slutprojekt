@@ -129,6 +129,7 @@ const StyledFooterContainer = styled.footer`
   justify-content: flex-end;
   align-items: center;
 	overflow: hidden;
+	
 	/* position:relative; */
 	/* right: -75%; */
   

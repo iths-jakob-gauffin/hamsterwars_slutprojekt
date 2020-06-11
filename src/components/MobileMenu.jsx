@@ -40,14 +40,14 @@ const MobileMenu = ({ style, ...props }) => {
 						navLinkUrl={links.battle}
 						key={'slumpad_battle'}
 						{...props}>
-						SLUMPAD BATTLE
+						RANDOM BATTLE
 					</MobileNavButton>
 
 					<MobileNavButton
 						navLinkUrl={links.specificBattle}
 						key={'specifik_battle'}
 						{...props}>
-						SPECIFIK BATTLE
+						VÄLJ BATTLE
 					</MobileNavButton>
 					<MobileNavButton
 						navLinkUrl={links.matchupResult}

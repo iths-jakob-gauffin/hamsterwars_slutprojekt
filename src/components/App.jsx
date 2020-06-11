@@ -25,19 +25,26 @@ const App = () => {
 					height: 100vh;
 					display: flex;
 					flex-direction: column;
+					justify-content: space-evenly;
 				`}>
 				<div
 					className="header-container"
-					css={css`flex: 0 0 13%;`}>
+					css={css`flex: 1 1 13%;`}>
 					<Route path="/" component={Header} />
 				</div>
-				<div className="main-container" css={css`flex: 1;`}>
+				<div
+					className="main-container"
+					css={css`
+						flex: 1 1 76%;
+						/* overflow: scroll; */
+						overflow-y: scroll;
+					`}>
 					<Route path="/" component={Main} />
 					{/* <Main /> */}
 				</div>
 				<div
 					className="footer-container"
-					css={css`flex: 0 0 11%;`}>
+					css={css`flex: 1 1 11%;`}>
 					<Route path="/" component={Footer} />
 					{/* <Footer /> */}
 				</div>

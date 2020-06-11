@@ -49,7 +49,7 @@ const HamburgerButton = ({
 		rotateUp: showMenu ? 'rotate(-45deg)' : 'rotate(0deg)',
 		goDown: showMenu ? '20px' : '2px',
 		goUp: showMenu ? '0px' : '38px',
-		bgColor: showMenu ? colors.purple3 : colors.yellow3
+		bgColor: showMenu ? colors.purple3 : colors.yellow1
 	});
 
 	return (

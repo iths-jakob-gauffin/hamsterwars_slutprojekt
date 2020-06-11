@@ -12,28 +12,48 @@ const StartPage = () => {
 		<main
 			css={css`
 				width: 100%;
-				height: 100%;
-				padding: 2rem 1rem;
+				/* height: 100%; */
+				padding: 0 1rem;
 				display: flex;
 				flex-direction: column;
+				justify-content: space-around;
 				align-items: center;
 			`}>
 			<img
-				src="./hamsterwars_icon.svg"
+				src="./hamsterwars_icon2.svg"
 				alt="testbilden"
-				css={css`width: 90%;`}
+				css={css`
+					width: 75%;
+					margin: 2rem 0 1rem;
+				`}
 			/>
 			<article
 				css={css`
 					display: flex;
 					flex-direction: column;
-					justify-content: center;
+					justify-content: space-around;
+					align-items: space-around;
 					text-align: center;
-					padding: 1rem;
+					/* padding: 1rem; */
+					/* height: 100%; */
 				`}>
-				<h1>BARA EN HAMSTER KAN VA SÖTAST</h1>
+				<h1 css={css`margin: 1rem 0 2rem;`}>
+					BARA <h1 className="giant">EN</h1> HAMSTER KAN VA
+					SÖTAST
+				</h1>
 				{/* <h1>bara en hamster kan va sötast</h1> */}
-				<CTA link={links.battle} text={'TO BATTLE'} />
+				<CTA link={links.battle} text={'RANDOM BATTLE'} />
+				<h3 css={css`margin: 2rem 0 1rem;`}>Om projektet</h3>
+				<p>
+					Lorem ipsum dolor sit amet, consectetur adipisicing
+					elit. Non, quam tempore consectetur deleniti voluptates
+					voluptatibus error maxime accusamus eaque numquam.
+					Repellat animi est harum molestiae, sit repellendus
+					aliquid, aliquam deserunt quis distinctio at soluta rem
+					voluptatum minus rerum nihil doloremque, earum odio?
+					Nemo, eum architecto saepe aliquid voluptatum minus
+					officia?
+				</p>
 			</article>
 		</main>
 	);

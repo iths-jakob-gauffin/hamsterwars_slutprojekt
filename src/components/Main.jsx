@@ -17,6 +17,8 @@ import { colors } from './../styles/colors';
 
 import StartPage from './pages/StartPage/StartPage';
 
+import BattlePage from './pages/BattlePage/BattlePage';
+import SpecificBattlePage from './pages/SpecificBattlePage/SpecificBattlePage';
 // import ComicHamster from './comic_hamster.svg';
 // import Hamster from './hamster.svg';
 
@@ -44,15 +46,12 @@ const Main = () => {
 			<Mobile>
 				<StyledMainContainer>
 					<Switch>
-						<Route exact path="/">
-							<StartPage />
-						</Route>
-						<Route path="/test">
-							<p css={css`color: ${colors.black3};`}>test</p>
-							<NavLink to="/start">
-								<button>Klicka</button>
-							</NavLink>
-						</Route>
+						<Route exact path="/" component={StartPage} />
+						<Route
+							path="/battle/:id1/:id2"
+							component={SpecificBattlePage}
+						/>
+						<Route path="/battle" component={BattlePage} />
 						<Route path="/igen" render={() => <h2>Igen</h2>} />
 					</Switch>
 				</StyledMainContainer>
@@ -72,10 +71,13 @@ const Main = () => {
 
 const StyledMainContainer = styled.main`
 	background-color: ${colors.white};
-	padding: 1rem .5rem;
+	padding: 1rem 1rem;
 
 	height: 100%;
-	overflow: scroll;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	/* overflow: scroll; */
 	/* align-self: stretch; */
 `;
 
