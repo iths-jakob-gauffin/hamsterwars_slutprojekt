@@ -19,6 +19,7 @@ import StartPage from './pages/StartPage/StartPage';
 
 import BattlePage from './pages/BattlePage/BattlePage';
 import SpecificBattlePage from './pages/SpecificBattlePage/SpecificBattlePage';
+import UploadPage from './pages/UploadPage/UploadPage';
 // import ComicHamster from './comic_hamster.svg';
 // import Hamster from './hamster.svg';
 
@@ -52,6 +53,7 @@ const Main = () => {
 							component={SpecificBattlePage}
 						/>
 						<Route path="/battle" component={BattlePage} />
+						<Route path="/upload" component={UploadPage} />
 						<Route path="/igen" render={() => <h2>Igen</h2>} />
 					</Switch>
 				</StyledMainContainer>
