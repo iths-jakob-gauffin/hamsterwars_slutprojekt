@@ -58,3 +58,8 @@ h6 {
 	letter-spacing: 1.25px;
 	line-height: 1.6;
 }
+
+.stats-column-title {
+	font-size: .7rem;
+	display: inline-block;
+}

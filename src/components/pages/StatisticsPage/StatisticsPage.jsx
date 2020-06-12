@@ -15,21 +15,6 @@ import { StatsBox } from './StatsBox';
 
 const StatisticsPage = () => {
 	console.log(topData);
-	const getStuff = () => {
-		var myHeaders = new Headers();
-		myHeaders.append('Authorization', 'abc123');
-
-		var requestOptions = {
-			method: 'GET',
-			headers: myHeaders,
-			redirect: 'follow'
-		};
-
-		fetch('/api/charts/bottom', requestOptions)
-			.then(response => response.json())
-			.then(result => console.log(result))
-			.catch(error => console.log('error', error));
-	};
 
 	return (
 		<article
@@ -41,7 +26,7 @@ const StatisticsPage = () => {
 				width: 100%;
 				flex: 1 1 100%;
 			`}>
-			<button onClick={getStuff}>sada</button>
+			{/* <button onClick={getStuff}>sada</button> */}
 			<h1 className="logo-font logo-page-margin center">
 				STATISTIK
 			</h1>
@@ -54,3 +39,19 @@ const StatisticsPage = () => {
 };
 
 export default StatisticsPage;
+
+// const getStuff = () => {
+//   var myHeaders = new Headers();
+//   myHeaders.append('Authorization', 'abc123');
+
+//   var requestOptions = {
+//     method: 'GET',
+//     headers: myHeaders,
+//     redirect: 'follow'
+//   };
+
+//   fetch('/api/charts/bottom', requestOptions)
+//     .then(response => response.json())
+//     .then(result => console.log(result))
+//     .catch(error => console.log('error', error));
+// };
