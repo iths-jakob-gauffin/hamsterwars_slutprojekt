@@ -11,11 +11,8 @@ import { colors } from './../../../styles/colors';
 import { BattleImage } from '../small_components/BattleImage';
 import data from './../../../dummyData/hamsters.json';
 
-// import { v4 as uuidv4 } from 'uuid';
-
 import { FormPart } from './FormPart';
-import { MusicDataList } from './MusicDataList';
-import { SearchMusicData } from './SearchMusicData';
+import Upload from './Upload';
 
 const UploadPage = () => {
 	const initialHamsterFormData = {
@@ -46,89 +43,31 @@ const UploadPage = () => {
 	const [ errors, setErrors ] = useState(initialErrors);
 
 	const [ trueIfAllIsValid, setTrueIfAllIsValid ] = useState(false);
-	console.log(
-		'OUTPUT ÄR: UploadPage -> trueIfAllIsValid',
-		trueIfAllIsValid
-	);
-
-	// const errorMessages = {
-	// 	name:
-	// 		'Namnet är tyvärr ogiltigt. Namnet måste vara minst en bokstav och får inte innehålla några siffror eller specialtecken (bindestreck är ok).',
-	// 	age:
-	// 		'Ledsen, men åldern måste vara en siffra och vara större än 0.',
-	// 	favFood:
-	// 		'Favoritmaten måste vara minst en bokstav och får inte innehålla några siffror eller specialtecken (bindestreck är ok).',
-	// 	loves:
-	// 		'Fel tyvärr. Det du skriver måste vara minst en bokstav och får inte innehålla några siffror eller specialtecken (bindestreck är ok).'
-	// };
-
-	// const validate = nameAgeFavFoodOrLoves => {
-	// 	if (hamsterFormData[nameAgeFavFoodOrLoves]) {
-	// 		setColor({ ...color, [nameAgeFavFoodOrLoves]: '3px green' });
-	// 		setErrors({
-	// 			...errors,
-	// 			[nameAgeFavFoodOrLoves]: 'Input is valid'
-	// 		});
-	// 	} else {
-	// 		setErrors({
-	// 			...errors,
-	// 			[nameAgeFavFoodOrLoves]:
-	// 				errorMessages[nameAgeFavFoodOrLoves]
-	// 		});
-	// 		setColor({ ...color, [nameAgeFavFoodOrLoves]: '3px red' });
-	// 	}
-	// };
 
 	useEffect(
 		() => {
 			let allErrorsExceptNameError = Object.values(errors).splice(1);
-			let validErrors = [ null, 'Input is valid' ];
+
+			let emptyArrayIfNoErrors = allErrorsExceptNameError.filter(
+				error => error !== 'Input is valid' && error !== null
+			);
 			if (
 				errors['name'] === 'Input is valid' &&
-				!allErrorsExceptNameError.includes(validErrors)
+				emptyArrayIfNoErrors.length === 0
 			) {
-				// console.log('ja allt är valid');
-				// setErrors({
-				// 	name: 'Input is valid',
-				// 	age: 'Input is valid',
-				// 	favFood: 'Input is valid',
-				// 	loves: 'Input is valid'
-				// });
 				setTrueIfAllIsValid(true);
+			} else {
+				setTrueIfAllIsValid(false);
 			}
-
-			// let allErrorMessages = Object.values(errors);
-			// let validInputs = allErrorMessages.filter(
-			// 	messages => messages === 'Input is valid'
-			// );
-
-			// validInputs.length === 4
-			// 	? setTrueIfAllIsValid(true)
-			// 	: setTrueIfAllIsValid(false);
 		},
 		[ errors ]
 	);
-	// useEffect(
-	// 	() => {
-	// 		let allErrorMessages = Object.values(errors);
-	// 		let validInputs = allErrorMessages.filter(
-	// 			messages => messages === 'Input is valid'
-	// 		);
-
-	// 		validInputs.length === 4
-	// 			? setTrueIfAllIsValid(true)
-	// 			: setTrueIfAllIsValid(false);
-	// 	},
-	// 	[ errors ]
-	// );
 
 	const formProps = {
 		trueIfAllIsValid,
 		setTrueIfAllIsValid,
 		errors,
 		setErrors,
-		// errorMessages,
-		// validate,
 		setHamsterFormData,
 		hamsterFormData,
 		color,
@@ -194,6 +133,7 @@ const UploadPage = () => {
 					<button disabled>Send</button>
 				)}
 			</form>
+			<Upload />
 		</article>
 	);
 };

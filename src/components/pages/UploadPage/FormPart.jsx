@@ -14,8 +14,6 @@ export const FormPart = props => {
 		color,
 		setColor,
 		placeholderText
-
-		// validate
 	} = props;
 
 	return (
@@ -33,10 +31,7 @@ export const FormPart = props => {
 			</label> */}
 			<div
 				className="input-container"
-				css={css`
-					position: relative;
-					/* width: 100%; */
-				`}>
+				css={css`position: relative;`}>
 				<div
 					className="inner-container"
 					css={css`

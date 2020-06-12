@@ -20,10 +20,10 @@ const StartPage = () => {
 				align-items: center;
 			`}>
 			<img
-				src="./hamsterwars_icon2.svg"
+				src="./hamsterwars_icon3.svg"
 				alt="testbilden"
 				css={css`
-					width: 75%;
+					width: 100%;
 					margin: 2rem 0 1rem;
 				`}
 			/>
