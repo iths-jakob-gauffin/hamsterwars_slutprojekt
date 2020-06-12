@@ -1,7 +1,8 @@
 import React, { Fragment, useState, useEffect } from 'react';
 
 // Styling
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import './../styles/typography.css';
 import './../styles/base.css';

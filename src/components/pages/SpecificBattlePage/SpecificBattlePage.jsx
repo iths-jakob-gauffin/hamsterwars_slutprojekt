@@ -2,7 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 
 import Select from './Select';
 

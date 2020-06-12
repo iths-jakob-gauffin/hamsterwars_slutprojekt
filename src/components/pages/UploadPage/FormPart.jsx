@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import { colors } from './../../../styles/colors';
 
 import { validate } from './validate';

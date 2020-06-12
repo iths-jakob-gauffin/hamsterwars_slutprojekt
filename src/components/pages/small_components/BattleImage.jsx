@@ -1,5 +1,6 @@
 import React from 'react';
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 import { shadows } from './../../../styles/shadows';
 export const BattleImage = ({ id, name }) => {

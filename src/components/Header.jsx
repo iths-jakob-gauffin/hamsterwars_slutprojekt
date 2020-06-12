@@ -3,7 +3,8 @@ import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 // Styling
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import './../styles/typography.css';
 import './../styles/base.css';

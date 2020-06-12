@@ -1,7 +1,8 @@
 import React, { Fragment } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-import { css } from '@emotion/core';
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import { colors } from './../styles/colors';
 import { animated } from 'react-spring';
