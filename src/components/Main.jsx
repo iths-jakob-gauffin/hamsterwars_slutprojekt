@@ -19,6 +19,7 @@ import { colors } from './../styles/colors';
 import StartPage from './pages/StartPage/StartPage';
 
 import BattlePage from './pages/BattlePage/BattlePage';
+import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import SpecificBattlePage from './pages/SpecificBattlePage/SpecificBattlePage';
 import UploadPage from './pages/UploadPage/UploadPage';
 // import ComicHamster from './comic_hamster.svg';
@@ -54,6 +55,7 @@ const Main = () => {
 							component={SpecificBattlePage}
 						/>
 						<Route path="/battle" component={BattlePage} />
+						<Route path="/stats" component={StatisticsPage} />
 						<Route path="/upload" component={UploadPage} />
 						<Route path="/igen" render={() => <h2>Igen</h2>} />
 					</Switch>
