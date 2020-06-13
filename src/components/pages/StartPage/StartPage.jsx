@@ -38,10 +38,11 @@ const StartPage = () => {
 					/* padding: 1rem; */
 					/* height: 100%; */
 				`}>
-				<h1 css={css`margin: 1rem 0 2rem;`}>
-					BARA <h1 className="giant">EN</h1> HAMSTER KAN VA
-					SÖTAST
+				<h1 className="inline" css={css`margin: 1rem 0 2rem;`}>
+					BARA{' '}
 				</h1>
+				<h1 className="giant inline">EN</h1>{' '}
+				<h1 className="inline">HAMSTER KAN VA SÖTAST</h1>
 				{/* <h1>bara en hamster kan va sötast</h1> */}
 				<CTA link={links.battle} text={'RANDOM BATTLE'} />
 				<h3 css={css`margin: 2rem 0 1rem;`}>Om projektet</h3>

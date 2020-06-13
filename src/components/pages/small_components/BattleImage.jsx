@@ -3,9 +3,10 @@ import React from 'react';
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 import { shadows } from './../../../styles/shadows';
-export const BattleImage = ({ id, name }) => {
+export const BattleImage = ({ id, name, onClickFn = null }) => {
 	return (
 		<section
+			onClick={() => onClickFn(id)}
 			css={css`
 				border: 5px solid ${colors.yellow1};
 				border-radius: 10px;

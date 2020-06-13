@@ -55,7 +55,7 @@ const StatsRow = ({ stats, propertyKey }) => {
 					key={stat.id}
 					css={css`
 						background-color: ${colors.blue1};
-						&:nth-child(odd) {
+						&:nth-of-type(odd) {
 							background-color: ${colors.yellow1};
 						}
 					`}>
