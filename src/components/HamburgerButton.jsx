@@ -50,7 +50,9 @@ const HamburgerButton = ({
 		rotateUp: showMenu ? 'rotate(-45deg)' : 'rotate(0deg)',
 		goDown: showMenu ? '20px' : '2px',
 		goUp: showMenu ? '0px' : '38px',
-		bgColor: showMenu ? colors.purple3 : colors.yellow1
+		bgColor: showMenu ? colors.purple3 : colors.yellow1,
+		outline: 'none',
+		outlineWidth: '0px'
 	});
 
 	return (
@@ -71,6 +73,15 @@ const HamburgerButton = ({
 					align-items: center;
 					position: relative;
 					z-index: 2;
+					outline-width: 0px;
+					&:visited,
+					&:active,
+					&:focus {
+						outline: 0;
+						border: 'none';
+						box-shadow: none;
+						-moz-outline-style: none;
+					}
 				`}>
 				<StyledBar
 					style={{
@@ -78,7 +89,17 @@ const HamburgerButton = ({
 						top: goDown,
 						backgroundColor: bgColor
 					}}
-					css={css`background-color: ${colors.purple1};`}
+					css={css`
+						outline-width: 0px;
+						&:visited,
+						&:active,
+						&:focus {
+							outline: 0;
+							border: 'none';
+							box-shadow: none;
+							-moz-outline-style: none;
+						}
+					`}
 				/>
 				<StyledBar
 					style={{
@@ -86,7 +107,16 @@ const HamburgerButton = ({
 						backgroundColor: bgColor
 					}}
 					css={css`
-						background-color: ${colors.purple3};
+						outline-width: 0px;
+						&:visited,
+						&:active,
+						&:focus {
+							outline-width: 0px;
+							outline: 0;
+							border: 'none';
+							box-shadow: none;
+							-moz-outline-style: none;
+						}
 						top: 20px;
 					`}
 				/>
@@ -97,7 +127,16 @@ const HamburgerButton = ({
 						backgroundColor: bgColor
 					}}
 					css={css`
-						background-color: ${colors.purple3};
+						outline-width: 0px;
+						&:visited,
+						&:active,
+						&:focus {
+							outline-width: 0px;
+							outline: 0;
+							border: 'none';
+							box-shadow: none;
+							-moz-outline-style: none;
+						}
 						top: 20px;
 					`}
 				/>
@@ -107,7 +146,18 @@ const HamburgerButton = ({
 						top: goUp,
 						backgroundColor: bgColor
 					}}
-					css={css`background-color: ${colors.purple1};`}
+					css={css`
+						outline-width: 0px;
+						&:visited,
+						&:active,
+						&:focus {
+							outline-width: 0px;
+							outline: 0;
+							border: 'none';
+							box-shadow: none;
+							-moz-outline-style: none;
+						}
+					`}
 				/>
 			</button>
 		</Fragment>
@@ -121,6 +171,17 @@ const StyledBar = styled(animated.span)`
 	border-radius: 17%;
 	position: absolute;
 	z-index: 10;
+	outline-width: 0px;
+	&:visited,
+						&:active,
+						&:focus {
+							outline-width: 0px;
+							outline: 0;
+							border: 'none';
+							box-shadow: none;
+							-moz-outline-style: none;
+						}
+	
 `;
 
 export default HamburgerButton;
