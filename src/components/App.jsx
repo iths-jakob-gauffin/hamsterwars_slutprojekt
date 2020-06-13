@@ -1,10 +1,14 @@
-import React, { Fragment } from 'react';
+import React, { Fragment, useEffect } from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
 // Components
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
+
+// Redux
+import { connect } from 'react-redux';
+import { fetchHamsters } from './../redux/actions';
 
 // Styling
 /** @jsx jsx */
@@ -17,7 +21,21 @@ import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 import { colors } from './../styles/colors';
 // console.log('OUTPUT ÄR: colors', colors);
 
-const App = () => {
+const App = ({ fetchedHamsters, fetchHamsters }) => {
+	console.log(
+		'OUTPUT ÄR: App -> fetchedHamsters',
+		fetchedHamsters.length
+	);
+	// !fetchedHamsters ? fetchHamsters() : null;
+	useEffect(() => {
+		if (!fetchedHamsters.length) {
+			console.log('den fetchar');
+			fetchHamsters();
+		} else {
+			console.log('nej den rejectar');
+		}
+	}, []);
+
 	return (
 		<Router>
 			<div
@@ -97,4 +115,10 @@ const StyledContainer = styled.div`
 // 	);
 // };
 
-export default App;
+const mapStateToProps = state => {
+	return {
+		fetchedHamsters: state
+	};
+};
+
+export default connect(mapStateToProps, { fetchHamsters })(App);

@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import { NavLink, Link } from 'react-router-dom';
 
+// Redux
+import { connect } from 'react-redux';
+import { fetchHamsters } from './../../../redux/actions';
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
@@ -10,12 +14,12 @@ import { links } from './../../../utilities/links';
 import { colors } from './../../../styles/colors';
 
 import { BattleImage } from '../small_components/BattleImage';
-import data from './../../../dummyData/hamsters.json';
+// import data from './../../../dummyData/hamsters.json';
 
 import { FormPart } from './FormPart';
 import Upload from './Upload';
 
-const UploadPage = () => {
+const UploadPage = ({ reduxState, fetchHamsters }) => {
 	const initialHamsterFormData = {
 		name: '',
 		age: '',
@@ -75,6 +79,10 @@ const UploadPage = () => {
 		setColor
 	};
 
+	const checkRedux = () => {
+		console.log('såhär är statet nu: ', reduxState);
+	};
+
 	return (
 		<article
 			css={css`
@@ -85,6 +93,8 @@ const UploadPage = () => {
 				width: 100%;
 				flex: 1 1 100%;
 			`}>
+			<button onClick={checkRedux}>kolla redux</button>
+			<button onClick={fetchHamsters}>fetcha hamstrar</button>
 			<h1 className="logo-font logo-page-margin center">
 				LÄGG TILL HAMSTER
 			</h1>
@@ -139,4 +149,10 @@ const UploadPage = () => {
 	);
 };
 
-export default UploadPage;
+const mapStateToProps = state => {
+	return {
+		reduxState: state
+	};
+};
+
+export default connect(mapStateToProps, { fetchHamsters })(UploadPage);
