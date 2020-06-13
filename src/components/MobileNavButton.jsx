@@ -68,7 +68,7 @@ const MobileNavButton = ({
 				{/* <button */}
 
 				<h6
-					className="logo-font-button"
+					className="logo-font-button no-box-shadow"
 					css={css`
 						transform: skewX(20deg);
 						text-shadow: 1px 1px ${colors.gray3};

@@ -3,7 +3,13 @@ import React from 'react';
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 import { shadows } from './../../../styles/shadows';
-export const BattleImage = ({ id, name, onClickFn = null }) => {
+
+export const BattleImage = ({
+	id,
+	name,
+	onClickFn = null,
+	maxHeight = '9rem'
+}) => {
 	return (
 		<section
 			onClick={() => onClickFn(id)}
@@ -22,7 +28,7 @@ export const BattleImage = ({ id, name, onClickFn = null }) => {
 				src={`/img/hamster-${id}.jpg`}
 				alt={name}
 				css={css`
-					max-height: 11rem;
+					max-height: ${maxHeight};
 					width: 100%;
 					border-radius: 10px;
 				`}

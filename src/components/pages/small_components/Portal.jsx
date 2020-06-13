@@ -9,10 +9,9 @@ const Portal = props => {
 	useEffect(
 		() => {
 			portalRoot.appendChild(el);
-			setTimeout(() => {
-				props.setShowPortal(!props.showPortal);
-			}, 2000);
+
 			return () => {
+				console.log('portalen stängs');
 				portalRoot.removeChild(el);
 			};
 		},

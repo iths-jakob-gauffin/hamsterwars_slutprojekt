@@ -59,10 +59,21 @@ h6 {
 	font-size: 1rem;
 	font-weight: normal;
 	letter-spacing: 1.25px;
-	line-height: 1.6;
+	line-height: 1.2;
+	box-shadow: inset -15px -15px 22px #ce19c2,
+		inset 15px 15px 22px #ff21ff;
+	text-shadow: -1px -1px #dcdcdc, 1px 1px #585858;
 }
 
-.stats-column-title {
+.logo-font-button:active {
+	text-shadow: 1px 1px #dcdcdc, -1px -1px #585858;
+}
+
+.no-box-shadow {
+	box-shadow: none;
+}
+
+*/ .stats-column-title {
 	font-size: .7rem;
 	display: inline-block;
 }

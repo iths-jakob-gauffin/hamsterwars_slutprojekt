@@ -22,11 +22,7 @@ import { colors } from './../styles/colors';
 // console.log('OUTPUT ÄR: colors', colors);
 
 const App = ({ fetchedHamsters, fetchHamsters }) => {
-	console.log(
-		'OUTPUT ÄR: App -> fetchedHamsters',
-		fetchedHamsters.length
-	);
-	// !fetchedHamsters ? fetchHamsters() : null;
+	// Fetcha hamstrar och lägg in i redux om det inte redan är gjort
 	useEffect(() => {
 		if (!fetchedHamsters.length) {
 			console.log('den fetchar');

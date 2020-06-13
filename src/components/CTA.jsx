@@ -25,6 +25,7 @@ const CTA = ({ link, text }) => {
 				padding: 1em 2em;
 				background-color: ${colors.purple2};
 				border-radius: 30px;
+				outline: none;
 				&:focus,
 				&:hover,
 				&:visited,
@@ -40,8 +41,12 @@ const CTA = ({ link, text }) => {
 				-webkit-box-shadow: inset 0 0 10px #000000;
 				box-shadow: inset 0 0 10px #000000; */
 				background: #F21DE4;
-				box-shadow: inset -31px -31px 62px #ce19c2, 
-				inset 31px 31px 62px #ff21ff;
+				box-shadow: inset -15px -15px 22px #ce19c2, 
+				inset 15px 15px 22px #ff21ff;
+				&:active{
+					box-shadow: inset 15px 15px 22px #ce19c2, 
+            inset -15px -15px 22px #ff21ff;
+				}
 				`}>
 			{text}
 		</Link>
