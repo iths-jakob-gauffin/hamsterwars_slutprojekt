@@ -20,12 +20,15 @@ const Select = ({
 	return (
 		<form>
 			<select onChange={e => handleChange(e, hamster)}>
-				<option>{firstOptionText}</option>
+				<option
+					value={hamster === 'firstHamster' ? ':id1' : ':id2'}>
+					{firstOptionText}
+				</option>
 				{data.hamsterObjects.map(hamster => {
 					return (
 						<option
 							selected={
-								initialValue === hamster.id ? 'true' : null
+								initialValue === hamster.id ? true : null
 							}
 							value={hamster.id}
 							key={hamster.id}

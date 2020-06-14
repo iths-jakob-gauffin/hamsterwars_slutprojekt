@@ -16,6 +16,7 @@ export const MovingBattleImage = ({
 	return (
 		<div>
 			<animated.h2
+				className="logo-font"
 				css={css`text-align: center;`}
 				style={{
 					transform: moveAnimProps.y.interpolate(

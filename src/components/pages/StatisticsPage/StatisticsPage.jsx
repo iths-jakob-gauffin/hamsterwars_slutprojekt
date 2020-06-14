@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { NavLink, Link } from 'react-router-dom';
 
@@ -13,8 +13,26 @@ import { topData } from './top5Dummy';
 import { bottomData } from './bottom5Dummy';
 import { StatsBox } from './StatsBox';
 
+import { getTopOrBottom } from './../../../api/getTopOrBottom';
+
 const StatisticsPage = () => {
-	console.log(topData);
+	const [ stats, setStats ] = useState({ bottom: null, top: null });
+	useEffect(() => {
+		const getStats = async () => {
+			let topFive = await getTopOrBottom('top');
+			console.log('OUTPUT ÄR: StatisticsPage -> topFive', topFive);
+			let bottomFive = await getTopOrBottom('bottom');
+			console.log(
+				'OUTPUT ÄR: StatisticsPage -> bottomFive',
+				bottomFive
+			);
+			setStats({
+				bottom: bottomFive.bottomFive,
+				top: topFive.topFive
+			});
+		};
+		getStats();
+	}, []);
 
 	return (
 		<article
@@ -31,9 +49,10 @@ const StatisticsPage = () => {
 				STATISTIK
 			</h1>
 			<h3 className="h5 center highlight">Top 5</h3>
-			<StatsBox stats={topData.topFive} />
+			{stats.top && <StatsBox stats={stats.top} />}
 			<h3 className="h5 center highlight">Bottom 5</h3>
-			<StatsBox stats={bottomData.bottomFive} />
+			{stats.bottom && <StatsBox stats={stats.bottom} />}
+			{/* <StatsBox stats={bottomData.bottomFive} /> */}
 		</article>
 	);
 };
