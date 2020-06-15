@@ -5,6 +5,7 @@ import { colors } from '../../../styles/colors';
 //TODO: försök att få in en emoji, en buckla och nåt annat
 
 export const StatsRow = ({ stats, propertyKey }) => {
+	console.log('OUTPUT ÄR: StatsRow -> stats', stats);
 	const sheep = () => `<span role="img" aria-label="sheep">
 			🐑
 		</span>`;
