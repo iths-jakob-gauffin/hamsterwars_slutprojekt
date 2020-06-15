@@ -48,9 +48,9 @@ const StatisticsPage = () => {
 			<h1 className="logo-font logo-page-margin center">
 				STATISTIK
 			</h1>
-			<h3 className="h5 center highlight">Top 5</h3>
+			<h3 className="h5 center highlight">De 5 bästa</h3>
 			{stats.top && <StatsBox stats={stats.top} />}
-			<h3 className="h5 center highlight">Bottom 5</h3>
+			<h3 className="h5 center highlight">De 5 sämsta</h3>
 			{stats.bottom && <StatsBox stats={stats.bottom} />}
 			{/* <StatsBox stats={bottomData.bottomFive} /> */}
 		</article>

@@ -17,7 +17,13 @@ export const MovingBattleImage = ({
 		<div>
 			<animated.h2
 				className="logo-font"
-				css={css`text-align: center;`}
+				css={css`
+					text-align: center;
+					background-color: ${colors.blue2};
+					padding: .3rem .5rem;
+					margin: 1rem;
+					border-radius: 10px;
+				`}
 				style={{
 					transform: moveAnimProps.y.interpolate(
 						y => `translate3d(0, ${y}, 0)`
