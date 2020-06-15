@@ -35,6 +35,14 @@ const StartPage = ({ firstState, dummyAction }) => {
 					margin: 2rem 0 1rem;
 				`}
 			/>
+			<img
+				src="./img/hamster-99.jpg"
+				alt="testbilden"
+				css={css`
+					width: 100%;
+					margin: 2rem 0 1rem;
+				`}
+			/>
 			<article
 				css={css`
 					display: flex;

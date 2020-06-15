@@ -51,9 +51,9 @@ router.post('/cloud', async (req, res) => {
 
 ///// Uploadar bilden till public/uploads.
 router.post('/', async (req, res) => {
-	req.files.photo.mv(`./public/uploads/${req.files.photo.name}`, err => {
+	req.files.photo.mv(`./../public/img/${req.files.photo.name}`, err => {
 		if (err) {
-			res.status(500).send('Damn it something wnt wrong' + err);
+			res.status(500).send('Damn it something went wrong' + err);
 			return;
 		}
 		res.send({ msg: 'File saved' });

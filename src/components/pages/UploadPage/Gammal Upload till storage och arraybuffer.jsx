@@ -58,47 +58,74 @@ const getCloudImage = () => {
 };
 
 const Upload = () => {
-	const fileUpload = async e => {
-		console.log('nåt händer');
+	// const fileUpload = e => {
+	// 	console.log('nåt händer');
+	// 	e.preventDefault();
+	// 	let file = document.querySelector('#file').files[0];
+	// 	console.log('OUTPUT ÄR: App -> file', file);
+
+	// 	let formData = new FormData();
+	// 	formData.append('photo', file);
+	// 	console.log('OUTPUT ÄR: App -> formData', formData);
+	// 	///////////////////////////////
+	// 	var myHeaders = new Headers();
+	// 	myHeaders.append('Authorization', 'abc123');
+
+	// 	let message = '';
+	// 	fetch('/files', {
+	// 		method: 'POST',
+	// 		body: formData,
+	// 		headers: myHeaders
+	// 	})
+	// 		.then(resp => resp.json())
+	// 		.then(resp => {
+	// 			message = resp.msg;
+	// 			alert(resp.msg);
+	// 		})
+	// 		.catch(err => console.error(err));
+	// 	console.log(message);
+	// };
+
+	const uploadToCloud = async e => {
+		console.log('upload to cloud funktionen körs');
 		e.preventDefault();
-		let file = document.querySelector('#file').files[0];
+		let file = document.querySelector('#cloud-file').files[0];
 		console.log('OUTPUT ÄR: App -> file', file);
 
 		let formData = new FormData();
 		formData.append('photo', file);
 		console.log('OUTPUT ÄR: App -> formData', formData);
-		///////////////////////////////
+
 		var myHeaders = new Headers();
 		myHeaders.append('Authorization', 'abc123');
 
-		let message = '';
-		fetch('/api/files', {
-			method: 'POST',
-			body: formData,
-			headers: myHeaders
-		})
-			.then(resp => resp.json())
-			.then(resp => {
-				message = resp.msg;
-				alert(resp.msg);
-			})
-			.catch(err => console.error(err));
-		console.log(message);
+		try {
+			let resp = await fetch('/api/files/cloud', {
+				method: 'POST',
+				body: formData,
+				headers: myHeaders
+			});
+			resp = await resp.json();
+			console.log('OUTPUT ÄR: Upload -> resp', resp);
+			let image = await getCloudImage();
+			console.log('OUTPUT ÄR: Upload -> image', image);
+		} catch (err) {
+			console.error(err);
+		}
+
+		// .then(resp => resp.json())
+		// .then(resp => {
+		// 	console.log('resp', resp);
+
+		// let successMessage = `${resp.msg}. Url to image: ${resp.urlToImage}`;
+		// alert(successMessage);
+		// })
+		// .catch(err => console.error(err));
 	};
-
-	// .then(resp => resp.json())
-	// .then(resp => {
-	// 	console.log('resp', resp);
-
-	// let successMessage = `${resp.msg}. Url to image: ${resp.urlToImage}`;
-	// alert(successMessage);
-	// })
-	// .catch(err => console.error(err));
-	// };
 
 	return (
 		<div>
-			<h3>File uploadish</h3>
+			{/* <h3>File uploadish</h3>
 			<form action="" encType="multipart/form-data" method="POST">
 				<input type="file" name="photo" id="file" />
 				<button
@@ -109,8 +136,8 @@ const Upload = () => {
 			</form>
 			<br />
 			<br />
-			<br />
-			{/* <h3>LADDA UPP TILL MOLNET</h3>
+			<br /> */}
+			<h3>LADDA UPP TILL MOLNET</h3>
 			<form encType="multipart/form-data" method="POST">
 				<label htmlFor="cloud-file" className="styled-btn">
 					Bläddra...
@@ -132,7 +159,7 @@ const Upload = () => {
 					alt="streambild"
 					css={css`width: 100%;`}
 				/>
-			</form> */}
+			</form>
 		</div>
 	);
 };
