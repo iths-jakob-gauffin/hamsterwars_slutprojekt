@@ -23,14 +23,14 @@ import { colors } from './../styles/colors';
 
 const App = ({ fetchedHamsters, fetchHamsters }) => {
 	// Fetcha hamstrar och lägg in i redux om det inte redan är gjort
-	useEffect(() => {
-		if (!fetchedHamsters.length) {
-			console.log('den fetchar');
-			fetchHamsters();
-		} else {
-			console.log('nej den rejectar');
-		}
-	}, []);
+	// useEffect(() => {
+	// 	if (!fetchedHamsters.length) {
+	// 		console.log('den fetchar');
+	// 		fetchHamsters();
+	// 	} else {
+	// 		console.log('nej den rejectar');
+	// 	}
+	// }, []);
 
 	return (
 		<Router>

@@ -4,5 +4,6 @@ export const links = {
 	specificBattle: '/battle/:id1/:id2',
 	matchupResult: '/matchup/:id1/:id2',
 	stats: '/stats',
-	upload: '/upload'
+	upload: '/upload',
+	cup: '/cup'
 };

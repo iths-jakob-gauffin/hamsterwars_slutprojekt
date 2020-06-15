@@ -28,7 +28,7 @@ const StartPage = ({ firstState, dummyAction }) => {
 				align-items: center;
 			`}>
 			<img
-				src="./hamsterwars_icon3.svg"
+				src="./hamsterwars_icon4shadow.svg"
 				alt="testbilden"
 				css={css`
 					width: 100%;

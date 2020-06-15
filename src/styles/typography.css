@@ -54,6 +54,13 @@ h6 {
 	border-radius: 10px;
 }
 
+.highlight-small {
+	background-color: #f8f8f8;
+	color: #f21de4;
+	padding: .2rem;
+	border-radius: 10px;
+}
+
 .logo-font-button {
 	font-family: 'Shrikhand', cursive;
 	font-size: 1rem;

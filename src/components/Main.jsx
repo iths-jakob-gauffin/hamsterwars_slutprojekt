@@ -15,6 +15,7 @@ import './../styles/base.css';
 import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 
 import { colors } from './../styles/colors';
+import { links } from './../utilities/links';
 
 import StartPage from './pages/StartPage/StartPage';
 
@@ -22,6 +23,8 @@ import BattlePage from './pages/BattlePage/BattlePage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import SpecificBattlePage from './pages/SpecificBattlePage/SpecificBattlePage';
 import UploadPage from './pages/UploadPage/UploadPage';
+import CupPage from './pages/CupPage/CupPage';
+import MatchupResultsPage from './pages/MatchupResultsPage/MatchupResultsPage';
 // import ComicHamster from './comic_hamster.svg';
 // import Hamster from './hamster.svg';
 
@@ -56,7 +59,12 @@ const Main = () => {
 						/>
 						<Route path="/battle" component={BattlePage} />
 						<Route path="/stats" component={StatisticsPage} />
+						<Route
+							path={links.matchupResult}
+							component={MatchupResultsPage}
+						/>
 						<Route path="/upload" component={UploadPage} />
+						<Route path="/cup" component={CupPage} />
 						<Route path="/igen" render={() => <h2>Igen</h2>} />
 					</Switch>
 				</StyledMainContainer>

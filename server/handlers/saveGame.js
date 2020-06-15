@@ -46,7 +46,7 @@ const saveGame = async reqBody => {
 					contestants: [
 						{
 							contestantOne: hamsterOne,
-							constestantTwo: hamsterTwo
+							contestantTwo: hamsterTwo
 						}
 					],
 					winner: winningHamster

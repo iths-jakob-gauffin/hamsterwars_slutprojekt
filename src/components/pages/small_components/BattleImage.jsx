@@ -7,7 +7,7 @@ import { shadows } from './../../../styles/shadows';
 export const BattleImage = ({
 	id,
 	name,
-	onClickFn = null,
+	onClickFn = v => v,
 	maxHeight = '9rem'
 }) => {
 	return (

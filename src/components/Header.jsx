@@ -8,7 +8,7 @@ import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import './../styles/typography.css';
 import './../styles/base.css';
-import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
+import { Desktop, Mobile, Default } from './../styles/MediaQuerys';
 
 import { colors } from './../styles/colors';
 

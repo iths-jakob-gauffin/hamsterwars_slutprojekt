@@ -68,6 +68,12 @@ const MobileMenu = ({ style, ...props }) => {
 						{...props}>
 						LÄGG TILL HAMSTER
 					</MobileNavButton>
+					<MobileNavButton
+						navLinkUrl={links.cup}
+						key={'cup'}
+						{...props}>
+						MINICUP
+					</MobileNavButton>
 				</div>
 			</StyledMobileMenu>
 		</Fragment>
