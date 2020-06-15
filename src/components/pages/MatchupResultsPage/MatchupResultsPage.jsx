@@ -1,40 +1,25 @@
 import React, { useEffect, useState, Fragment } from 'react';
-import { useParams, history, Redirect } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 
 import { getAllGames } from './../../../api/getAllGames';
 
-// import { resultsDummy } from './resultsDummy';
 import { MatchupBox } from './MatchupBox';
 
-// import { MatchupStatsRow } from './MatchupStatsRow'
 import { MatchupStatsBox } from './MatchupStatsBox';
 
 const MatchupResultsPage = ({ history }) => {
-	// const [ allGames, setAllGames ] = useState(resultsDummy);
 	const [ allGames, setAllGames ] = useState(null);
-	console.log('OUTPUT ÄR: MatchupResultsPage -> allGames', allGames);
+
 	const [ latestGame, setLatestGame ] = useState(null);
-	console.log('OUTPUT ÄR: MatchupResultsPage -> latestGame', latestGame);
 
 	const [ initialFirstGame, setInitialFirstGame ] = useState(null);
-	console.log(
-		'OUTPUT ÄR: MatchupResultsPage -> initialFirstGame',
-		initialFirstGame
-	);
 
 	const [ noMatchFound, setNoMatchFound ] = useState(false);
 
 	const { id1, id2 } = useParams();
-
-	const initialFirstValue = {
-		id: id1
-	};
-	const initialSecondValue = {
-		id: id2
-	};
 
 	useEffect(
 		() => {
@@ -108,22 +93,9 @@ const MatchupResultsPage = ({ history }) => {
 		games();
 	}, []);
 
-	let updateUrlStuff = {
-		allGames,
-		setLatestGame
-	};
-
 	const handleClick = matchId => {
-		console.log('OUTPUT ÄR: MatchupResultsPage -> matchId', matchId);
 		let specificMatch = allGames.filter(match => match.id === matchId);
-		console.log(
-			'OUTPUT ÄR: MatchupResultsPage -> specificMatch',
-			specificMatch
-		);
-		console.log(
-			'OUTPUT ÄR: MatchupResultsPage -> specificMatch och ids',
-			specificMatch[0].contestants[0].contestantOne.id
-		);
+
 		history.push(
 			`/matchup/${specificMatch[0].contestants[0].contestantOne
 				.id}/${specificMatch[0].contestants[0].contestantTwo.id}`
@@ -153,16 +125,6 @@ const MatchupResultsPage = ({ history }) => {
 						)}
 					</h3>
 				)}
-				{/* {latestGame.id === initialFirstGame.id && (
-					<h3 className="h5 center highlight">
-						Senaste resultatet
-					</h3>
-				)} */}
-				{/* {latestGame.id !== initialFirstGame.id && (
-					<h3 className="h5 center highlight">
-						Resultat för specifik matchup
-					</h3>
-				)} */}
 				{allGames &&
 				latestGame &&
 				!noMatchFound && <MatchupBox latestGame={latestGame} />}

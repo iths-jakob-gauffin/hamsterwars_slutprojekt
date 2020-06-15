@@ -1,5 +1,62 @@
 import React from 'react';
 
+// import { getCloudImage } from './../../../api/getCloudImage';
+
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
+
+const getCloudImage = () => {
+	function arrayBufferToBase64(buffer) {
+		var binary = '';
+		var bytes = [].slice.call(new Uint8Array(buffer));
+
+		bytes.forEach(b => (binary += String.fromCharCode(b)));
+
+		return window.btoa(binary);
+	}
+
+	var myHeaders = new Headers();
+	myHeaders.append('Authorization', 'abc123');
+
+	var requestOptions = {
+		method: 'GET',
+		headers: myHeaders,
+		redirect: 'follow'
+	};
+
+	fetch('/api/assets/42', requestOptions).then(response => {
+		response.arrayBuffer().then(buffer => {
+			var base64Flag = 'data:image/jpeg;base64,';
+			var imageStr = arrayBufferToBase64(buffer);
+
+			document.querySelector('#imgStream').src =
+				base64Flag + imageStr;
+		});
+	});
+	// fetch("/api/assets/42", requestOptions)
+	//   .then(response => response.text())
+	//   .then(result => console.log(result))
+	//   .catch(error => console.log('error', error));
+
+	// var config = {
+	// 	method: 'get',
+	// 	url: '/api/assets/42',
+	// 	headers: {
+	// 		Authorization: 'abc123'
+	// 	}
+	// };
+
+	// try {
+	// 	let resp.arrayBuffer() = await axios(config);
+	//   console.log('OUTPUT ÄR: getCloudImage -> resp', resp);
+	//   var base64Flag = 'data:image/jpeg;base64,';
+	//   var imageStr = arrayBufferToBase64(buffer);
+	// 	// return resp;
+	// } catch (err) {
+	// 	console.error(err);
+	// }
+};
+
 const Upload = () => {
 	// const fileUpload = e => {
 	// 	console.log('nåt händer');
@@ -29,7 +86,7 @@ const Upload = () => {
 	// 	console.log(message);
 	// };
 
-	const uploadToCloud = e => {
+	const uploadToCloud = async e => {
 		console.log('upload to cloud funktionen körs');
 		e.preventDefault();
 		let file = document.querySelector('#cloud-file').files[0];
@@ -42,17 +99,28 @@ const Upload = () => {
 		var myHeaders = new Headers();
 		myHeaders.append('Authorization', 'abc123');
 
-		fetch('/files/cloud', {
-			method: 'POST',
-			body: formData,
-			headers: myHeaders
-		})
-			.then(resp => resp.json())
-			.then(resp => {
-				let successMessage = `${resp.msg}. Url to image: ${resp.urlToImage}`;
-				alert(successMessage);
-			})
-			.catch(err => console.error(err));
+		try {
+			let resp = await fetch('/api/files/cloud', {
+				method: 'POST',
+				body: formData,
+				headers: myHeaders
+			});
+			resp = await resp.json();
+			console.log('OUTPUT ÄR: Upload -> resp', resp);
+			let image = await getCloudImage();
+			console.log('OUTPUT ÄR: Upload -> image', image);
+		} catch (err) {
+			console.error(err);
+		}
+
+		// .then(resp => resp.json())
+		// .then(resp => {
+		// 	console.log('resp', resp);
+
+		// let successMessage = `${resp.msg}. Url to image: ${resp.urlToImage}`;
+		// alert(successMessage);
+		// })
+		// .catch(err => console.error(err));
 	};
 
 	return (
@@ -85,6 +153,12 @@ const Upload = () => {
 					onClick={e => uploadToCloud(e)}>
 					Send
 				</button>
+				<img
+					id="imgStream"
+					src=""
+					alt="streambild"
+					css={css`width: 100%;`}
+				/>
 			</form>
 		</div>
 	);

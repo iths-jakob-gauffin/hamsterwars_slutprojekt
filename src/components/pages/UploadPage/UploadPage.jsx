@@ -100,8 +100,8 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 			</h1>
 			<p className="h5 center highlight">
 				Här fyller du i din hamsterinfo och laddar upp en bild på
-				den om du vill. <br />All information, förutom hamsterns
-				namn, är dock frivilligt.
+				den om du vill. <br />All information,{' '}
+				<b>förutom hamsterns namn</b>, är dock frivillig.
 			</p>
 
 			<form
