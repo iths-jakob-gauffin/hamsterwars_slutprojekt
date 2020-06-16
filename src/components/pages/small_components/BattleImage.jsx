@@ -14,17 +14,20 @@ export const BattleImage = ({
 }) => {
 	const [ imgUrl, setImgUrl ] = useState(null);
 
-	useEffect(() => {
-		let gsReference = storage.refFromURL(
-			`gs://hamster-bilder/hamster-${id}.jpg`
-		);
-		gsReference
-			.getDownloadURL()
-			.then(url => {
-				setImgUrl(url);
-			})
-			.catch(err => console.log(err));
-	}, []);
+	useEffect(
+		() => {
+			let gsReference = storage.refFromURL(
+				`gs://hamster-bilder/hamster-${id}.jpg`
+			);
+			gsReference
+				.getDownloadURL()
+				.then(url => {
+					setImgUrl(url);
+				})
+				.catch(err => console.log(err));
+		},
+		[ id ]
+	);
 
 	// useEffect(() => {
 	// 	storage.ref()

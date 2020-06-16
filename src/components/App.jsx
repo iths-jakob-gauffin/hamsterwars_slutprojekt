@@ -22,10 +22,10 @@ import { colors } from './../styles/colors';
 // console.log('OUTPUT ÄR: colors', colors);
 
 const App = ({ reduxState, fetchHamsters }) => {
-	useEffect(() => {
-		console.log('useeffect körs App, start initialfetch');
-		fetchHamsters();
-	}, []);
+	// useEffect(() => {
+	// 	console.log('useeffect körs App, start initialfetch');
+	// 	fetchHamsters();
+	// }, []);
 	// Fetcha hamstrar och lägg in i redux om det inte redan är gjort
 	// useEffect(() => {
 	// 	if (!fetchedHamsters.length) {
