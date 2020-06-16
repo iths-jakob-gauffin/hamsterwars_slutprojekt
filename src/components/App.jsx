@@ -21,7 +21,11 @@ import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 import { colors } from './../styles/colors';
 // console.log('OUTPUT ÄR: colors', colors);
 
-const App = ({ fetchedHamsters, fetchHamsters }) => {
+const App = ({ reduxState, fetchHamsters }) => {
+	useEffect(() => {
+		console.log('useeffect körs App, start initialfetch');
+		fetchHamsters();
+	}, []);
 	// Fetcha hamstrar och lägg in i redux om det inte redan är gjort
 	// useEffect(() => {
 	// 	if (!fetchedHamsters.length) {
@@ -113,7 +117,7 @@ const StyledContainer = styled.div`
 
 const mapStateToProps = state => {
 	return {
-		fetchedHamsters: state
+		reduxState: state
 	};
 };
 

@@ -20,7 +20,7 @@ import { FormPart } from './FormPart';
 import Upload from './Upload';
 import Upload2 from './Upload2';
 
-const UploadPage = ({ reduxState, fetchHamsters }) => {
+const UploadPage = ({ reduxAmountOfHamsters, fetchHamsters }) => {
 	const initialHamsterFormData = {
 		name: '',
 		age: '',
@@ -50,6 +50,10 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 
 	const [ trueIfAllIsValid, setTrueIfAllIsValid ] = useState(false);
 
+	const [ newHamsterId, setNewHamsterId ] = useState('');
+
+	const [ submitImage, setSubmitImage ] = useState(false);
+
 	useEffect(
 		() => {
 			let allErrorsExceptNameError = Object.values(errors).splice(1);
@@ -69,6 +73,60 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 		[ errors ]
 	);
 
+	// Se hur många hamstrar som finns registrerade för tillfället (via redux för skojs skull) för att kunna få fram ett nytt id åt hamsterbilden när den läggs upp på storage. HamsterId:t tas även fram i backgenden men behöver det här eftersom fil-uploaden strulade när appen var deployad på heroku. Innan heroku gick allting att göra på BE - ladda upp hamsterbild till storage samt att registrera data i dbn. Nu laddas ju bilden upp direkt till firebase storage.
+
+	useEffect(() => {
+		fetchHamsters();
+	}, []);
+
+	useEffect(
+		() => {
+			// console.log("object");
+			// console.log(
+			// 	'OUTPUT ÄR: UploadPage -> reduxAmountOfHamsters',
+			// 	reduxAmountOfHamsters
+			// );
+			setNewHamsterId(reduxAmountOfHamsters + 1);
+		},
+		[ reduxAmountOfHamsters ]
+	);
+
+	const postNewHamster = data => {
+		var myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		var raw = JSON.stringify({
+			name: data.name,
+			age: data.age,
+			loves: data.loves,
+			favFood: data.favFood
+		});
+
+		var requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch('/api/files/cloud', requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log('error', error));
+	};
+
+	const onSubmitFn = async e => {
+		e.preventDefault();
+
+		console.log('hamsterformdata', hamsterFormData);
+		console.log('OUTPUT ÄR: UploadPage -> e', e.target);
+		console.log('jekjekjejr');
+		setSubmitImage(true);
+		await postNewHamster(hamsterFormData);
+		//Uppdatera redux
+		fetchHamsters();
+	};
+
 	const formProps = {
 		trueIfAllIsValid,
 		setTrueIfAllIsValid,
@@ -78,10 +136,6 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 		hamsterFormData,
 		color,
 		setColor
-	};
-
-	const checkRedux = () => {
-		console.log('såhär är statet nu: ', reduxState);
 	};
 
 	return (
@@ -94,7 +148,6 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 				width: 100%;
 				flex: 1 1 100%;
 			`}>
-			<button onClick={checkRedux}>kolla redux</button>
 			<button onClick={fetchHamsters}>fetcha hamstrar</button>
 			<h1 className="logo-font logo-page-margin center">
 				LÄGG TILL HAMSTER
@@ -106,7 +159,8 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 			</p>
 
 			<form
-				action="#"
+				encType="multipart/form-data"
+				onSubmit={onSubmitFn}
 				css={css`
 					width: 100%;
 					display: flex;
@@ -138,22 +192,32 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 					{...formProps}
 				/>
 				{trueIfAllIsValid ? (
-					<button onClick={() => console.log('jajjamän')}>
-						Send
-					</button>
+					<input type="submit" value="Send" />
 				) : (
-					<button disabled>Send</button>
+					<input type="submit" value="Send" disabled />
+					// <button onClick={'submit'}>Send</button>
+					// <input type="submit" disabled={true}>
+					// 	Send
+					// </input>
+					// <button disabled>Send</button>
+				)}
+				{/* <Upload /> */}
+				{newHamsterId && (
+					<Upload2
+						newHamsterId={newHamsterId}
+						submitImage={submitImage}
+						setSubmitImage={setSubmitImage}
+					/>
 				)}
 			</form>
-			{/* <Upload /> */}
-			<Upload2 />
 		</article>
 	);
 };
 
 const mapStateToProps = state => {
+	console.log('OUTPUT ÄR: state', state);
 	return {
-		reduxState: state
+		reduxAmountOfHamsters: state.hamsters.length
 	};
 };
 

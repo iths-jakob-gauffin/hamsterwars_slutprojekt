@@ -1,20 +1,31 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+
+/** @jsx jsx */
+import { css, jsx } from '@emotion/core';
 
 import { storage } from './../../../firebase';
 
-const Upload2 = () => {
+const Upload2 = ({ newHamsterId, submitImage, setSubmitImage }) => {
+	const [ fileToUpload, setFileToUpload ] = useState(null);
+	console.log('OUTPUT ÄR: fileToUpload', fileToUpload);
 	const [ upload, setUpload ] = useState(0);
 	const [ finished, setFinished ] = useState(false);
-	// let uploader = document.getElementById('uploader');
-	const onChangeFile = e => {
-		// e.preventDefault();
-		let file = e.target.files[0];
-		console.log('OUTPUT ÄR: file', file);
-		// file.name = 'numedHamsternamn';
-		let newFile = { ...file, ['name']: 'annathamsternamn' };
 
-		console.log('OUTPUT ÄR: newFile', newFile);
-		let storageRef = storage.ref('/' + 'annathamsternamn');
+	useEffect(
+		() => {
+			if (submitImage) {
+				uploadFile();
+			}
+		},
+		[ submitImage ]
+	);
+	// let uploader = document.getElementById('uploader');
+	const uploadFile = () => {
+		// let file = e.target.files[0];
+		let file = fileToUpload;
+		console.log('OUTPUT ÄR: file', file);
+
+		let storageRef = storage.ref('/' + `hamster-${newHamsterId}.jpg`);
 
 		let task = storageRef.put(file);
 
@@ -40,18 +51,38 @@ const Upload2 = () => {
 
 	return (
 		<div>
-			<progress value={upload} max="100" id="uploader">
-				0%
-			</progress>
 			{/* <input type="file" value="upload" id="fileButton" /> */}
+			<label
+				htmlFor="uploadFileInput"
+				css={css`
+					display: inline-block;
+					padding: .3rem;
+					background-color: white;
+				`}>
+				Bläddra...
+			</label>
 			<input
+				css={css`display: none;`}
 				type="file"
-				value=""
-				name=""
-				id="fileButton"
-				onChange={onChangeFile}
+				id="uploadFileInput"
+				onChange={e => setFileToUpload(e.target.files[0])}
 			/>
-			{finished && <p>Filen är uppladdad!</p>}
+
+			{fileToUpload && (
+				<p css={css`display: inline-block;`}>
+					{fileToUpload.name}
+				</p>
+			)}
+			{upload !== 0 && (
+				<progress
+					value={upload}
+					max="100"
+					id="uploader"
+					css={css`display: block;`}>
+					0%
+				</progress>
+			)}
+			{finished && <p className="highlight">Filen är uppladdad!</p>}
 		</div>
 	);
 };

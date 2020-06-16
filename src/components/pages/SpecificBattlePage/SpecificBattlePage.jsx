@@ -2,6 +2,10 @@ import React, { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
+import data from './../../../dummyData/hamsters.json';
+import { connect } from 'react-redux';
+import { fetchHamsters } from './../../../redux/actions';
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from './../../../styles/colors';
@@ -9,14 +13,18 @@ import { useTransition, animated, config } from 'react-spring';
 
 import Select from './Select';
 
-import data from './../../../dummyData/hamsters.json';
 import { BattleImage } from '../small_components/BattleImage';
 import { recordBattle } from './../../../api/recordBattle';
 import PortalContent from './../small_components/PortalContent';
 
 // TODO: fixa så listorna uppdaterar varandra, när man väljer en hamster från första listan ska den försvinna från andra och vice versa
 
-const SpecificBattlePage = ({ history }) => {
+const SpecificBattlePage = ({ history, hamsters }) => {
+	useEffect(() => {
+		console.log('useeffect körs App, start initialfetch');
+		fetchHamsters();
+	}, []);
+	console.log('OUTPUT ÄR: SpecificBattlePage -> reduxState', hamsters);
 	const { id1, id2 } = useParams();
 
 	const initialFirstValue = {
@@ -274,4 +282,10 @@ const SpecificBattlePage = ({ history }) => {
 	);
 };
 
-export default SpecificBattlePage;
+const mapStateToProps = state => {
+	return {
+		hamsters: state.hamsters
+	};
+};
+
+export default connect(mapStateToProps, null)(SpecificBattlePage);

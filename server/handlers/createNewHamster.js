@@ -1,16 +1,23 @@
 const { db } = require('./../firebase');
 
 ///// Skapar ett nytt hamsterobjekt och lägger in det i dbn. Senare kommer klienten skicka med värden till dessa propertys. Än så länge är det bara id:t och imgName som fylls i och är unika för varje hamsterobjekt som skapas.
-const createNewHamster = (id, fileNameWithExtension) => {
+const createNewHamster = (
+	id,
+	name,
+	age = 0,
+	favFood = '',
+	loves = '',
+	fileNameWithExtension
+) => {
 	return new Promise(async (res, rej) => {
 		try {
 			let newHamster = {
 				id: id,
-				name: 'NAMN',
-				age: 0,
-				favFood: 'FAVORITMAT',
-				loves: 'ÄLSKAR ATT',
-				imgName: fileNameWithExtension,
+				name: name,
+				age: age,
+				favFood: favFood,
+				loves: loves,
+				imgName: `hamster-${id}.jpg`,
 				wins: 0,
 				defeats: 0,
 				games: 0
