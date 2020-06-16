@@ -13,6 +13,36 @@ export const MovingBattleImage = ({
 	maxHeight = '9rem',
 	moveAnimProps
 }) => {
+	// const getCloudImage = (imageNum => {
+	// 	function arrayBufferToBase64(buffer) {
+	// 		var binary = '';
+	// 		var bytes = [].slice.call(new Uint8Array(buffer));
+
+	// 		bytes.forEach(b => (binary += String.fromCharCode(b)));
+
+	// 		return window.btoa(binary);
+	// 	}
+
+	// 	var myHeaders = new Headers();
+	// 	myHeaders.append('Authorization', 'abc123');
+
+	// 	var requestOptions = {
+	// 		method: 'GET',
+	// 		headers: myHeaders,
+	// 		redirect: 'follow'
+	// 	};
+
+	// 	fetch(`/api/assets/${id}`, requestOptions).then(response => {
+	// 		response.arrayBuffer().then(buffer => {
+	// 			var base64Flag = 'data:image/jpeg;base64,';
+	// 			var imageStr = arrayBufferToBase64(buffer);
+
+	// 			document.querySelector(`#battleImage-${id}`).src =
+	// 				base64Flag + imageStr;
+	// 		});
+	// 	});
+	// })();
+
 	return (
 		<div>
 			<animated.h2
@@ -54,6 +84,7 @@ export const MovingBattleImage = ({
 				`}>
 				<img
 					src={`/img/hamster-${id}.jpg`}
+					// id={`battleImage-${id}`}
 					alt={name}
 					css={css`
 						max-height: ${maxHeight};
