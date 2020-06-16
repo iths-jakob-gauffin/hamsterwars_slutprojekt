@@ -18,6 +18,7 @@ import { BattleImage } from '../small_components/BattleImage';
 
 import { FormPart } from './FormPart';
 import Upload from './Upload';
+import Upload2 from './Upload2';
 
 const UploadPage = ({ reduxState, fetchHamsters }) => {
 	const initialHamsterFormData = {
@@ -144,7 +145,8 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 					<button disabled>Send</button>
 				)}
 			</form>
-			<Upload />
+			{/* <Upload /> */}
+			<Upload2 />
 		</article>
 	);
 };
