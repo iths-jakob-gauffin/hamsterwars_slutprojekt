@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 import { shadows } from '../../../styles/shadows';
 
 import { useTransition, animated, config } from 'react-spring';
+import { storage } from './../../../firebase';
 
 export const MovingBattleImage = ({
 	id,
@@ -13,35 +14,19 @@ export const MovingBattleImage = ({
 	maxHeight = '9rem',
 	moveAnimProps
 }) => {
-	// const getCloudImage = (imageNum => {
-	// 	function arrayBufferToBase64(buffer) {
-	// 		var binary = '';
-	// 		var bytes = [].slice.call(new Uint8Array(buffer));
+	const [ imgUrl, setImgUrl ] = useState(null);
 
-	// 		bytes.forEach(b => (binary += String.fromCharCode(b)));
-
-	// 		return window.btoa(binary);
-	// 	}
-
-	// 	var myHeaders = new Headers();
-	// 	myHeaders.append('Authorization', 'abc123');
-
-	// 	var requestOptions = {
-	// 		method: 'GET',
-	// 		headers: myHeaders,
-	// 		redirect: 'follow'
-	// 	};
-
-	// 	fetch(`/api/assets/${id}`, requestOptions).then(response => {
-	// 		response.arrayBuffer().then(buffer => {
-	// 			var base64Flag = 'data:image/jpeg;base64,';
-	// 			var imageStr = arrayBufferToBase64(buffer);
-
-	// 			document.querySelector(`#battleImage-${id}`).src =
-	// 				base64Flag + imageStr;
-	// 		});
-	// 	});
-	// })();
+	useEffect(() => {
+		let gsReference = storage.refFromURL(
+			`gs://hamster-bilder/hamster-${id}.jpg`
+		);
+		gsReference
+			.getDownloadURL()
+			.then(url => {
+				setImgUrl(url);
+			})
+			.catch(err => console.log(err));
+	}, []);
 
 	return (
 		<div>
@@ -83,7 +68,8 @@ export const MovingBattleImage = ({
 					box-shadow: ${shadows.boxShadow2};
 				`}>
 				<img
-					src={`/img/hamster-${id}.jpg`}
+					src={imgUrl}
+					// src={`/img/hamster-${id}.jpg`}
 					// id={`battleImage-${id}`}
 					alt={name}
 					css={css`

@@ -9,8 +9,12 @@ const Upload2 = () => {
 	const onChangeFile = e => {
 		// e.preventDefault();
 		let file = e.target.files[0];
+		console.log('OUTPUT ÄR: file', file);
+		// file.name = 'numedHamsternamn';
+		let newFile = { ...file, ['name']: 'annathamsternamn' };
 
-		let storageRef = storage.ref('/' + file.name);
+		console.log('OUTPUT ÄR: newFile', newFile);
+		let storageRef = storage.ref('/' + 'annathamsternamn');
 
 		let task = storageRef.put(file);
 

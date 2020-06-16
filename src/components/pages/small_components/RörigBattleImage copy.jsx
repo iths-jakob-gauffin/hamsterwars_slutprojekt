@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
-import { shadows } from './../../../styles/shadows';
+import { shadows } from '../../../styles/shadows';
 
-import { storage } from './../../../firebase';
+import { storage } from '../../../firebase';
 
 export const BattleImage = ({
 	id,
@@ -12,18 +12,45 @@ export const BattleImage = ({
 	onClickFn = v => v,
 	maxHeight = '9rem'
 }) => {
-	const [ imgUrl, setImgUrl ] = useState(null);
-
 	useEffect(() => {
+		console.log('OUTPUT ÄR: storage', storage);
+		console.log('den körs iaf');
+		// let storageRef = storage.ref();
+		// console.log(storageRef('hamster-1.jpg'));
+		// storage.ref().child('hamster-1.jpg').getDownloadURL().then(url => {
+		// 	console.log(url);
+		// });
+
+		// let pathReference = storage.ref('/hamster-1.jpg');
+		// console.log('OUTPUT ÄR: pathReference', pathReference);
+
 		let gsReference = storage.refFromURL(
-			`gs://hamster-bilder/hamster-${id}.jpg`
+			'gs://hamster-bilder/annathamsternamn'
 		);
+		console.log('OUTPUT ÄR: gsReference', gsReference);
 		gsReference
 			.getDownloadURL()
 			.then(url => {
-				setImgUrl(url);
+				var img = document.getElementById('myimg');
+				img.src = url;
 			})
 			.catch(err => console.log(err));
+
+		// const getPhoto = async () => {
+		// 	console.log('OUTPUT ÄR: storage', storage);
+		// 	let resp = await storage
+		// 		.ref()
+		// 		.child('hamster-1.jpg')
+		// 		.getDownloadURL();
+		// 	console.log('OUTPUT ÄR: getPhoto -> resp', resp);
+
+		// .ref(`hamster-bilder/hamster-1.jpg`)
+		// .get();
+		// console.log("OUTPUT ÄR: getPhoto -> resp", resp)
+
+		// 	console.log('OUTPUT ÄR: getPhoto -> task', task);
+		// };
+		// getPhoto();
 	}, []);
 
 	// useEffect(() => {
@@ -78,9 +105,18 @@ export const BattleImage = ({
 				box-shadow: ${shadows.boxShadow2};
 			`}>
 			<img
-				src={imgUrl}
-				// src={`/img/hamster-${id}.jpg`}
-				id={`battleImage-${id}`}
+				src=""
+				alt=""
+				id="myimg"
+				css={css`
+					max-height: ${maxHeight};
+					width: 100%;
+					border-radius: 10px;
+				`}
+			/>
+			<img
+				src={`/img/hamster-${id}.jpg`}
+				// id={`battleImage-${id}`}
 				alt={name}
 				css={css`
 					max-height: ${maxHeight};
