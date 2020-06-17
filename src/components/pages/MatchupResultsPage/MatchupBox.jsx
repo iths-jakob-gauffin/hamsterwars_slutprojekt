@@ -10,6 +10,7 @@ export const MatchupBox = ({ latestGame }) => {
 			css={css`
 				display: flex;
 				align-items: center;
+				justify-content: center;
 			`}>
 			{latestGame &&
 				latestGame.contestants.map((contestant, idx) => {

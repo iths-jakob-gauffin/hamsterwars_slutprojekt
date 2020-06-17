@@ -51,6 +51,8 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 		secondHamster
 	);
 
+	const [ instructionText, setInstructionText ] = useState('');
+
 	const invalidOptions = [ ':id1', ':id2' ];
 
 	const [ readyToBattle, setReadyToBattle ] = useState(false);
@@ -58,6 +60,35 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 		'OUTPUT ÄR: SpecificBattlePage -> readyToBattle',
 		readyToBattle
 	);
+	useEffect(
+		() => {
+			if (
+				firstHamster.id !== ':id1' &&
+				secondHamster.id !== ':id2' &&
+				firstHamster.id !== secondHamster.id
+			) {
+				setInstructionText('Klicka på den sötaste hamstern');
+			} else if (firstHamster.id === secondHamster.id) {
+				setInstructionText('Det måste vara två olika hamstrar');
+			} else {
+				setInstructionText('Välj hamstrar som ska tävla');
+			}
+		},
+		[ firstHamster, secondHamster ]
+	);
+	// const getInstruction = () => {
+	// 	if (
+	// 		firstHamster.id !== ':id1' &&
+	// 		secondHamster.id !== ':id2' &&
+	// 		firstHamster.id !== secondHamster.id
+	// 	) {
+	// 		setInstructionText('Klicka på den sötaste hamstern');
+	// 	} else if (firstHamster.id === secondHamster.id) {
+	// 		setInstructionText('Det måste vara två olika hamstrar');
+	// 	} else {
+	// 		setInstructionText('Välj hamstrar som ska tävla');
+	// 	}
+	// };
 
 	useEffect(
 		() => {
@@ -91,7 +122,8 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 		() => {
 			if (
 				!invalidOptions.includes(firstHamster.id) &&
-				!invalidOptions.includes(secondHamster.id)
+				!invalidOptions.includes(secondHamster.id) &&
+				firstHamster.id !== secondHamster.id
 			) {
 				setReadyToBattle(true);
 			} else {
@@ -217,17 +249,10 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 			<h1 className="logo-font logo-page-margin center">
 				VÄLJ BATTLE
 			</h1>
-			<h3 className="h5 center highlight">
-				{firstHamster.id !== ':id1' &&
-				secondHamster.id !== ':id2' ? (
-					'Klicka på den sötaste hamstern'
-				) : (
-					'Välj hamstrar som ska tävla'
-				)}
-			</h3>
+			<h3 className="h5 center highlight">{instructionText}</h3>
 			{/* <h3 className="h5 center highlight">
 				{firstHamster.id !== ':id1' &&
-				secondHamster.id !== ':id1' ? (
+				secondHamster.id !== ':id2' ? (
 					'Klicka på den sötaste hamstern'
 				) : (
 					'Välj hamstrar som ska tävla'
