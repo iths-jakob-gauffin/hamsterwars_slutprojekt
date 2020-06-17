@@ -26,15 +26,15 @@ app.use(express.static(__dirname + '/../build'));
 app.use(cors());
 
 ///// Kontrollera om API-nyckeln stämmer med KEY i .dotenv-dokumentet.
-// app.use((req, res, next) => {
-// 	if (req.headers['authorization'] === process.env.key) {
-// 		next();
-// 	} else {
-// 		res.status(401).send({
-// 			Error: `API-nyckeln saknas/stämmer inte. Nyckeln finns i .env-dokumentet under propertyn 'KEY'.`
-// 		});
-// 	}
-// });
+app.use((req, res, next) => {
+	if (req.headers['authorization'] === process.env.key) {
+		next();
+	} else {
+		res.status(401).send({
+			Error: `API-nyckeln saknas/stämmer inte. Nyckeln finns i .env-dokumentet under propertyn 'KEY'.`
+		});
+	}
+});
 
 // app.use(function(req, res, next) {
 // 	res.header('Access-Control-Allow-Origin', '*');

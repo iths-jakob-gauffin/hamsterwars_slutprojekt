@@ -92,6 +92,7 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 	const postNewHamster = (data, avatar = false) => {
 		console.log('OUTPUT ÄR: UploadPage -> data', data);
 		var myHeaders = new Headers();
+		myHeaders.append('Authorization', 'abc123');
 		myHeaders.append('Content-Type', 'application/json');
 
 		var raw = JSON.stringify({

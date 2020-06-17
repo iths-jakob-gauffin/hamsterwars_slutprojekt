@@ -66,9 +66,9 @@ const Footer = () => {
 									style={propsContainer}
 									css={css`
 										width: 100%;
-										height: 87%;
+										height: 91%;
 										background-color: none;
-										top: 13%;
+										top: 9%;
 										left: 0;
 										position: absolute;
 										overflow: hidden;

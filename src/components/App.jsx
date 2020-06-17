@@ -50,15 +50,13 @@ const App = () => {
 					flex-direction: column;
 					justify-content: space-evenly;
 				`}>
-				<div
-					className="header-container"
-					css={css`flex: 1 1 13%;`}>
+				<div className="header-container" css={css`flex: 1 1 9%;`}>
 					<Route path="/" component={Header} />
 				</div>
 				<div
 					className="main-container"
 					css={css`
-						flex: 1 1 76%;
+						flex: 1 1 80%;
 						/* overflow: scroll; */
 						overflow-y: scroll;
 					`}>

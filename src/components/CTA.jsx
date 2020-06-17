@@ -21,7 +21,7 @@ const CTA = ({ link, text }) => {
 			to={link}
 			css={css`
 				display:block;
-				margin: 0 2rem;
+				margin: .6rem 2rem;
 				padding: 1em 2em;
 				background-color: ${colors.purple2};
 				border-radius: 30px;

@@ -50,8 +50,8 @@ const Header = () => {
 
 const StyledHeaderContainer = styled.header`
   /* background-color: ${colors.purple3}; */
-  background: linear-gradient(145deg, ${colors.yellow2} 5%, ${colors.yellow3} 15%, ${colors.purple3} 75%);
-	padding: 1rem .5rem;
+  background: linear-gradient(165deg, ${colors.yellow1} 2%, ${colors.yellow2} 10%, ${colors.purple3} 30%, ${colors.purple3} 45%, ${colors.blue1} 90%);
+	/* padding: .7rem .5rem; */
 	border-bottom: 2px solid ${colors.blue1};
 	width: 100%;
 	height: 100%;

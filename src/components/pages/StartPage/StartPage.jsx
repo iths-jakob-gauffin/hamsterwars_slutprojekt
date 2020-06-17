@@ -29,16 +29,8 @@ const StartPage = ({ firstState }) => {
 				src="./hamsterwars_icon4shadow.svg"
 				alt="testbilden"
 				css={css`
-					width: 100%;
-					margin: 2rem 0 1rem;
-				`}
-			/>
-			<img
-				src="./img/hamster-99.jpg"
-				alt="testbilden"
-				css={css`
-					width: 100%;
-					margin: 2rem 0 1rem;
+					width: 90%;
+					/* margin: 2rem 0 1rem; */
 				`}
 			/>
 			<article
@@ -54,14 +46,14 @@ const StartPage = ({ firstState }) => {
 				{/* <button onClick={() => dummyAction('från startpage')}>
 					sanda
 				</button> */}
-				<h1 className="inline" css={css`margin: 1rem 0 2rem;`}>
-					BARA{' '}
-				</h1>
-				<h1 className="giant inline">EN</h1>{' '}
+				<h1 className="inline">BARA </h1>
+				<h1 className="giant inline" css={css`margin: .4rem 0;`}>
+					1
+				</h1>{' '}
 				<h1 className="inline">HAMSTER KAN VA SÖTAST</h1>
 				{/* <h1>bara en hamster kan va sötast</h1> */}
 				<CTA link={links.battle} text={'RANDOM BATTLE'} />
-				<h3 css={css`margin: 2rem 0 1rem;`}>Om projektet</h3>
+				<h3 css={css`margin: 1rem 0 1rem;`}>Om projektet</h3>
 				<p>
 					Lorem ipsum dolor sit amet, consectetur adipisicing
 					elit. Non, quam tempore consectetur deleniti voluptates

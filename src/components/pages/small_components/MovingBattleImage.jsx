@@ -1,10 +1,12 @@
-// import React from 'react';
+import React, { useState, useEffect } from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 import { shadows } from '../../../styles/shadows';
 
 import { animated } from 'react-spring';
+
+import { storage } from './../../../firebase';
 
 export const MovingBattleImage = ({
 	id,
@@ -13,6 +15,29 @@ export const MovingBattleImage = ({
 	maxHeight = '9rem',
 	moveAnimProps
 }) => {
+	const [ imgUrl, setImgUrl ] = useState(null);
+
+	useEffect(
+		() => {
+			if (id * 1 > 40 && !avatar) {
+				let gsReference = storage.refFromURL(
+					`gs://hamster-bilder/hamster-${id}.jpg`
+				);
+				gsReference
+					.getDownloadURL()
+					.then(url => {
+						setImgUrl(url);
+					})
+					.catch(err => console.log(err));
+			} else if (avatar) {
+				setImgUrl(`/img/hamster-avatar.jpg`);
+			} else {
+				setImgUrl(`/img/hamster-${id}.jpg`);
+			}
+		},
+		[ id ]
+	);
+
 	return (
 		<div>
 			<animated.h2
@@ -53,13 +78,7 @@ export const MovingBattleImage = ({
 					box-shadow: ${shadows.boxShadow2};
 				`}>
 				<img
-					src={
-						avatar ? (
-							`/img/hamster-avatar.jpg`
-						) : (
-							`/img/hamster-${id}.jpg`
-						)
-					}
+					src={imgUrl}
 					alt={name}
 					css={css`
 						max-height: ${maxHeight};
