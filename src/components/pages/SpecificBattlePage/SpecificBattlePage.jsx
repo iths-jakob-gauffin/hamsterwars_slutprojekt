@@ -38,10 +38,18 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 	const [ firstHamster, setFirstHamster ] = useState({
 		id: id1
 	});
+	console.log(
+		'OUTPUT ÄR: SpecificBattlePage -> firstHamster',
+		firstHamster
+	);
 
 	const [ secondHamster, setSecondHamster ] = useState({
 		id: id2
 	});
+	console.log(
+		'OUTPUT ÄR: SpecificBattlePage -> secondHamster',
+		secondHamster
+	);
 
 	const invalidOptions = [ ':id1', ':id2' ];
 
@@ -145,15 +153,15 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 	const identity = val => val;
 
 	const handleClick = async winningHamsterId => {
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> winningHamsterId',
-			winningHamsterId
-		);
+		// console.log(
+		// 	'OUTPUT ÄR: SpecificBattlePage -> winningHamsterId',
+		// 	winningHamsterId
+		// );
 		let contestants = [ firstHamster, secondHamster ];
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> contestants',
-			contestants
-		);
+		// console.log(
+		// 	'OUTPUT ÄR: SpecificBattlePage -> contestants',
+		// 	contestants
+		// );
 		console.log(
 			'OUTPUT ÄR: SpecificBattlePage -> firstHamster',
 			firstHamster
@@ -244,8 +252,10 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 				/>
 				{firstHamster.id !== ':id1' && (
 					<BattleImage
+						key={'firstBattleImage'}
 						id={firstHamster.id}
 						name={firstHamster.name}
+						avatar={firstHamster.avatar}
 						onClickFn={readyToBattle ? handleClick : identity}
 					/>
 				)}
@@ -258,8 +268,10 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 				/>
 				{secondHamster.id !== ':id2' && (
 					<BattleImage
+						key={'secondBattleImage'}
 						id={secondHamster.id}
 						name={secondHamster.name}
+						avatar={secondHamster.avatar}
 						onClickFn={readyToBattle ? handleClick : identity}
 					/>
 				)}

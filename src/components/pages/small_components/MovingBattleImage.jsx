@@ -9,7 +9,7 @@ import { animated } from 'react-spring';
 export const MovingBattleImage = ({
 	id,
 	name,
-
+	avatar,
 	maxHeight = '9rem',
 	moveAnimProps
 }) => {
@@ -53,7 +53,13 @@ export const MovingBattleImage = ({
 					box-shadow: ${shadows.boxShadow2};
 				`}>
 				<img
-					src={`/img/hamster-${id}.jpg`}
+					src={
+						avatar ? (
+							`/img/hamster-avatar.jpg`
+						) : (
+							`/img/hamster-${id}.jpg`
+						)
+					}
 					alt={name}
 					css={css`
 						max-height: ${maxHeight};

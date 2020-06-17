@@ -8,7 +8,8 @@
 		"imgName": "hamster-1.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 2,
@@ -19,7 +20,8 @@
 		"imgName": "hamster-2.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 3,
@@ -30,7 +32,8 @@
 		"imgName": "hamster-3.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 4,
@@ -41,7 +44,8 @@
 		"imgName": "hamster-4.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 5,
@@ -52,7 +56,8 @@
 		"imgName": "hamster-5.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 6,
@@ -63,7 +68,8 @@
 		"imgName": "hamster-6.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 7,
@@ -74,7 +80,8 @@
 		"imgName": "hamster-7.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 8,
@@ -85,7 +92,8 @@
 		"imgName": "hamster-8.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 9,
@@ -96,7 +104,8 @@
 		"imgName": "hamster-9.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 10,
@@ -107,7 +116,8 @@
 		"imgName": "hamster-10.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 11,
@@ -118,7 +128,8 @@
 		"imgName": "hamster-11.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 12,
@@ -129,7 +140,8 @@
 		"imgName": "hamster-12.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 13,
@@ -140,7 +152,8 @@
 		"imgName": "hamster-13.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 14,
@@ -151,7 +164,8 @@
 		"imgName": "hamster-14.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 15,
@@ -162,7 +176,8 @@
 		"imgName": "hamster-15.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 16,
@@ -173,7 +188,8 @@
 		"imgName": "hamster-16.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 17,
@@ -184,7 +200,8 @@
 		"imgName": "hamster-17.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 18,
@@ -195,7 +212,8 @@
 		"imgName": "hamster-18.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 19,
@@ -206,7 +224,8 @@
 		"imgName": "hamster-19.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 20,
@@ -217,7 +236,8 @@
 		"imgName": "hamster-20.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 21,
@@ -228,7 +248,8 @@
 		"imgName": "hamster-21.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 22,
@@ -239,7 +260,8 @@
 		"imgName": "hamster-22.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 23,
@@ -250,7 +272,8 @@
 		"imgName": "hamster-23.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 24,
@@ -261,7 +284,8 @@
 		"imgName": "hamster-24.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 25,
@@ -272,7 +296,8 @@
 		"imgName": "hamster-25.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 26,
@@ -283,7 +308,8 @@
 		"imgName": "hamster-26.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 27,
@@ -294,7 +320,8 @@
 		"imgName": "hamster-27.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 28,
@@ -305,7 +332,8 @@
 		"imgName": "hamster-28.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 29,
@@ -316,7 +344,8 @@
 		"imgName": "hamster-29.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 30,
@@ -327,7 +356,8 @@
 		"imgName": "hamster-30.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 31,
@@ -338,7 +368,8 @@
 		"imgName": "hamster-31.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 32,
@@ -349,7 +380,8 @@
 		"imgName": "hamster-32.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 33,
@@ -360,7 +392,8 @@
 		"imgName": "hamster-33.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 34,
@@ -371,7 +404,8 @@
 		"imgName": "hamster-34.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 35,
@@ -382,7 +416,8 @@
 		"imgName": "hamster-35.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 36,
@@ -393,7 +428,8 @@
 		"imgName": "hamster-36.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 37,
@@ -404,7 +440,8 @@
 		"imgName": "hamster-37.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 38,
@@ -415,7 +452,8 @@
 		"imgName": "hamster-38.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 39,
@@ -426,7 +464,8 @@
 		"imgName": "hamster-39.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	},
 	{
 		"id": 40,
@@ -437,6 +476,7 @@
 		"imgName": "hamster-40.jpg",
 		"wins": 0,
 		"defeats": 0,
-		"games": 0
+		"games": 0,
+		"avatar": false
 	}
 ]

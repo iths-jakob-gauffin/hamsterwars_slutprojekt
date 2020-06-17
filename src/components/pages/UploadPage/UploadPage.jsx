@@ -124,9 +124,11 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 		if (fileToUpload) {
 			setSubmitImage(true);
 			await postNewHamster(hamsterFormData);
+			console.log('fileToUpload existerar');
 		} else {
 			//true som andra argument anger för postNewHamster att det ska visas en avatarbild
 			await postNewHamster(hamsterFormData, true);
+			console.log('fileToUpload existerar inte');
 		}
 		//Uppdatera redux så att nästa newHamsterId blir korrekt ifall man vill lägga till flera hamstrar
 		// setUpdateRedux(true);

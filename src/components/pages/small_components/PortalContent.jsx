@@ -59,6 +59,7 @@ const PortalContent = ({
 							name={winningHamster.name}
 							maxHeight={'20rem'}
 							moveAnimProps={props}
+							avatar={winningHamster.avatar}
 						/>
 					)
 			)}

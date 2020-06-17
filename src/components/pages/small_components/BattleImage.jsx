@@ -10,10 +10,12 @@ export const BattleImage = ({
 	onClickFn = v => v,
 	maxHeight = '9rem',
 	maxWidth = '100%',
-	avatar = false
+	avatar
 }) => {
+	console.log('OUTPUT ÄR: avatar', avatar);
 	return (
 		<section
+			key={id}
 			onClick={() => onClickFn(id)}
 			css={css`
 				border: 5px solid ${colors.yellow1};
