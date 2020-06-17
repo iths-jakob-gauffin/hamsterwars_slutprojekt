@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 
 // import { NavLink, Link } from 'react-router-dom';
@@ -9,6 +10,7 @@ import { useTransition, config } from 'react-spring';
 
 // import { links } from './../../../utilities/links';
 import { colors } from './../../../styles/colors';
+import { randomColors } from './../../../styles/randomColors';
 
 import { BattleImage } from '../small_components/BattleImage';
 // import data from './../../../dummyData/hamsters.json';
@@ -25,6 +27,22 @@ const BattlePage = () => {
 		winningHamster: ''
 	});
 
+	const [ randomColorValue, setRandomColorValue ] = useState(0);
+
+	useEffect(
+		() => {
+			let randomValue = Math.floor(
+				Math.random() * randomColors.length
+			);
+			console.log(
+				'OUTPUT ÄR: BattlePage -> randomValue',
+				randomValue
+			);
+			setRandomColorValue(randomValue);
+		},
+		[ showPortal.show ]
+	);
+
 	const fadeAnimation = useTransition(showPortal.show, p => p, {
 		from: {
 			zIndex: 5,
@@ -38,7 +56,7 @@ const BattlePage = () => {
 			opacity: 1,
 			y: '0px',
 			o: 1,
-			backgroundColor: `${colors.blue1}`
+			backgroundColor: `${randomColors[randomColorValue]}`
 		},
 		leave: { opacity: 0, y: '200px', o: 0, backgroundColor: 'green' },
 		config: config.gentle

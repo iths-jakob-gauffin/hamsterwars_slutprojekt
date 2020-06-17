@@ -10,6 +10,7 @@ import { connect } from 'react-redux';
 import { css, jsx } from '@emotion/core';
 import { colors } from './../../../styles/colors';
 import { useTransition, config } from 'react-spring';
+import { randomColors } from './../../../styles/randomColors';
 
 import Select from './Select';
 
@@ -60,6 +61,7 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 		'OUTPUT ÄR: SpecificBattlePage -> readyToBattle',
 		readyToBattle
 	);
+
 	useEffect(
 		() => {
 			if (
@@ -163,6 +165,22 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 		winningHamster: ''
 	});
 
+	const [ randomColorValue, setRandomColorValue ] = useState(0);
+
+	useEffect(
+		() => {
+			let randomValue = Math.floor(
+				Math.random() * randomColors.length
+			);
+			console.log(
+				'OUTPUT ÄR: BattlePage -> randomValue',
+				randomValue
+			);
+			setRandomColorValue(randomValue);
+		},
+		[ showPortal.show ]
+	);
+
 	const fadeAnimation = useTransition(showPortal.show, p => p, {
 		from: {
 			zIndex: 5,
@@ -176,7 +194,7 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 			opacity: 1,
 			y: '0px',
 			o: 1,
-			backgroundColor: `${colors.blue1}`
+			backgroundColor: `${randomColors[randomColorValue]}`
 		},
 		leave: { opacity: 0, y: '200px', o: 0, backgroundColor: 'green' },
 		config: config.gentle
