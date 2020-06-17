@@ -1,4 +1,5 @@
-import React, { useEffect, useState, Fragment } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect, useState, Fragment } from 'react';
 import { useParams } from 'react-router-dom';
 
 /** @jsx jsx */

@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
-import { NavLink, Link } from 'react-router-dom';
+// import { NavLink, Link } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
@@ -8,16 +8,17 @@ import { fetchHamsters } from './../../../redux/actions';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 
-import { links } from './../../../utilities/links';
-import { colors } from './../../../styles/colors';
+// import { links } from './../../../utilities/links';
+// import { colors } from './../../../styles/colors';
 
-import { BattleImage } from '../small_components/BattleImage';
+// import { BattleImage } from '../small_components/BattleImage';
 // import data from './../../../dummyData/hamsters.json';
 
 import { FormPart } from './FormPart';
-import Upload from './Upload';
+// import Upload from './Upload';
+import Upload3 from './Upload3';
 
 const UploadPage = ({ reduxState, fetchHamsters }) => {
 	const initialHamsterFormData = {
@@ -144,7 +145,8 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 					<button disabled>Send</button>
 				)}
 			</form>
-			<Upload />
+			{/* <Upload /> */}
+			<Upload3 />
 		</article>
 	);
 };

@@ -1,44 +1,44 @@
-import React, { useEffect, useState } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+// import { NavLink, Link } from 'react-router-dom';
 
 import { connect } from 'react-redux';
 import { fetchHamsters } from './../../../redux/actions';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 
 import SelectForCup from './../small_components/SelectForCup';
 
 const CupPage = ({ hamstersFromRedux }) => {
 	const [ hamstersArray, setHamstersArray ] = useState('');
 	console.log('OUTPUT ÄR: CupPage -> hamstersArray', hamstersArray);
-	const [ contestantsArray, setContestantsArray ] = useState([
-		{
-			contestant1: ''
-		},
-		{
-			contestant2: ''
-		},
-		{
-			contestant3: ''
-		},
-		{
-			contestant4: ''
-		},
-		{
-			contestant5: ''
-		},
-		{
-			contestant6: ''
-		},
-		{
-			contestant7: ''
-		},
-		{
-			contestant8: ''
-		}
-	]);
+	// const [ contestantsArray, setContestantsArray ] = useState([
+	// 	{
+	// 		contestant1: ''
+	// 	},
+	// 	{
+	// 		contestant2: ''
+	// 	},
+	// 	{
+	// 		contestant3: ''
+	// 	},
+	// 	{
+	// 		contestant4: ''
+	// 	},
+	// 	{
+	// 		contestant5: ''
+	// 	},
+	// 	{
+	// 		contestant6: ''
+	// 	},
+	// 	{
+	// 		contestant7: ''
+	// 	},
+	// 	{
+	// 		contestant8: ''
+	// 	}
+	// ]);
 
 	useEffect(
 		() => {

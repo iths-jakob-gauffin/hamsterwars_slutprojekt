@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react';
+import { Fragment } from 'react';
 import {
-	BrowserRouter as Router,
+	// BrowserRouter as Router,
 	Route,
-	Switch,
-	NavLink
+	Switch
 } from 'react-router-dom';
 
 // Styling
@@ -12,7 +11,8 @@ import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import './../styles/typography.css';
 import './../styles/base.css';
-import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
+import { Desktop, Mobile, Default } from './../styles/MediaQuerys';
+// import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 
 import { colors } from './../styles/colors';
 import { links } from './../utilities/links';
@@ -30,20 +30,20 @@ import MatchupResultsPage from './pages/MatchupResultsPage/MatchupResultsPage';
 
 // import Bild from './testbild.jpg';
 
-const Bilden = () => {
-	return (
-		<div>
-			<img
-				src="./hamster.svg"
-				alt="hamsterwars icon"
-				css={css`
-					width: 200px;
-					stroke: ${colors.purple3};
-				`}
-			/>
-		</div>
-	);
-};
+// const Bilden = () => {
+// 	return (
+// 		<div>
+// 			<img
+// 				src="./hamster.svg"
+// 				alt="hamsterwars icon"
+// 				css={css`
+// 					width: 200px;
+// 					stroke: ${colors.purple3};
+// 				`}
+// 			/>
+// 		</div>
+// 	);
+// };
 
 const Main = () => {
 	return (
@@ -94,9 +94,9 @@ const StyledMainContainer = styled.main`
 	/* align-self: stretch; */
 `;
 
-const StyledLogo = styled.div`
-	color: ${colors.yellow1};
-	text-shadow: 1px 1px ${colors.black1};
-`;
+// const StyledLogo = styled.div`
+// 	color: ${colors.yellow1};
+// 	text-shadow: 1px 1px ${colors.black1};
+// `;
 
 export default Main;

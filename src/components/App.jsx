@@ -1,5 +1,5 @@
-import React, { Fragment, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+// import { Fragment, useEffect } from 'react';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Components
 import Header from './Header';
@@ -13,12 +13,12 @@ import { fetchHamsters } from './../redux/actions';
 // Styling
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 import './../styles/typography.css';
 import './../styles/base.css';
-import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
+// import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 
-import { colors } from './../styles/colors';
+// import { colors } from './../styles/colors';
 // console.log('OUTPUT ÄR: colors', colors);
 
 const App = ({ fetchedHamsters, fetchHamsters }) => {
@@ -87,10 +87,10 @@ const App = ({ fetchedHamsters, fetchHamsters }) => {
 // 	);
 // };
 
-const StyledContainer = styled.div`
-	background-color: ${colors.purple1};
-	padding: 2rem;
-`;
+// const StyledContainer = styled.div`
+// 	background-color: ${colors.purple1};
+// 	padding: 2rem;
+// `;
 // const App = () => {
 // 	return (
 // 		<div

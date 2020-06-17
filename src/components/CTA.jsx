@@ -1,9 +1,9 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+// import React from 'react';
+import { Link } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 import { colors } from './../styles/colors';
 import { shadows } from './../styles/shadows';
 

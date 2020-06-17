@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 
 // import { getCloudImage } from './../../../api/getCloudImage';
 
@@ -107,7 +107,7 @@ const Upload = () => {
 			});
 			resp = await resp.json();
 			console.log('OUTPUT ÄR: Upload -> resp', resp);
-			let image = await getCloudImage();
+			// let image = await getCloudImage();
 			// console.log('OUTPUT ÄR: Upload -> image', image);
 			// let image2 = await getCloudImage(7);
 			// console.log('OUTPUT ÄR: Upload -> image', image2);

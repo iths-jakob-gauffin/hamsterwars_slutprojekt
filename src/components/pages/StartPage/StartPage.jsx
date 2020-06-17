@@ -1,19 +1,19 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+// import React from 'react';
+// import { NavLink, Link } from 'react-router-dom';
 
-import { dummyAction } from './../../../redux/actions';
+// import { dummyAction } from './../../../redux/actions';
 
 //Redux
 import { connect } from 'react-redux';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 
 import { links } from './../../../utilities/links';
 import CTA from './../../CTA';
 
-const StartPage = ({ firstState, dummyAction }) => {
+const StartPage = ({ firstState }) => {
 	console.log('OUTPUT ÄR: StartPage -> firstState', firstState);
 
 	return (
@@ -53,9 +53,9 @@ const StartPage = ({ firstState, dummyAction }) => {
 					/* padding: 1rem; */
 					/* height: 100%; */
 				`}>
-				<button onClick={() => dummyAction('från startpage')}>
+				{/* <button onClick={() => dummyAction('från startpage')}>
 					sanda
-				</button>
+				</button> */}
 				<h1 className="inline" css={css`margin: 1rem 0 2rem;`}>
 					BARA{' '}
 				</h1>
@@ -85,4 +85,4 @@ const mapStateToProps = state => {
 	};
 };
 
-export default connect(mapStateToProps, { dummyAction })(StartPage);
+export default connect(mapStateToProps, null)(StartPage);

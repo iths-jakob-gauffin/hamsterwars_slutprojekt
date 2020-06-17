@@ -1,16 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 
-import { NavLink, Link } from 'react-router-dom';
+// import { NavLink, Link } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 
-import { links } from './../../../utilities/links';
-import { colors } from './../../../styles/colors';
+// import { links } from './../../../utilities/links';
+// import { colors } from './../../../styles/colors';
 
-import { topData } from './top5Dummy';
-import { bottomData } from './bottom5Dummy';
+// import { topData } from './top5Dummy';
+// import { bottomData } from './bottom5Dummy';
 import { StatsBox } from './StatsBox';
 
 import { getTopOrBottom } from './../../../api/getTopOrBottom';

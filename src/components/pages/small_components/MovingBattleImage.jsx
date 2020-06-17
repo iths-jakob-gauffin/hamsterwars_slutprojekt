@@ -1,10 +1,10 @@
-import React from 'react';
+// import React from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 import { shadows } from '../../../styles/shadows';
 
-import { useTransition, animated, config } from 'react-spring';
+import { animated } from 'react-spring';
 
 export const MovingBattleImage = ({
 	id,

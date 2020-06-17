@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import { Fragment } from 'react';
 
 import { useSpring, animated, config } from 'react-spring';
 

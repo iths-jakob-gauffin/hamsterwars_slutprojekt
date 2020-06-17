@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { useTransition, animated, config } from 'react-spring';
@@ -6,12 +6,12 @@ import { useTransition, animated, config } from 'react-spring';
 import { MovingBattleImage } from './MovingBattleImage';
 
 const PortalContent = ({
-	everything,
+	// everything,
 	winningHamster,
-	setShowPortal,
-	showPortal,
-	animProps,
-	portalContentKey
+	// setShowPortal,
+	// showPortal,
+	animProps
+	// portalContentKey
 }) => {
 	const [
 		removeMovingBattleImage,
@@ -23,6 +23,7 @@ const PortalContent = ({
 			setRemoveMovingBattleImage(!removeMovingBattleImage);
 		}, 2000);
 		// return () => console.log('NU UNMOUNTAS PORTALCONTENT');
+		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
 	const moveAnimation = useTransition(removeMovingBattleImage, null, {

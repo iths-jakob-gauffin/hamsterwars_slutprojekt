@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { BrowserRouter as Router, Switch } from 'react-router-dom';
+import { Fragment } from 'react';
+// import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 // Styling

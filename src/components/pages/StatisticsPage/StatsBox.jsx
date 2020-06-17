@@ -1,8 +1,8 @@
-import React from 'react';
+// import React from 'react';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import { topData } from './top5Dummy';
+// import { topData } from './top5Dummy';
 import { StatsColumn } from './StatsColumn';
 
 export const StatsBox = ({ stats }) => {
@@ -32,13 +32,3 @@ export const StatsBox = ({ stats }) => {
 		</article>
 	);
 };
-
-{
-	/* <li>
-<h3 className="stats-column-title">#</h3>
-<h3 className="stats-column-title">NAMN</h3>
-<h3 className="stats-column-title">VINSTER</h3>
-<h3 className="stats-column-title">FÖRLUSTER</h3>
-<h3 className="stats-column-title">RATIO +/-</h3>
-</li> */
-}

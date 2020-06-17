@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from './../../../styles/colors';
-import { useTransition, animated, config } from 'react-spring';
+import { useTransition, config } from 'react-spring';
 
 import Select from './Select';
 
@@ -26,7 +27,9 @@ const SpecificBattlePage = ({ history }) => {
 		id: id2
 	};
 
-	const [ firstHamster, setFirstHamster ] = useState(initialFirstValue);
+	const [ firstHamster, setFirstHamster ] = useState({
+		id: id1
+	});
 
 	const [ secondHamster, setSecondHamster ] = useState({
 		id: id2
@@ -99,8 +102,7 @@ const SpecificBattlePage = ({ history }) => {
 		if (e.target.value !== 'Välj') {
 			firstOrSecondHamster === 'firstHamster'
 				? setFirstHamster({
-						...firstHamster,
-						['id']: e.target.value
+						id: e.target.value
 					})
 				: setSecondHamster({ id: e.target.value });
 		} else {

@@ -1,4 +1,4 @@
-import React from 'react';
+// import React from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
@@ -19,9 +19,9 @@ export const MatchupStatsRow = ({
 	// 			.id}/${specificMatch.contestant[0].contestantTwo.id}`
 	// 	);
 	// };
-	const sheep = () => `<span role="img" aria-label="sheep">
-			🐑
-		</span>`;
+	// const sheep = () => `<span role="img" aria-label="sheep">
+	// 		🐑
+	// 	</span>`;
 	return (
 		<ol
 			css={css`

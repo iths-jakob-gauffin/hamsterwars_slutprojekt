@@ -1,13 +1,13 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 
-import { NavLink, Link, useParams, history } from 'react-router-dom';
+// import { NavLink, Link, useParams, history } from 'react-router-dom';
 
-/** @jsx jsx */
-import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// /** @jsx jsx */
+// import { css, jsx } from '@emotion/core';
+// import styled from '@emotion/styled';
 
-import { links } from './../../../utilities/links';
-import { colors } from './../../../styles/colors';
+// import { links } from './../../../utilities/links';
+// import { colors } from './../../../styles/colors';
 // import { BattleImage } from './BattleImage';
 import data from './../../../dummyData/hamsters.json';
 
@@ -44,7 +44,3 @@ const Select = ({
 };
 
 export default Select;
-
-{
-	/* <Link to={`/battle/${hamster.id}`}>sada</Link> */
-}

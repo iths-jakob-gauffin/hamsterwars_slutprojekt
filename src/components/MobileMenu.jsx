@@ -1,5 +1,5 @@
-import React, { Fragment } from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { Fragment } from 'react';
+// import { NavLink, Link } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';

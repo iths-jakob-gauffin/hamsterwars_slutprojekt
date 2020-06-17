@@ -1,17 +1,17 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import { useState, useEffect } from 'react';
 
-import { NavLink, Link } from 'react-router-dom';
+// import { NavLink, Link } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
-import { useTransition, animated, config } from 'react-spring';
+// import styled from '@emotion/styled';
+import { useTransition, config } from 'react-spring';
 
-import { links } from './../../../utilities/links';
+// import { links } from './../../../utilities/links';
 import { colors } from './../../../styles/colors';
 
 import { BattleImage } from '../small_components/BattleImage';
-import data from './../../../dummyData/hamsters.json';
+// import data from './../../../dummyData/hamsters.json';
 import getRandomBattle from './../../../api/getRandomBattle';
 import { recordBattle } from './../../../api/recordBattle';
 

@@ -49,9 +49,16 @@ router.post('/cloud', async (req, res) => {
 	return;
 });
 
+// path.join(
+// 	__dirname,
+// 	'./../tempPathBeforeCloud',
+// 	fileNameWithExtension
+// )
+
 ///// Uploadar bilden till public/uploads.
 router.post('/', async (req, res) => {
-	req.files.photo.mv(`./../public/img/${req.files.photo.name}`, err => {
+	console.log('OUTPUT ÄR: req', req.files.photo.name);
+	req.files.photo.mv(`/img/${req.files.photo.name}`, err => {
 		if (err) {
 			res.status(500).send('Damn it something went wrong' + err);
 			return;

@@ -1,14 +1,14 @@
-import React from 'react';
+// import React from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
 //TODO: försök att få in en emoji, en buckla och nåt annat
 
 export const StatsRow = ({ stats, propertyKey }) => {
-	console.log('OUTPUT ÄR: StatsRow -> stats', stats);
-	const sheep = () => `<span role="img" aria-label="sheep">
-			🐑
-		</span>`;
+	// console.log('OUTPUT ÄR: StatsRow -> stats', stats);
+	// const sheep = () => `<span role="img" aria-label="sheep">
+	// 		🐑
+	// 	</span>`;
 	return (
 		<ol css={css`list-style: none;`}>
 			{stats.map((stat, idx) => (

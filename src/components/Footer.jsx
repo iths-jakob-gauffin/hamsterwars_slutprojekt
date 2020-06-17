@@ -1,4 +1,4 @@
-import React, { Fragment, useState, useEffect } from 'react';
+import { Fragment, useState } from 'react';
 
 // Styling
 /** @jsx jsx */
@@ -6,8 +6,8 @@ import { css, jsx } from '@emotion/core';
 import styled from '@emotion/styled';
 import './../styles/typography.css';
 import './../styles/base.css';
-import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
-import { useTransition, animated, config } from 'react-spring';
+import { Desktop, Mobile, Default } from './../styles/MediaQuerys';
+import { useTransition, config } from 'react-spring';
 import { colors } from './../styles/colors';
 
 // Components
@@ -136,20 +136,20 @@ const StyledFooterContainer = styled.footer`
   
 `;
 
-const StyledLogo = styled.div`
-  /* color: ${colors.whiteGreen}; */
-  background: -webkit-linear-gradient(271deg, ${colors.yellow2}, ${colors.yellow1} 40%, ${colors.yellow3} 45%, ${colors.yellow1} 48%, ${colors.white1} 65%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  /* text-shadow: 1px 1px ${colors.blue2}; */
-  /* position: absolute; */
-  
-`;
+// const StyledLogo = styled.div`
+//   /* color: ${colors.whiteGreen}; */
+//   background: -webkit-linear-gradient(271deg, ${colors.yellow2}, ${colors.yellow1} 40%, ${colors.yellow3} 45%, ${colors.yellow1} 48%, ${colors.white1} 65%);
+//   -webkit-background-clip: text;
+//   -webkit-text-fill-color: transparent;
+//   /* text-shadow: 1px 1px ${colors.blue2}; */
+//   /* position: absolute; */
 
-const StyledHamburgerButton = styled.button`
-	width: 3rem;
-	height: 3rem;
-	background-color: ${colors.purple3};
-`;
+// `;
+
+// const StyledHamburgerButton = styled.button`
+// 	width: 3rem;
+// 	height: 3rem;
+// 	background-color: ${colors.purple3};
+// `;
 
 export default Footer;

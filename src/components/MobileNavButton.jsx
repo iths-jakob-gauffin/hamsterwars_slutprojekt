@@ -1,12 +1,12 @@
-import React, { Fragment, useState } from 'react';
+import { Fragment } from 'react';
 
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-import styled from '@emotion/styled';
+// import styled from '@emotion/styled';
 import { colors } from './../styles/colors';
-import { animated } from 'react-spring';
+// import { animated } from 'react-spring';
 
 const MobileNavButton = ({
 	children,
