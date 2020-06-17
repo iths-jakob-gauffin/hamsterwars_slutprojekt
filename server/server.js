@@ -2,8 +2,6 @@ const express = require('express');
 
 const fileUpload = require('express-fileupload');
 
-const multer = require('multer');
-
 const helmet = require('helmet');
 
 const app = express();
@@ -22,7 +20,6 @@ const { getDataIntoFirestore } = require('./uploadDataToFirestore');
 ///// Middleware
 app.use(express.json());
 app.use(fileUpload());
-app.use(multer().single('image'));
 app.use(helmet());
 // app.use(express.static('public'));
 app.use(express.static(__dirname + '/../build'));

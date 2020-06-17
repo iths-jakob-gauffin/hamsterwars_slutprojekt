@@ -210,7 +210,6 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux }) => {
 };
 
 const mapStateToProps = state => {
-	console.log('OUTPUT ÄR: state', state);
 	return {
 		reduxHamsters: state.hamsters
 	};

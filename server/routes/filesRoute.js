@@ -4,12 +4,6 @@ const router = new Router();
 
 const path = require('path');
 
-const Multer = require('multer');
-
-const stream = require('stream');
-
-// const { hamsterBucket } = require('./../googleStorage.js');
-
 // Handler-funktioner (promises).
 const { uploadFileToCloud } = require('./../handlers/uploadFileToCloud');
 const { getAllHamsters } = require('./../handlers/getAllHamsters');

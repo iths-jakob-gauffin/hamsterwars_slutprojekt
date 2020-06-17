@@ -1,7 +1,4 @@
-import React, { useEffect, useState } from 'react';
-
-import { storage } from './../../../firebase';
-
+// import React from 'react';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from '../../../styles/colors';
@@ -16,20 +13,6 @@ export const MovingBattleImage = ({
 	maxHeight = '9rem',
 	moveAnimProps
 }) => {
-	const [ imgUrl, setImgUrl ] = useState(null);
-
-	useEffect(() => {
-		let gsReference = storage.refFromURL(
-			`gs://hamster-bilder/hamster-${id}.jpg`
-		);
-		gsReference
-			.getDownloadURL()
-			.then(url => {
-				setImgUrl(url);
-			})
-			.catch(err => console.log(err));
-	}, []);
-
 	return (
 		<div>
 			<animated.h2
@@ -70,9 +53,7 @@ export const MovingBattleImage = ({
 					box-shadow: ${shadows.boxShadow2};
 				`}>
 				<img
-					src={imgUrl}
-					// src={`/img/hamster-${id}.jpg`}
-					// id={`battleImage-${id}`}
+					src={`/img/hamster-${id}.jpg`}
 					alt={name}
 					css={css`
 						max-height: ${maxHeight};
