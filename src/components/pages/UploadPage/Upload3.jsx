@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 
 // import { getCloudImage } from './../../../api/getCloudImage';
 
@@ -32,12 +32,14 @@ const Upload3 = () => {
 		// console.log(message);
 	};
 	return (
-		<form action="" encType="multipart/form-data" method="POST">
+		// <form action="" encType="multipart/form-data" method="POST">
+		<Fragment>
 			<input type="file" name="photo" id="file" />
 			<button className="styled-btn" onClick={e => fileUpload(e)}>
 				Send
 			</button>
-		</form>
+		</Fragment>
+		// </form>
 	);
 };
 

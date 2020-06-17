@@ -1,9 +1,15 @@
-import { Fragment } from 'react';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { useState, useEffect, Fragment } from 'react';
 import {
 	// BrowserRouter as Router,
 	Route,
-	Switch
+	Switch,
+	Redirect
 } from 'react-router-dom';
+
+// Redux
+import { connect } from 'react-redux';
+import { fetchHamsters } from './../redux/actions';
 
 // Styling
 /** @jsx jsx */
@@ -45,7 +51,32 @@ import MatchupResultsPage from './pages/MatchupResultsPage/MatchupResultsPage';
 // 	);
 // };
 
-const Main = () => {
+const Main = ({ reduxHamsters, fetchHamsters }) => {
+	console.log('OUTPUT ÄR: Main -> reduxHamsters', reduxHamsters);
+	const [ updateRedux, setUpdateRedux ] = useState(false);
+	useEffect(() => {
+		console.log('MAIN UPPDATERAS, REDUXHUVUDET');
+		fetchHamsters();
+	}, []);
+
+	useEffect(
+		() => {
+			console.log('updateReduxUseEffect körs');
+			if (updateRedux) {
+				const updateReduxFn = async () => {
+					console.log(
+						'updateReduxUseEffect den ser att det är sant'
+					);
+					await fetchHamsters();
+					setUpdateRedux(false);
+				};
+				updateReduxFn();
+			}
+		},
+		[ updateRedux ]
+	);
+
+	// console.log('msdalksmdlas', reduxHamsters);
 	return (
 		<Fragment>
 			{/* <Router> */}
@@ -63,7 +94,15 @@ const Main = () => {
 							path={links.matchupResult}
 							component={MatchupResultsPage}
 						/>
-						<Route path="/upload" component={UploadPage} />
+						<Route path="/matchup">
+							<Redirect to={links.matchupResult} />
+						</Route>
+						<Route path="/upload">
+							<UploadPage
+								reduxHamsters={reduxHamsters}
+								setUpdateRedux={setUpdateRedux}
+							/>
+						</Route>
 						<Route path="/cup" component={CupPage} />
 						<Route path="/igen" render={() => <h2>Igen</h2>} />
 					</Switch>
@@ -99,4 +138,11 @@ const StyledMainContainer = styled.main`
 // 	text-shadow: 1px 1px ${colors.black1};
 // `;
 
-export default Main;
+const mapStateToProps = state => {
+	console.log('OUTPUT ÄR: state i main', state);
+	return {
+		reduxHamsters: state
+	};
+};
+
+export default connect(mapStateToProps, { fetchHamsters })(Main);

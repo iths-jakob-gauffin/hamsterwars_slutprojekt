@@ -1,14 +1,10 @@
-// import { Fragment, useEffect } from 'react';
+// import { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 // Components
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
-
-// Redux
-import { connect } from 'react-redux';
-import { fetchHamsters } from './../redux/actions';
 
 // Styling
 /** @jsx jsx */
@@ -21,7 +17,19 @@ import './../styles/base.css';
 // import { colors } from './../styles/colors';
 // console.log('OUTPUT ÄR: colors', colors);
 
-const App = ({ fetchedHamsters, fetchHamsters }) => {
+const App = () => {
+	// const [ hamstersArray, setHamstersArray ] = useState([]);
+	// console.log('OUTPUT ÄR: App -> reduxHamsters', reduxHamsters);
+
+	// useEffect(() => {
+	// 	console.log('HUVUDAPP UPPDATERAS');
+	// 	fetchHamsters();
+	// 	// setHamstersArray
+	// 	// if (reduxHamsters.length === 0) {
+	// 	// 	console.log('den körs');
+
+	// 	// }
+	// }, []);
 	// Fetcha hamstrar och lägg in i redux om det inte redan är gjort
 	// useEffect(() => {
 	// 	if (!fetchedHamsters.length) {
@@ -111,10 +119,4 @@ const App = ({ fetchedHamsters, fetchHamsters }) => {
 // 	);
 // };
 
-const mapStateToProps = state => {
-	return {
-		fetchedHamsters: state
-	};
-};
-
-export default connect(mapStateToProps, { fetchHamsters })(App);
+export default App;

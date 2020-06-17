@@ -3,6 +3,9 @@ import { useState, useEffect } from 'react';
 
 import { useParams } from 'react-router-dom';
 
+// Redux
+import { connect } from 'react-redux';
+
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { colors } from './../../../styles/colors';
@@ -10,14 +13,19 @@ import { useTransition, config } from 'react-spring';
 
 import Select from './Select';
 
-import data from './../../../dummyData/hamsters.json';
+// import data from './../../../dummyData/hamsters.json';
 import { BattleImage } from '../small_components/BattleImage';
 import { recordBattle } from './../../../api/recordBattle';
 import PortalContent from './../small_components/PortalContent';
 
 // TODO: fixa så listorna uppdaterar varandra, när man väljer en hamster från första listan ska den försvinna från andra och vice versa
 
-const SpecificBattlePage = ({ history }) => {
+const SpecificBattlePage = ({ reduxHamsters, history }) => {
+	console.log(
+		'OUTPUT ÄR: SpecificBattlePage -> reduxHamsters',
+		reduxHamsters
+	);
+	// console.log(data);
 	const { id1, id2 } = useParams();
 
 	const initialFirstValue = {
@@ -46,7 +54,7 @@ const SpecificBattlePage = ({ history }) => {
 	useEffect(
 		() => {
 			if (!invalidOptions.includes(id1)) {
-				let getFirstHamster = data.hamsterObjects.filter(
+				let getFirstHamster = reduxHamsters.filter(
 					hamster => hamster.id === firstHamster.id * 1
 				);
 				setFirstHamster({ ...getFirstHamster[0] });
@@ -59,7 +67,7 @@ const SpecificBattlePage = ({ history }) => {
 	useEffect(
 		() => {
 			if (!invalidOptions.includes(id2)) {
-				let getSecondHamster = data.hamsterObjects.filter(
+				let getSecondHamster = reduxHamsters.filter(
 					hamster => hamster.id === secondHamster.id * 1
 				);
 				setSecondHamster({ ...getSecondHamster[0] });
@@ -229,6 +237,7 @@ const SpecificBattlePage = ({ history }) => {
 				`}>
 				<Select
 					firstOptionText={'Första hamstern: '}
+					reduxHamsters={reduxHamsters}
 					hamster={'firstHamster'}
 					handleChange={handleChange}
 					initialValue={firstHamster.id}
@@ -242,6 +251,7 @@ const SpecificBattlePage = ({ history }) => {
 				)}
 				<Select
 					firstOptionText={'Andra hamstern: '}
+					reduxHamsters={reduxHamsters}
 					hamster={'secondHamster'}
 					handleChange={handleChange}
 					initialValue={secondHamster.id}
@@ -276,4 +286,9 @@ const SpecificBattlePage = ({ history }) => {
 	);
 };
 
-export default SpecificBattlePage;
+const mapStateToProps = state => {
+	return {
+		reduxHamsters: state.hamsters
+	};
+};
+export default connect(mapStateToProps, null)(SpecificBattlePage);

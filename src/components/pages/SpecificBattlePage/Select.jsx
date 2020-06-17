@@ -9,9 +9,10 @@ import React from 'react';
 // import { links } from './../../../utilities/links';
 // import { colors } from './../../../styles/colors';
 // import { BattleImage } from './BattleImage';
-import data from './../../../dummyData/hamsters.json';
+// import data from './../../../dummyData/hamsters.json';
 
 const Select = ({
+	reduxHamsters,
 	hamster,
 	firstOptionText,
 	handleChange,
@@ -24,7 +25,7 @@ const Select = ({
 					value={hamster === 'firstHamster' ? ':id1' : ':id2'}>
 					{firstOptionText}
 				</option>
-				{data.hamsterObjects.map(hamster => {
+				{reduxHamsters.map(hamster => {
 					return (
 						<option
 							selected={

@@ -18,9 +18,10 @@ import { css, jsx } from '@emotion/core';
 
 import { FormPart } from './FormPart';
 // import Upload from './Upload';
-import Upload3 from './Upload3';
+// import Upload3 from './Upload3';
+import Upload4 from './Upload4';
 
-const UploadPage = ({ reduxState, fetchHamsters }) => {
+const UploadPage = ({ reduxHamsters, setUpdateRedux }) => {
 	const initialHamsterFormData = {
 		name: '',
 		age: '',
@@ -50,6 +51,11 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 
 	const [ trueIfAllIsValid, setTrueIfAllIsValid ] = useState(false);
 
+	const [ newHamsterId, setNewHamsterId ] = useState(false);
+	console.log('nytt hamsterid är ', newHamsterId);
+
+	const [ submitImage, setSubmitImage ] = useState(false);
+
 	useEffect(
 		() => {
 			let allErrorsExceptNameError = Object.values(errors).splice(1);
@@ -69,6 +75,53 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 		[ errors ]
 	);
 
+	useEffect(
+		() => {
+			console.log('SÅHÄR SER DEN UT', reduxHamsters);
+			setNewHamsterId(reduxHamsters.length + 1);
+
+			// eslint-disable-next-line react-hooks/exhaustive-deps
+		},
+		[ reduxHamsters ]
+	);
+
+	const postNewHamster = data => {
+		console.log('OUTPUT ÄR: UploadPage -> data', data);
+		var myHeaders = new Headers();
+		myHeaders.append('Content-Type', 'application/json');
+
+		var raw = JSON.stringify({
+			name: data.name,
+			age: data.age,
+			loves: data.loves,
+			favFood: data.favFood
+		});
+
+		var requestOptions = {
+			method: 'POST',
+			headers: myHeaders,
+			body: raw,
+			redirect: 'follow'
+		};
+
+		fetch('/api/files/cloud', requestOptions)
+			.then(response => response.text())
+			.then(result => console.log(result))
+			.catch(error => console.log('error', error));
+	};
+
+	const onSubmitFn = async e => {
+		e.preventDefault();
+
+		console.log('hamsterformdata', hamsterFormData);
+		console.log('OUTPUT ÄR: UploadPage -> e', e.target);
+
+		setSubmitImage(true);
+		await postNewHamster(hamsterFormData);
+		//Uppdatera redux så att nästa newHamsterId blir korrekt ifall man vill lägga till flera hamstrar
+		setUpdateRedux(true);
+	};
+
 	const formProps = {
 		trueIfAllIsValid,
 		setTrueIfAllIsValid,
@@ -78,10 +131,6 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 		hamsterFormData,
 		color,
 		setColor
-	};
-
-	const checkRedux = () => {
-		console.log('såhär är statet nu: ', reduxState);
 	};
 
 	return (
@@ -94,8 +143,6 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 				width: 100%;
 				flex: 1 1 100%;
 			`}>
-			<button onClick={checkRedux}>kolla redux</button>
-			<button onClick={fetchHamsters}>fetcha hamstrar</button>
 			<h1 className="logo-font logo-page-margin center">
 				LÄGG TILL HAMSTER
 			</h1>
@@ -106,7 +153,7 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 			</p>
 
 			<form
-				action="#"
+				onSubmit={onSubmitFn}
 				css={css`
 					width: 100%;
 					display: flex;
@@ -138,22 +185,33 @@ const UploadPage = ({ reduxState, fetchHamsters }) => {
 					{...formProps}
 				/>
 				{trueIfAllIsValid ? (
-					<button onClick={() => console.log('jajjamän')}>
-						Send
-					</button>
+					<input type="submit" value="Send" />
 				) : (
-					<button disabled>Send</button>
+					<input type="submit" value="Send" disabled />
+				)}
+				{/* <Upload /> */}
+				{/* {newHamsterId && (
+					<Upload3
+						newHamsterId={newHamsterId}
+						submitImage={submitImage}
+						setSubmitImage={setSubmitImage}
+					/>
+				)} */}
+				{newHamsterId && (
+					<Upload4
+						newHamsterId={newHamsterId}
+						submitImage={submitImage}
+						setSubmitImage={setSubmitImage}
+					/>
 				)}
 			</form>
-			{/* <Upload /> */}
-			<Upload3 />
 		</article>
 	);
 };
 
 const mapStateToProps = state => {
 	return {
-		reduxState: state
+		reduxHamsters: state.hamsters
 	};
 };
 

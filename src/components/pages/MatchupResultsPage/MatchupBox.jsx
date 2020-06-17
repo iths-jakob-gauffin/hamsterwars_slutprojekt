@@ -12,9 +12,9 @@ export const MatchupBox = ({ latestGame }) => {
 				align-items: center;
 			`}>
 			{latestGame &&
-				latestGame.contestants.map(contestant => {
+				latestGame.contestants.map((contestant, idx) => {
 					return (
-						<Fragment>
+						<Fragment key={idx}>
 							<ContestantBox
 								key={contestant['contestantOne'].id}
 								latestGame={contestant['contestantOne']}

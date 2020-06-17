@@ -10,18 +10,6 @@ export const MatchupStatsRow = ({
 	innerArray = false,
 	handleClick
 }) => {
-	console.log('OUTPUT ÄR: MatchUpStatsRow -> stats', stats);
-	// const handleClick = matchId => {
-	// 	let specificMatch = stats.filter(match => match.id === matchId);
-	// 	console.log('OUTPUT ÄR: getMatch', specificMatch);
-	// 	history.push(
-	// 		`/matchup/${specificMatch.contestant[0].contestantOne
-	// 			.id}/${specificMatch.contestant[0].contestantTwo.id}`
-	// 	);
-	// };
-	// const sheep = () => `<span role="img" aria-label="sheep">
-	// 		🐑
-	// 	</span>`;
 	return (
 		<ol
 			css={css`
