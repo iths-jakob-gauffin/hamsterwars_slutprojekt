@@ -39,20 +39,22 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 		id: id1
 	});
 
-	const [ secondHamster, setSecondHamster ] = useState({
-		id: id2
-	});
+	const [ secondHamster, setSecondHamster ] = useState(
+		initialSecondValue
+	);
+	console.log(
+		'OUTPUT ÄR: SpecificBattlePage -> secondHamster',
+		secondHamster
+	);
 
 	const invalidOptions = [ ':id1', ':id2' ];
 
+	//Om två hamstrar har valts blir readyToBattle true och man kan klicka på dem.
 	const [ readyToBattle, setReadyToBattle ] = useState(false);
-	console.log(
-		'OUTPUT ÄR: SpecificBattlePage -> readyToBattle',
-		readyToBattle
-	);
 
 	useEffect(
 		() => {
+			// Om id:t inte är :id1 eller :id2 så sätt state firsthamster/secondhamster. Annars så nollställ vilket gör att den gamla bilden tas bort.
 			if (!invalidOptions.includes(id1)) {
 				let getFirstHamster = reduxHamsters.filter(
 					hamster => hamster.id === firstHamster.id * 1
@@ -81,6 +83,7 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 	// Ändra urlen när en hamster är vald, om bägge Urlarna är valda så sätts statet "ready to battle" till true och hamsterbilderna får en ny onClickfunktion skickad till sig så en vinst kan registreras
 	useEffect(
 		() => {
+			console.log('rerouten körs');
 			if (
 				!invalidOptions.includes(firstHamster.id) &&
 				!invalidOptions.includes(secondHamster.id)
@@ -90,17 +93,6 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 				setReadyToBattle(false);
 			}
 			history.push(`/battle/${firstHamster.id}/${secondHamster.id}`);
-			// if (
-			// 	!invalidOptions.includes(firstHamster.id) ||
-			// 	!invalidOptions.includes(secondHamster.id)
-			// ) {
-			// 	setReadyToBattle(true);
-			// 	history.push(
-			// 		`/battle/${firstHamster.id}/${secondHamster.id}`
-			// 	);
-			// } else {
-			// 	setReadyToBattle(false);
-			// }
 		},
 		[ firstHamster.id, secondHamster.id ]
 	);
@@ -112,7 +104,10 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 				? setFirstHamster({
 						id: e.target.value
 					})
-				: setSecondHamster({ id: e.target.value });
+				: setSecondHamster({
+						...setSecondHamster,
+						['id']: e.target.value
+					});
 		} else {
 			return null;
 		}
@@ -144,24 +139,9 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 
 	const identity = val => val;
 
+	// Om ready to battle är true så skickas den här funktionen ner till battleimage som returnerar vilken som vinner och förlorar. REsultatet sparas sen via postrequests med recordBattlefunktionen.
 	const handleClick = async winningHamsterId => {
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> winningHamsterId',
-			winningHamsterId
-		);
 		let contestants = [ firstHamster, secondHamster ];
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> contestants',
-			contestants
-		);
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> firstHamster',
-			firstHamster
-		);
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> secondHamster',
-			secondHamster
-		);
 
 		let winningHamster = contestants.filter(
 			contestant => contestant.id === winningHamsterId * 1
@@ -217,14 +197,6 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 					'Välj hamstrar som ska tävla'
 				)}
 			</h3>
-			{/* <h3 className="h5 center highlight">
-				{firstHamster.id !== ':id1' &&
-				secondHamster.id !== ':id1' ? (
-					'Klicka på den sötaste hamstern'
-				) : (
-					'Välj hamstrar som ska tävla'
-				)}
-			</h3> */}
 			<div
 				className="images-container"
 				css={css`
@@ -241,6 +213,7 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 					hamster={'firstHamster'}
 					handleChange={handleChange}
 					initialValue={firstHamster.id}
+					reduxHamsters={reduxHamsters}
 				/>
 				{firstHamster.id !== ':id1' && (
 					<BattleImage
@@ -255,6 +228,7 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 					hamster={'secondHamster'}
 					handleChange={handleChange}
 					initialValue={secondHamster.id}
+					reduxHamsters={reduxHamsters}
 				/>
 				{secondHamster.id !== ':id2' && (
 					<BattleImage

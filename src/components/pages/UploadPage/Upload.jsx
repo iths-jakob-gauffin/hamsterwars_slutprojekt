@@ -105,6 +105,7 @@ const Upload = () => {
 				body: formData,
 				headers: myHeaders
 			});
+			console.log('OUTPUT ÄR: Upload -> resp 1', resp);
 			resp = await resp.json();
 			console.log('OUTPUT ÄR: Upload -> resp', resp);
 			// let image = await getCloudImage();

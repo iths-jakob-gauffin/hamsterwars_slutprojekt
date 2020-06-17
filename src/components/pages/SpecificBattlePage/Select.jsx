@@ -16,7 +16,8 @@ const Select = ({
 	hamster,
 	firstOptionText,
 	handleChange,
-	initialValue
+	initialValue,
+	reduxHamsters
 }) => {
 	return (
 		<form>
