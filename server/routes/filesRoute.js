@@ -12,12 +12,19 @@ const { createNewHamster } = require('./../handlers/createNewHamster.js');
 router.post('/cloud', async (req, res) => {
 	try {
 		console.log('OUTPUT ÄR: req', req.body);
-		let { name, age, favFood, loves } = req.body;
+		let { name, age, favFood, loves, avatar } = req.body;
 		let allHamsters = await getAllHamsters();
 		// console.log('OUTPUT ÄR: allHamsters', allHamsters);
 		let newHamsterId = allHamsters.length + 1;
 		console.log('OUTPUT ÄR: newHamsterId', newHamsterId);
-		await createNewHamster(newHamsterId, name, age, favFood, loves);
+		await createNewHamster(
+			newHamsterId,
+			name,
+			age,
+			favFood,
+			loves,
+			avatar
+		);
 		res
 			.status(200)
 			.send(`New hamster created with id ${newHamsterId}`);

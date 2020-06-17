@@ -8,7 +8,9 @@ export const BattleImage = ({
 	id,
 	name,
 	onClickFn = v => v,
-	maxHeight = '9rem'
+	maxHeight = '9rem',
+	maxWidth = '100%',
+	avatar = false
 }) => {
 	return (
 		<section
@@ -25,11 +27,17 @@ export const BattleImage = ({
 				box-shadow: ${shadows.boxShadow2};
 			`}>
 			<img
-				src={`/img/hamster-${id}.jpg`}
+				src={
+					avatar ? (
+						`/img/hamster-avatar.jpg`
+					) : (
+						`/img/hamster-${id}.jpg`
+					)
+				}
 				alt={name}
 				css={css`
 					max-height: ${maxHeight};
-					width: 100%;
+					width: ${maxWidth};
 					border-radius: 10px;
 				`}
 			/>

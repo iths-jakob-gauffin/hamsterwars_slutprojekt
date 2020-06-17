@@ -14,8 +14,6 @@ import { links } from './../../../utilities/links';
 import CTA from './../../CTA';
 
 const StartPage = ({ firstState }) => {
-	console.log('OUTPUT ÄR: StartPage -> firstState', firstState);
-
 	return (
 		<main
 			css={css`

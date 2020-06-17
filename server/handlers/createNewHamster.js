@@ -7,7 +7,7 @@ const createNewHamster = (
 	age = 0,
 	favFood = '',
 	loves = '',
-	fileNameWithExtension
+	avatar
 ) => {
 	return new Promise(async (res, rej) => {
 		try {
@@ -17,10 +17,13 @@ const createNewHamster = (
 				age: age,
 				favFood: favFood,
 				loves: loves,
-				imgName: `hamster-${id}.jpg`,
+				imgName: avatar
+					? `hamster-avatar.jpg`
+					: `hamster-${id}.jpg`,
 				wins: 0,
 				defeats: 0,
-				games: 0
+				games: 0,
+				avatar: avatar
 			};
 			await db.collection('hamsters').doc().set(newHamster);
 			res('Success');

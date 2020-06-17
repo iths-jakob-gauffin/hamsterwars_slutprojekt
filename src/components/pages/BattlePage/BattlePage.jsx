@@ -124,6 +124,7 @@ const BattlePage = () => {
 									// onClickFn={handleClick}
 									id={hamster.id}
 									name={hamster.name}
+									avatar={hamster.avatar}
 								/>
 								<p>
 									{hamster.id} {hamster.name}

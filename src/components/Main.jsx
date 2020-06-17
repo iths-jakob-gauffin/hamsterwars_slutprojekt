@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useState, useEffect, Fragment } from 'react';
+import Redux, { useState, useEffect, Fragment } from 'react';
 import {
 	// BrowserRouter as Router,
 	Route,
@@ -31,47 +31,30 @@ import SpecificBattlePage from './pages/SpecificBattlePage/SpecificBattlePage';
 import UploadPage from './pages/UploadPage/UploadPage';
 import CupPage from './pages/CupPage/CupPage';
 import MatchupResultsPage from './pages/MatchupResultsPage/MatchupResultsPage';
-// import ComicHamster from './comic_hamster.svg';
-// import Hamster from './hamster.svg';
-
-// import Bild from './testbild.jpg';
-
-// const Bilden = () => {
-// 	return (
-// 		<div>
-// 			<img
-// 				src="./hamster.svg"
-// 				alt="hamsterwars icon"
-// 				css={css`
-// 					width: 200px;
-// 					stroke: ${colors.purple3};
-// 				`}
-// 			/>
-// 		</div>
-// 	);
-// };
 
 const Main = ({ reduxHamsters, fetchHamsters }) => {
 	console.log('OUTPUT ÄR: Main -> reduxHamsters', reduxHamsters);
 	const [ updateRedux, setUpdateRedux ] = useState(false);
+	console.log('OUTPUT ÄR: Main -> updateRedux', updateRedux);
 	useEffect(() => {
 		console.log('MAIN UPPDATERAS, REDUXHUVUDET');
 		fetchHamsters();
 	}, []);
 
+	// updateRedux ändras nere i UploadPage när någon ny hamster lagts till. Updateredux blir true och redux fetchar en ny lista och därmed ett nytt id, om man direkt vill lägga till en ny hamster. Samt att andra listor uppdateras nu när den nya användaren är tillagd.
 	useEffect(
 		() => {
 			console.log('updateReduxUseEffect körs');
-			if (updateRedux) {
-				const updateReduxFn = async () => {
-					console.log(
-						'updateReduxUseEffect den ser att det är sant'
-					);
-					await fetchHamsters();
-					setUpdateRedux(false);
-				};
-				updateReduxFn();
-			}
+			// if (updateRedux) {
+			const updateReduxFn = async () => {
+				console.log(
+					'updateReduxUseEffect den ser att det är sant'
+				);
+				await fetchHamsters();
+				setUpdateRedux(false);
+			};
+			updateReduxFn();
+			// }
 		},
 		[ updateRedux ]
 	);
@@ -101,6 +84,7 @@ const Main = ({ reduxHamsters, fetchHamsters }) => {
 							<UploadPage
 								reduxHamsters={reduxHamsters}
 								setUpdateRedux={setUpdateRedux}
+								updateRedux={updateRedux}
 							/>
 						</Route>
 						<Route path="/cup" component={CupPage} />
