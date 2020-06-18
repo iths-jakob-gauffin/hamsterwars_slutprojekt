@@ -48,8 +48,8 @@ const StartPage = ({ firstState }) => {
 						Det här är en kul liten sida där man klickar på den
 						hamster man tycker är sötast. <br />
 						<br />
-						Dessa är några av biblioteken/webbtjänster/tekniker
-						jag använt mig av för att bygga den:
+						Dessa är några av biblioteken/webbtjänster/ramverk
+						jag använt mig av:
 					</p>
 					<ul
 						css={css`

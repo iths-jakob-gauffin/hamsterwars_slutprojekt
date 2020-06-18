@@ -13,7 +13,8 @@ export const MovingBattleImage = ({
 	name,
 	avatar,
 	maxHeight = '9rem',
-	moveAnimProps
+	moveAnimProps,
+	text = 'vann'
 }) => {
 	const [ imgUrl, setImgUrl ] = useState(null);
 
@@ -55,7 +56,7 @@ export const MovingBattleImage = ({
 					),
 					opacity: moveAnimProps.opacity
 				}}>
-				{name} vann!
+				{name} {text}!
 			</animated.h2>
 			<animated.section
 				style={{

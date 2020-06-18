@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
 import React, { useState, useEffect } from 'react';
 
@@ -139,7 +140,6 @@ const Upload4 = ({
 					<p>{upload}% uppladdat</p>
 				</article>
 			)}
-			{finished && <p className="highlight">Filen är uppladdad!</p>}
 		</div>
 	);
 };

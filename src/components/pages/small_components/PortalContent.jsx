@@ -8,7 +8,8 @@ import { MovingBattleImage } from './MovingBattleImage';
 const PortalContent = ({
 	innerTimer = 2000,
 	winningHamster,
-	animProps
+	animProps,
+	text
 }) => {
 	const [
 		removeMovingBattleImage,
@@ -48,6 +49,7 @@ const PortalContent = ({
 				({ item, key, props }) =>
 					item && (
 						<MovingBattleImage
+							text={text}
 							key={key}
 							id={winningHamster.id}
 							name={winningHamster.name}

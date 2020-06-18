@@ -22,10 +22,10 @@ export const MatchupStatsRow = ({
 						onClick={() => handleClick(stat.id)}
 						key={stat.id}
 						css={css`
-							background-color: ${colors.blue1};
+							background-color: ${colors.purple1};
 
 							&:nth-of-type(odd) {
-								background-color: ${colors.yellow1};
+								background-color: ${colors.white1};
 							}
 						`}>
 						<p>
@@ -45,9 +45,9 @@ export const MatchupStatsRow = ({
 								onClick={() => handleClick(stat.id)}
 								key={contestant[propertyKey].id}
 								css={css`
-									background-color: ${colors.blue1};
+									background-color: ${colors.purple1};
 									&:nth-of-type(odd) {
-										background-color: ${colors.yellow1};
+										background-color: ${colors.white1};
 									}
 								`}>
 								<p>

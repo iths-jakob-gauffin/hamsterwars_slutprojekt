@@ -7,6 +7,8 @@ import { fetchHamsters } from './../../../redux/actions';
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
 import { useTransition, config } from 'react-spring';
+import { colors } from './../../../styles/colors';
+import { shadows } from './../../../styles/shadows';
 
 import { randomColors } from './../../../styles/randomColors';
 import { FormPart } from './FormPart';
@@ -282,15 +284,47 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 					/>
 				)}
 				{trueIfAllIsValid ? (
-					<input type="submit" value="Send" />
+					<input
+						type="submit"
+						value="Skicka"
+						css={css`
+							margin-top: 1rem;
+							display: inline-block;
+							font-size: 1.5rem;
+							padding: .7rem 2.2rem;
+							border-radius: 5px;
+							color: ${colors.white1};
+							background-color: ${colors.purple3};
+							border: 2px solid ${colors.purple2};
+							box-shadow: ${shadows.boxShadow1};
+							margin-bottom: .5rem;
+						`}
+					/>
 				) : (
-					<input type="submit" value="Send" disabled />
+					<input
+						type="submit"
+						value="Skicka"
+						disabled
+						css={css`
+							margin-top: 1rem;
+							display: inline-block;
+							font-size: 1.5rem;
+							padding: .7rem 2.2rem;
+							border-radius: 5px;
+							background-color: ${colors.white3};
+							border: 2px solid ${colors.purple2};
+							box-shadow: ${shadows.boxShadow4};
+							margin-bottom: .5rem;
+							color: ${colors.gray3};
+						`}
+					/>
 				)}
 			</form>
 			{fadeAnimation.map(
 				({ item, key, props }) =>
 					item && (
 						<PortalContent
+							text={'är uppladdad'}
 							innerTimer={3300}
 							key={key}
 							animProps={props}

@@ -6,7 +6,12 @@ import { StatsColumn } from './StatsColumn';
 
 export const StatsBox = ({ stats }) => {
 	return (
-		<article css={css`display: flex;`}>
+		<article
+			css={css`
+				display: flex;
+				justify-content: space-evenly;
+				margin-bottom: 1.5rem;
+			`}>
 			<StatsColumn title={'#'} stats={stats} propertyKey={'idx'} />
 			<StatsColumn
 				title={'Namn'}
