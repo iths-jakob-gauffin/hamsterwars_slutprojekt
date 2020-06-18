@@ -6,11 +6,13 @@ import { useTransition, animated, config } from 'react-spring';
 import { MovingBattleImage } from './MovingBattleImage';
 
 const PortalContent = ({
+	innerTimer = 10000,
 	// everything,
 	winningHamster,
 	// setShowPortal,
 	// showPortal,
 	animProps
+
 	// portalContentKey
 }) => {
 	const [
@@ -21,7 +23,7 @@ const PortalContent = ({
 	useEffect(() => {
 		setTimeout(() => {
 			setRemoveMovingBattleImage(!removeMovingBattleImage);
-		}, 2000);
+		}, innerTimer);
 		// return () => console.log('NU UNMOUNTAS PORTALCONTENT');
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);

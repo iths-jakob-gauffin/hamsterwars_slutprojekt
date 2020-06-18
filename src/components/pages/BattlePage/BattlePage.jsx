@@ -66,6 +66,10 @@ const BattlePage = () => {
 		let winningHamster = contestants.filter(
 			contestant => contestant.id === winningHamsterId * 1
 		);
+		console.log(
+			'OUTPUT ÄR: BattlePage -> winningHamster',
+			winningHamster
+		);
 		let losingHamster = contestants.filter(
 			contestant => contestant.id !== winningHamsterId * 1
 		);

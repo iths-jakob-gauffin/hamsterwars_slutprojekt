@@ -15,7 +15,9 @@ const Upload4 = ({
 	submitImage,
 	setSubmitImage,
 	fileToUpload,
-	setFileToUpload
+	setFileToUpload,
+	finishedUploading,
+	setFinishedUploading
 }) => {
 	const [ upload, setUpload ] = useState(0);
 	const [ finished, setFinished ] = useState(false);
@@ -49,11 +51,12 @@ const Upload4 = ({
 			function error(err) {},
 			function complete() {
 				setFinished(true);
+				setFinishedUploading(!finishedUploading);
 
 				setTimeout(() => {
 					setUpload(0);
 					setFinished(false);
-				}, 5000);
+				}, 1000);
 			}
 		);
 	};
