@@ -89,36 +89,4 @@ export const MovingBattleImage = ({
 			</animated.section>
 		</div>
 	);
-
-	// return (
-	// 	<animated.section
-	// 		style={{
-	// 			transform: animProps.y.interpolate(
-	// 				y => `translate3d(0,${y},0)`
-	// 			),
-	// 			config: 'config.molasses'
-	// 		}}
-	// 		onClick={() => onClickFn(id)}
-	// 		css={css`
-	// 			border: 5px solid ${colors.yellow1};
-	// 			border-radius: 10px;
-	// 			display: flex;
-	// 			justify-content: center;
-	// 			align-items: center;
-	// 			padding: .2rem .2rem;
-	// 			background-color: ${colors.white2};
-	// 			margin: .3rem 0;
-	// 			box-shadow: ${shadows.boxShadow2};
-	// 		`}>
-	// 		<img
-	// 			src={`/img/hamster-${id}.jpg`}
-	// 			alt={name}
-	// 			css={css`
-	// 				max-height: ${maxHeight};
-	// 				width: 100%;
-	// 				border-radius: 10px;
-	// 			`}
-	// 		/>
-	// 	</animated.section>
-	// );
 };

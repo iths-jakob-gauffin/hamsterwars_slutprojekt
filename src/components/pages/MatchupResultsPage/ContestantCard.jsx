@@ -3,7 +3,6 @@
 import { css, jsx } from '@emotion/core';
 import { BattleImage } from './../small_components/BattleImage';
 export const ContestantCard = ({ latestGame, loser = false }) => {
-	console.log('OUTPUT ÄR: ContestantCard -> latestGame', latestGame);
 	return (
 		<div
 			className="latest-matchup-container"

@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-// import { NavLink, Link } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
@@ -12,15 +11,12 @@ import MobileNavButton from './MobileNavButton';
 import { links } from './../utilities/links';
 
 const MobileMenu = ({ style, ...props }) => {
-	//TODO: knapparna renderas tre gånger varje de visas...
-	// TODO: lås scrollen
 	return (
 		<Fragment>
 			<StyledMobileMenu style={style}>
 				<div
 					className="nav-container"
 					css={css`
-						/* background-color: black; */
 						width: 80%;
 						height: 60%;
 						position: relative;
@@ -67,12 +63,6 @@ const MobileMenu = ({ style, ...props }) => {
 						key={'upload'}
 						{...props}>
 						LÄGG TILL HAMSTER
-					</MobileNavButton>
-					<MobileNavButton
-						navLinkUrl={links.cup}
-						key={'cup'}
-						{...props}>
-						MINICUP
 					</MobileNavButton>
 				</div>
 			</StyledMobileMenu>

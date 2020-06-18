@@ -14,7 +14,6 @@ export const BattleImage = ({
 	maxWidth = '100%',
 	avatar
 }) => {
-	console.log('OUTPUT ÄR: avatar', avatar);
 	const [ imgUrl, setImgUrl ] = useState(null);
 
 	useEffect(
@@ -55,13 +54,6 @@ export const BattleImage = ({
 			`}>
 			<img
 				src={imgUrl}
-				// src={
-				// 	avatar ? (
-				// 		`/img/hamster-avatar.jpg`
-				// 	) : (
-				// 		`/img/hamster-${id}.jpg`
-				// 	)
-				// }
 				alt={name}
 				css={css`
 					max-height: ${maxHeight};

@@ -37,17 +37,6 @@ app.use((req, res, next) => {
 	}
 });
 
-// app.use(function(req, res, next) {
-// 	res.header('Access-Control-Allow-Origin', '*');
-
-// 	res.header(
-// 		'Access-Control-Allow-Headers',
-// 		'Origin, X-Requested-With, Content-Type, Accept'
-// 	);
-
-// 	next();
-// });
-
 //Routes
 const hamstersRoutes = require('./routes/hamstersRoute');
 const chartsRoutes = require('./routes/chartsRoute');

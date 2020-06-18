@@ -30,11 +30,8 @@ const Upload4 = ({
 		},
 		[ submitImage ]
 	);
-	// let uploader = document.getElementById('uploader');
 	const uploadFile = () => {
-		// let file = e.target.files[0];
 		let file = fileToUpload;
-		console.log('OUTPUT ÄR: file', file);
 
 		let storageRef = storage.ref(`/hamster-${newHamsterId}.jpg`);
 
@@ -45,7 +42,6 @@ const Upload4 = ({
 			function progress(snapshot) {
 				let percentage =
 					snapshot.bytesTransferred / snapshot.totalBytes * 100;
-				// uploader.value = percentage;
 				setUpload(percentage);
 			},
 			function error(err) {},
@@ -63,22 +59,6 @@ const Upload4 = ({
 
 	return (
 		<div css={css`width: 100%;`}>
-			{/* <input type="file" value="upload" id="fileButton" /> */}
-			{/* <label
-				htmlFor="uploadFileInput"
-				css={css`
-					display: inline-block;
-					padding: .3rem;
-					background-color: white;
-				`}>
-				Bläddra...
-			</label>
-			<input
-				css={css`display: none;`}
-				type="file"
-				id="uploadFileInput"
-				onChange={e => setFileToUpload(e.target.files[0])}
-			/> */}
 			{!fileToUpload && (
 				<article className="highlight">
 					<label
@@ -111,7 +91,6 @@ const Upload4 = ({
 							id={newHamsterId}
 							name={'avatar'}
 							avatar={true}
-							// maxWidth={'50%'}
 							maxHeight={'100%'}
 						/>
 					</div>
@@ -154,24 +133,12 @@ const Upload4 = ({
 						value={upload}
 						max="100"
 						id="uploader"
-						css={css`
-							display: block;
-							/* margin: .5rem 0 .3rem; */
-						`}>
+						css={css`display: block;`}>
 						0%
 					</progress>
 					<p>{upload}% uppladdat</p>
 				</article>
 			)}
-			{/* {upload !== 0 && (
-				<progress
-					value={upload}
-					max="100"
-					id="uploader"
-					css={css`display: block;`}>
-					0%
-				</progress>
-			)} */}
 			{finished && <p className="highlight">Filen är uppladdad!</p>}
 		</div>
 	);

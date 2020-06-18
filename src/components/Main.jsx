@@ -1,11 +1,6 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import Redux, { useState, useEffect, Fragment } from 'react';
-import {
-	// BrowserRouter as Router,
-	Route,
-	Switch,
-	Redirect
-} from 'react-router-dom';
+import React, { useState, useEffect, Fragment } from 'react';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 // Redux
 import { connect } from 'react-redux';
@@ -18,51 +13,38 @@ import styled from '@emotion/styled';
 import './../styles/typography.css';
 import './../styles/base.css';
 import { Desktop, Mobile, Default } from './../styles/MediaQuerys';
-// import { Desktop, Tablet, Mobile, Default } from './../styles/MediaQuerys';
 
 import { colors } from './../styles/colors';
 import { links } from './../utilities/links';
 
 import StartPage from './pages/StartPage/StartPage';
-
 import BattlePage from './pages/BattlePage/BattlePage';
 import StatisticsPage from './pages/StatisticsPage/StatisticsPage';
 import SpecificBattlePage from './pages/SpecificBattlePage/SpecificBattlePage';
 import UploadPage from './pages/UploadPage/UploadPage';
-import CupPage from './pages/CupPage/CupPage';
 import MatchupResultsPage from './pages/MatchupResultsPage/MatchupResultsPage';
 
 const Main = ({ reduxHamsters, fetchHamsters }) => {
-	console.log('OUTPUT ÄR: Main -> reduxHamsters', reduxHamsters);
 	const [ updateRedux, setUpdateRedux ] = useState(false);
-	console.log('OUTPUT ÄR: Main -> updateRedux', updateRedux);
+
 	useEffect(() => {
-		console.log('MAIN UPPDATERAS, REDUXHUVUDET');
 		fetchHamsters();
 	}, []);
 
 	// updateRedux ändras nere i UploadPage när någon ny hamster lagts till. Updateredux blir true och redux fetchar en ny lista och därmed ett nytt id, om man direkt vill lägga till en ny hamster. Samt att andra listor uppdateras nu när den nya användaren är tillagd.
 	useEffect(
 		() => {
-			console.log('updateReduxUseEffect körs');
-			// if (updateRedux) {
 			const updateReduxFn = async () => {
-				console.log(
-					'updateReduxUseEffect den ser att det är sant'
-				);
 				await fetchHamsters();
 				setUpdateRedux(false);
 			};
 			updateReduxFn();
-			// }
 		},
 		[ updateRedux ]
 	);
 
-	// console.log('msdalksmdlas', reduxHamsters);
 	return (
 		<Fragment>
-			{/* <Router> */}
 			<Mobile>
 				<StyledMainContainer>
 					<Switch>
@@ -87,20 +69,25 @@ const Main = ({ reduxHamsters, fetchHamsters }) => {
 								updateRedux={updateRedux}
 							/>
 						</Route>
-						<Route path="/cup" component={CupPage} />
-						<Route path="/igen" render={() => <h2>Igen</h2>} />
 					</Switch>
 				</StyledMainContainer>
 			</Mobile>
-			<Desktop>Desktop or laptop</Desktop>
-			{/* <Tablet>Tablet</Tablet> */}
+			<Desktop>Main</Desktop>
 			<Default>
 				<StyledMainContainer
 					css={css`background-color: ${colors.purple2};`}>
-					<h3>Not mobile (desktop or laptop or tablet)</h3>
+					<h3>
+						Jag har haft en mobile-first-approach och hann inte
+						göra sidan desktopanpassad. <br />
+						<br />Kolla gärna in min sida i mobile-view.
+						(Ctrl+Shift+M på windows) <br />
+						<br />
+						Extra info: När jag utvecklat sidan har jag haft
+						viewport 378px x 740px om du vill se den som jag
+						har sett den.
+					</h3>
 				</StyledMainContainer>
 			</Default>
-			{/* </Router> */}
 		</Fragment>
 	);
 };
@@ -113,17 +100,9 @@ const StyledMainContainer = styled.main`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
-	/* overflow: scroll; */
-	/* align-self: stretch; */
 `;
 
-// const StyledLogo = styled.div`
-// 	color: ${colors.yellow1};
-// 	text-shadow: 1px 1px ${colors.black1};
-// `;
-
 const mapStateToProps = state => {
-	console.log('OUTPUT ÄR: state i main', state);
 	return {
 		reduxHamsters: state
 	};

@@ -20,8 +20,7 @@ const updateStats = async (winnerOrLoser, type) => {
 
 	try {
 		// Uppdatera hamsterns stats
-		let response = await axios(config);
-		console.log('STATSDATA', response.data);
+		await axios(config);
 	} catch (err) {
 		console.error(err);
 	}
@@ -47,8 +46,8 @@ export const recordBattle = async winnerAndLoser => {
 	};
 	try {
 		// Spara matchen i matchregistret
-		let response = await axios(config);
-		console.log(response.data);
+		await axios(config);
+
 		// Uppdatera vardera hamsters stats
 		await updateStats(winner, 'winner');
 		await updateStats(loser, 'loser');

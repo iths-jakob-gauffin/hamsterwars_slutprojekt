@@ -1,23 +1,15 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 
-// import { NavLink, Link } from 'react-router-dom';
-
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-// import styled from '@emotion/styled';
 import { useTransition, config } from 'react-spring';
-
-// import { links } from './../../../utilities/links';
 import { colors } from './../../../styles/colors';
 import { randomColors } from './../../../styles/randomColors';
 
 import { BattleImage } from '../small_components/BattleImage';
-// import data from './../../../dummyData/hamsters.json';
 import getRandomBattle from './../../../api/getRandomBattle';
 import { recordBattle } from './../../../api/recordBattle';
-
-// TODO: släng portalen
 import PortalContent from './../small_components/PortalContent';
 
 const BattlePage = () => {
@@ -33,10 +25,6 @@ const BattlePage = () => {
 		() => {
 			let randomValue = Math.floor(
 				Math.random() * randomColors.length
-			);
-			console.log(
-				'OUTPUT ÄR: BattlePage -> randomValue',
-				randomValue
 			);
 			setRandomColorValue(randomValue);
 		},
@@ -66,10 +54,6 @@ const BattlePage = () => {
 		let winningHamster = contestants.filter(
 			contestant => contestant.id === winningHamsterId * 1
 		);
-		console.log(
-			'OUTPUT ÄR: BattlePage -> winningHamster',
-			winningHamster
-		);
 		let losingHamster = contestants.filter(
 			contestant => contestant.id !== winningHamsterId * 1
 		);
@@ -95,7 +79,6 @@ const BattlePage = () => {
 					});
 				}, 2200);
 			}
-			return () => console.log('nu unmountas den');
 		},
 		[ showPortal.show ]
 	);
@@ -105,10 +88,6 @@ const BattlePage = () => {
 	};
 	useEffect(() => {
 		fetchNewContestants();
-		// (async function fetchContestants() {
-		// 	let twoRandomContestants = await getRandomBattle();
-		// 	setContestants(twoRandomContestants);
-		// })();
 	}, []);
 
 	return (
@@ -143,7 +122,6 @@ const BattlePage = () => {
 							<div key={hamster.id}>
 								<BattleImage
 									onClickFn={handleClick}
-									// onClickFn={handleClick}
 									id={hamster.id}
 									name={hamster.name}
 									avatar={hamster.avatar}

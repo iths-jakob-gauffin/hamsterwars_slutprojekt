@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
 
-// import { NavLink, Link } from 'react-router-dom';
-
 // Redux
 import { connect } from 'react-redux';
 import { fetchHamsters } from './../../../redux/actions';
@@ -11,22 +9,11 @@ import { css, jsx } from '@emotion/core';
 import { useTransition, config } from 'react-spring';
 
 import { randomColors } from './../../../styles/randomColors';
-// import styled from '@emotion/styled';
-
-// import { links } from './../../../utilities/links';
-// import { colors } from './../../../styles/colors';
-
-// import { BattleImage } from '../small_components/BattleImage';
-// import data from './../../../dummyData/hamsters.json';
-
 import { FormPart } from './FormPart';
-// import Upload from './Upload';
-// import Upload3 from './Upload3';
 import Upload4 from './Upload4';
 import PortalContent from './../small_components/PortalContent';
 
 const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
-	console.log('OUTPUT ÄR: UploadPage -> updateRedux', updateRedux);
 	const initialHamsterFormData = {
 		name: '',
 		age: '',
@@ -57,12 +44,10 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 	const [ trueIfAllIsValid, setTrueIfAllIsValid ] = useState(false);
 
 	const [ newHamsterId, setNewHamsterId ] = useState(false);
-	console.log('nytt hamsterid är ', newHamsterId);
 
 	const [ submitImage, setSubmitImage ] = useState(false);
 
 	const [ fileToUpload, setFileToUpload ] = useState(null);
-	console.log('OUTPUT ÄR: fileToUpload', fileToUpload);
 
 	useEffect(
 		() => {
@@ -85,9 +70,7 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 
 	useEffect(
 		() => {
-			console.log('SÅHÄR SER DEN UT', reduxHamsters);
 			setNewHamsterId(reduxHamsters.length + 1);
-
 			// eslint-disable-next-line react-hooks/exhaustive-deps
 		},
 		[ reduxHamsters ]
@@ -103,105 +86,31 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 
 	const [ oldId, setOldId ] = useState(null);
 	const [ finishedUploading, setFinishedUploading ] = useState(false);
-	console.log(
-		'OUTPUT ÄR: UploadPage -> finishedUploading',
-		finishedUploading
-	);
 
 	useEffect(
 		() => {
-			// setNewHamsterCreated(!newHamsterCreated);
-			// let newHamster = reduxHamsters.filter(
-			// 	hamster => hamster.id * 1 === oldId * 1
-			// );
 			let newHamster = reduxHamsters.filter(
 				hamster => hamster.id * 1 === oldId * 1
 			);
 			if (newHamster.length !== 0) {
-				// setNewHamsterCreated(...newHamsterCreated);
 				displayNewlyCreatedHamster(...newHamster);
-				console.log('ja den fick någonting!!!');
-			} else {
-				console.log('nej den fick NADA');
 			}
-
-			// console.log('OUTPUT ÄR: UploadPage -> newHamster', newHamster);
 		},
 		[ finishedUploading ]
 	);
 	useEffect(
 		() => {
-			// setNewHamsterCreated(!newHamsterCreated);
-			// let newHamster = reduxHamsters.filter(
-			// 	hamster => hamster.id * 1 === oldId * 1
-			// );
 			let newHamster = reduxHamsters.filter(
 				hamster => hamster.id * 1 === oldId * 1
 			);
-			console.log('OUTPUT ÄR: UploadPage -> newHamster', newHamster);
 			if (newHamster.length !== 0) {
 				if (newHamster[0].avatar === true) {
-					console.log('jadå den kommer in i avatarläge');
-					// setNewHamsterCreated(...newHamsterCreated);
 					displayNewlyCreatedHamster(...newHamster);
-					console.log('ja den fick någonting!!!');
-				} else {
-					console.log('nej den fick NADA');
 				}
 			}
-
-			// console.log('OUTPUT ÄR: UploadPage -> newHamster', newHamster);
 		},
 		[ reduxHamsters ]
 	);
-	// useEffect(
-	// 	() => {
-	// 		// setNewHamsterCreated(!newHamsterCreated);
-	// 		// let newHamster = reduxHamsters.filter(
-	// 		// 	hamster => hamster.id * 1 === oldId * 1
-	// 		// );
-	// 		let newHamster = reduxHamsters.filter(
-	// 			hamster => hamster.id * 1 === oldId * 1
-	// 		);
-	// 		if (newHamster.length !== 0) {
-	// 			// setNewHamsterCreated(...newHamsterCreated);
-	// 			displayNewlyCreatedHamster(...newHamster);
-	// 			console.log('ja den fick någonting!!!');
-	// 		} else {
-	// 			console.log('nej den fick NADA');
-	// 		}
-
-	// 		// console.log('OUTPUT ÄR: UploadPage -> newHamster', newHamster);
-	// 	},
-	// 	[ reduxHamsters ]
-	// );
-
-	// useEffect(
-	// 	() => {
-	// 		let newHamster = reduxHamsters.filter(
-	// 			hamster => hamster.id * 1 === newHamsterId * 1 - 1
-	// 		);
-	// 		console.log('OUTPUT ÄR: UploadPage -> newHamster', newHamster);
-	// 		// console.log(
-	// 		// 	'OUTPUT ÄR: UploadPage -> newHamster',
-	// 		// 	newHamsterId.id * 1 - 1
-	// 		// );
-	// 		console.log(
-	// 			'OUTPUT ÄR: UploadPage -> newHamster',
-	// 			hamsterFormData
-	// 		);
-	// 		// if (newHamster) {
-	// 		// 	console.log(
-	// 		// 		'senaste hamstern ',
-	// 		// 		reduxHamsters[reduxHamsters.length - 1]
-	// 		// 	);
-	// 		// 	// displayNewlyCreatedHamster
-	// 		// 	console.log('nu loggar den till false');
-	// 		// 	setNewHamsterCreated(!newHamsterCreated);
-	// 		// }
-	// 	},
-	// 	[ newHamsterCreated ]
-	// );
 
 	const fadeAnimation = useTransition(showPortal.show, p => p, {
 		from: {
@@ -225,6 +134,7 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 	const resetEverything = () => {
 		setHamsterFormData(initialHamsterFormData);
 		setErrors(initialErrors);
+		setColor(initialColor);
 		setTrueIfAllIsValid(false);
 		setSubmitImage(false);
 		setFileToUpload(null);
@@ -252,13 +162,11 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 					});
 				}, 3500);
 			}
-			return () => console.log('nu unmountas den');
 		},
 		[ showPortal.show ]
 	);
 
 	const postNewHamster = (data, avatar = false) => {
-		console.log('OUTPUT ÄR: UploadPage -> data', data);
 		var myHeaders = new Headers();
 		myHeaders.append('Authorization', 'abc123');
 		myHeaders.append('Content-Type', 'application/json');
@@ -279,36 +187,25 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 		};
 
 		fetch('/api/files/cloud', requestOptions)
-			.then(response => response.text())
-			.then(result => console.log(result))
+			// .then(response => response.text())
+			// .then(result => console.log(result))
 			.catch(error => console.log('error', error));
 	};
 
 	const onSubmitFn = async e => {
 		e.preventDefault();
-
-		console.log('hamsterformdata', hamsterFormData);
-		console.log(
-			'OUTPUT ÄR: UploadPage -> hamsterFormData',
-			hamsterFormData
-		);
-		console.log('OUTPUT ÄR: UploadPage -> e', e.target);
 		// Om det finns en fil i inputfältet ska den laddas upp. Om den är tom så kommer det skrivas in i hamsterdatan så att avatarbilden visas istället
 		if (fileToUpload) {
 			setSubmitImage(true);
 			await postNewHamster(hamsterFormData);
-			console.log('fileToUpload existerar');
 		} else {
 			//true som andra argument anger för postNewHamster att det ska visas en avatarbild
 			await postNewHamster(hamsterFormData, true);
-			console.log('fileToUpload existerar inte');
 		}
-		// displayNewlyCreatedHamster({ ...hamsterFormData, avatar: true });
 		//Uppdatera redux så att nästa newHamsterId blir korrekt ifall man vill lägga till flera hamstrar
-		// setUpdateRedux(true);
+
 		setOldId(newHamsterId);
 		setUpdateRedux(!updateRedux);
-		// setNewHamsterCreated(hamsterFormData);
 	};
 
 	const formProps = {
@@ -373,15 +270,6 @@ const UploadPage = ({ reduxHamsters, setUpdateRedux, updateRedux }) => {
 					placeholderText={'Favoritsyssla?'}
 					{...formProps}
 				/>
-
-				{/* <Upload /> */}
-				{/* {newHamsterId && (
-					<Upload3
-						newHamsterId={newHamsterId}
-						submitImage={submitImage}
-						setSubmitImage={setSubmitImage}
-					/>
-				)} */}
 				{newHamsterId && (
 					<Upload4
 						newHamsterId={newHamsterId}

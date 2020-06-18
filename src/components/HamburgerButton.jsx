@@ -11,26 +11,8 @@ import './../styles/base.css';
 
 import { colors } from '../styles/colors';
 
-const HamburgerButton = ({
-	showMenu,
-	setShowMenu,
-	initializeMenu,
-	setInitializeMenu
-}) => {
-	// const [ openMenu, setOpenMenu ] = useState(false);
-	// console.log('OUTPUT ÄR: openMenu', openMenu);
-	// console.log('OUTPUT ÄR: showMenu', showMenu);
-
-	// useEffect(
-	// 	() => {
-	// 		initializeMenu && !showMenu && setShowMenu(!showMenu);
-	// 	},
-	// 	[ openMenu ]
-	// );
-
+const HamburgerButton = ({ showMenu, setShowMenu }) => {
 	const handleClick = () => {
-		// !initializeMenu && setInitializeMenu(true);
-
 		setShowMenu(!showMenu);
 	};
 

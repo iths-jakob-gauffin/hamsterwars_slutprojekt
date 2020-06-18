@@ -25,11 +25,6 @@ export const FormPart = props => {
 				padding: 0 .5em;
 				width: 100%;
 			`}>
-			{/* <label
-				htmlFor={nameAgeFavFoodOrLoves}
-				css={css`cursor: pointer;`}>
-				{nameAgeFavFoodOrLoves}
-			</label> */}
 			<div
 				className="input-container"
 				css={css`position: relative;`}>
@@ -103,7 +98,6 @@ export const FormPart = props => {
 						z-index: 1;
 						margin: 0;
 						font-size: .9rem;
-						/* padding: .3em; */
 						background-color: ${colors.white1};
 					`}>
 					{errors[nameAgeFavFoodOrLoves]}

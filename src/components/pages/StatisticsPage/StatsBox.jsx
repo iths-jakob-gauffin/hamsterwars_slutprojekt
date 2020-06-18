@@ -2,7 +2,6 @@
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-// import { topData } from './top5Dummy';
 import { StatsColumn } from './StatsColumn';
 
 export const StatsBox = ({ stats }) => {

@@ -14,19 +14,11 @@ import { randomColors } from './../../../styles/randomColors';
 
 import Select from './Select';
 
-// import data from './../../../dummyData/hamsters.json';
 import { BattleImage } from '../small_components/BattleImage';
 import { recordBattle } from './../../../api/recordBattle';
 import PortalContent from './../small_components/PortalContent';
 
-// TODO: fixa så listorna uppdaterar varandra, när man väljer en hamster från första listan ska den försvinna från andra och vice versa
-
 const SpecificBattlePage = ({ reduxHamsters, history }) => {
-	console.log(
-		'OUTPUT ÄR: SpecificBattlePage -> reduxHamsters',
-		reduxHamsters
-	);
-	// console.log(data);
 	const { id1, id2 } = useParams();
 
 	const initialFirstValue = {
@@ -39,28 +31,16 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 	const [ firstHamster, setFirstHamster ] = useState({
 		id: id1
 	});
-	console.log(
-		'OUTPUT ÄR: SpecificBattlePage -> firstHamster',
-		firstHamster
-	);
 
 	const [ secondHamster, setSecondHamster ] = useState({
 		id: id2
 	});
-	console.log(
-		'OUTPUT ÄR: SpecificBattlePage -> secondHamster',
-		secondHamster
-	);
 
 	const [ instructionText, setInstructionText ] = useState('');
 
 	const invalidOptions = [ ':id1', ':id2' ];
 
 	const [ readyToBattle, setReadyToBattle ] = useState(false);
-	console.log(
-		'OUTPUT ÄR: SpecificBattlePage -> readyToBattle',
-		readyToBattle
-	);
 
 	useEffect(
 		() => {
@@ -78,19 +58,6 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 		},
 		[ firstHamster, secondHamster ]
 	);
-	// const getInstruction = () => {
-	// 	if (
-	// 		firstHamster.id !== ':id1' &&
-	// 		secondHamster.id !== ':id2' &&
-	// 		firstHamster.id !== secondHamster.id
-	// 	) {
-	// 		setInstructionText('Klicka på den sötaste hamstern');
-	// 	} else if (firstHamster.id === secondHamster.id) {
-	// 		setInstructionText('Det måste vara två olika hamstrar');
-	// 	} else {
-	// 		setInstructionText('Välj hamstrar som ska tävla');
-	// 	}
-	// };
 
 	useEffect(
 		() => {
@@ -132,17 +99,6 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 				setReadyToBattle(false);
 			}
 			history.push(`/battle/${firstHamster.id}/${secondHamster.id}`);
-			// if (
-			// 	!invalidOptions.includes(firstHamster.id) ||
-			// 	!invalidOptions.includes(secondHamster.id)
-			// ) {
-			// 	setReadyToBattle(true);
-			// 	history.push(
-			// 		`/battle/${firstHamster.id}/${secondHamster.id}`
-			// 	);
-			// } else {
-			// 	setReadyToBattle(false);
-			// }
 		},
 		[ firstHamster.id, secondHamster.id ]
 	);
@@ -172,10 +128,6 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 			let randomValue = Math.floor(
 				Math.random() * randomColors.length
 			);
-			console.log(
-				'OUTPUT ÄR: BattlePage -> randomValue',
-				randomValue
-			);
 			setRandomColorValue(randomValue);
 		},
 		[ showPortal.show ]
@@ -203,23 +155,7 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 	const identity = val => val;
 
 	const handleClick = async winningHamsterId => {
-		// console.log(
-		// 	'OUTPUT ÄR: SpecificBattlePage -> winningHamsterId',
-		// 	winningHamsterId
-		// );
 		let contestants = [ firstHamster, secondHamster ];
-		// console.log(
-		// 	'OUTPUT ÄR: SpecificBattlePage -> contestants',
-		// 	contestants
-		// );
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> firstHamster',
-			firstHamster
-		);
-		console.log(
-			'OUTPUT ÄR: SpecificBattlePage -> secondHamster',
-			secondHamster
-		);
 
 		let winningHamster = contestants.filter(
 			contestant => contestant.id === winningHamsterId * 1
@@ -249,7 +185,6 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 					});
 				}, 2200);
 			}
-			return () => console.log('nu unmountas den');
 		},
 		[ showPortal.show ]
 	);
@@ -268,14 +203,6 @@ const SpecificBattlePage = ({ reduxHamsters, history }) => {
 				VÄLJ BATTLE
 			</h1>
 			<h3 className="h5 center highlight">{instructionText}</h3>
-			{/* <h3 className="h5 center highlight">
-				{firstHamster.id !== ':id1' &&
-				secondHamster.id !== ':id2' ? (
-					'Klicka på den sötaste hamstern'
-				) : (
-					'Välj hamstrar som ska tävla'
-				)}
-			</h3> */}
 			<div
 				className="images-container"
 				css={css`

@@ -10,16 +10,8 @@ export const getTopOrBottom = async resource => {
 
 	try {
 		let response = await axios(config);
-		console.log('OUTPUT ÄR: response', response);
 		return response.data;
 	} catch (err) {
 		console.error(err);
 	}
-	// axios(config)
-	// 	.then(function(response) {
-	// 		console.log(JSON.stringify(response.data));
-	// 	})
-	// 	.catch(function(error) {
-	// 		console.log(error);
-	// 	});
 };

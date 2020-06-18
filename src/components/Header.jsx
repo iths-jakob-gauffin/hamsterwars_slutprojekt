@@ -1,5 +1,4 @@
 import { Fragment } from 'react';
-// import { BrowserRouter as Router, Switch } from 'react-router-dom';
 import { NavLink } from 'react-router-dom';
 
 // Styling
@@ -37,7 +36,6 @@ const Header = () => {
 				</StyledHeaderContainer>
 			</Mobile>
 			<Desktop>Desktop or laptop</Desktop>
-			{/* <Tablet>Tablet</Tablet> */}
 			<Default>
 				<StyledHeaderContainer
 					css={css`background-color: ${colors.purple2};`}>
@@ -49,28 +47,34 @@ const Header = () => {
 };
 
 const StyledHeaderContainer = styled.header`
-  /* background-color: ${colors.purple3}; */
-  background: linear-gradient(165deg, ${colors.yellow1} 2%, ${colors.yellow2} 10%, ${colors.purple3} 30%, ${colors.purple3} 45%, ${colors.blue1} 90%);
-	/* padding: .7rem .5rem; */
+	background: linear-gradient(
+		165deg,
+		${colors.yellow1} 2%,
+		${colors.yellow2} 10%,
+		${colors.purple3} 30%,
+		${colors.purple3} 45%,
+		${colors.blue1} 90%
+	);
 	border-bottom: 2px solid ${colors.blue1};
 	width: 100%;
 	height: 100%;
 	display: flex;
-  justify-content: center;
-  align-items: center;
-  
+	justify-content: center;
+	align-items: center;
 `;
 
 const StyledLogo = styled.div`
-	width:100%;
-  /* color: ${colors.whiteGreen}; */
-  background: -webkit-linear-gradient(271deg, ${colors.yellow2}, ${colors.yellow1} 40%, ${colors.yellow3} 45%, ${colors.yellow1} 48%, ${colors.white1} 65%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-	
-  /* text-shadow: 1px 1px ${colors.blue2}; */
-  /* position: absolute; */
-  
+	width: 100%;
+	background: -webkit-linear-gradient(
+		271deg,
+		${colors.yellow2},
+		${colors.yellow1} 40%,
+		${colors.yellow3} 45%,
+		${colors.yellow1} 48%,
+		${colors.white1} 65%
+	);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
 `;
 
 export default Header;

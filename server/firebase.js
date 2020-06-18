@@ -6,7 +6,6 @@ admin.initializeApp({
 	credential: admin.credential.cert(serviceAccount),
 	databaseURL: 'https://hamster-wars-iths.firebaseio.com',
 	storageBucket: 'hamster-bilder/'
-	// storageBucket: 'hamster-wars-iths.appspot.com/'
 });
 
 const db = admin.firestore();

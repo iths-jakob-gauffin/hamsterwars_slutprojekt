@@ -4,9 +4,7 @@ import { NavLink } from 'react-router-dom';
 
 /** @jsx jsx */
 import { css, jsx } from '@emotion/core';
-// import styled from '@emotion/styled';
 import { colors } from './../styles/colors';
-// import { animated } from 'react-spring';
 
 const MobileNavButton = ({
 	children,
@@ -14,13 +12,6 @@ const MobileNavButton = ({
 	setShowMenu,
 	showMenu
 }) => {
-	// console.log('OUTPUT ÄR: setShowMenu', setShowMenu);
-	// const handleClick = () => {
-	// 	if (setShowMenu) {
-	// 		setShowMenu(!showMenu);
-	// 	}
-	// };
-
 	return (
 		<Fragment>
 			<NavLink
@@ -65,8 +56,6 @@ const MobileNavButton = ({
 						border: 5px solid ${colors.blue2};
 					}
 				`}>
-				{/* <button */}
-
 				<h6
 					className="logo-font-button no-box-shadow"
 					css={css`
@@ -78,7 +67,6 @@ const MobileNavButton = ({
 					`}>
 					{children}
 				</h6>
-				{/* </button> */}
 			</NavLink>
 		</Fragment>
 	);

@@ -8,12 +8,12 @@ export const validate = (
 ) => {
 	const errorMessages = {
 		name:
-			'Ogiltigt namn. Det måste vara minst en bokstav och får inte innehålla siffror eller specialtecken (bindestreck är ok).',
+			'Ogiltigt namn. Det måste vara minst en bokstav och får inte innehålla siffror eller specialtecken (inga å/ä/ö men bindestreck är ok).',
 		age: 'Åldern måste vara en siffra (heltal) och vara större än 0.',
 		favFood:
-			'Favoritmaten ska vara minst en bokstav och får inte innehålla några siffror eller specialtecken (bindestreck är ok).',
+			'Favoritmaten ska vara minst en bokstav och får inte innehålla några siffror eller specialtecken (inga å/ä/ö men bindestreck är ok).',
 		loves:
-			'Det du skriver måste vara minst en bokstav och får inte innehålla några siffror eller specialtecken (bindestreck är ok).'
+			'Det du skriver måste vara minst en bokstav och får inte innehålla några siffror eller specialtecken (inga å/ä/ö men bindestreck är ok).'
 	};
 
 	const inputIsValid = () => {
